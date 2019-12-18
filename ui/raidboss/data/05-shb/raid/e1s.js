@@ -1,4 +1,4 @@
-'use strict';
+﻿'use strict';
 
 [{
   zoneRegex: {
@@ -111,7 +111,11 @@
       condition: function(data) {
         return data.role == 'healer';
       },
-      response: Responses.aoe(),
+      infoText: {
+        en: 'Raid damage',
+        de: 'AoE',
+        fr: 'Dégâts de zone',
+      },
     },
     {
       id: 'E1S Fragor Maximus',
@@ -124,7 +128,11 @@
       condition: function(data) {
         return data.role == 'healer';
       },
-      response: Responses.aoe(),
+      infoText: {
+        en: 'Raid damage',
+        de: 'AoE',
+        fr: 'Dégâts de zone',
+      },
     },
     {
       id: 'E1S Dimensional Shift',
@@ -137,30 +145,57 @@
       condition: function(data) {
         return data.role == 'healer';
       },
-      response: Responses.aoe(),
+      infoText: {
+        en: 'Raid damage',
+        de: 'AoE',
+        fr: 'Dégâts de zone',
+      },
     },
     {
       id: 'E1S Spear Of Paradise',
-      regex: Regexes.startsUsing({ id: '3D88', source: 'Eden Prime' }),
-      regexDe: Regexes.startsUsing({ id: '3D88', source: 'Prim-Eden' }),
-      regexFr: Regexes.startsUsing({ id: '3D88', source: 'Primo-Éden' }),
-      regexJa: Regexes.startsUsing({ id: '3D88', source: 'エデン・プライム' }),
-      regexCn: Regexes.startsUsing({ id: '3D88', source: '至尊伊甸' }),
-      regexKo: Regexes.startsUsing({ id: '3D88', source: '에덴 프라임' }),
-      condition: function(data, matches) {
-        return matches.target == data.me || data.role == 'tank' || data.role == 'healer';
+      regex: / 14:3D88:Eden Prime starts using Spear Of Paradise on (\y{Name})/,
+      regexDe: / 14:3D88:Prim-Eden starts using Paradiesspeer on (\y{Name})/,
+      regexFr: / 14:3D88:Primo-Éden starts using Lance [Dd]u [Pp]aradis on (\y{Name})/,
+      regexJa: / 14:3D88:エデン・プライム starts using スピア・オブ・パラダイス on (\y{Name})/,
+      alarmText: function(data, matches) {
+        if (matches[1] == data.me || data.role != 'tank')
+          return;
+
+        return {
+          en: 'Tank Swap!',
+          de: 'Tankwechsel!',
+          fr: 'Tank swap !',
+        };
+      },
+      alertText: function(data, matches) {
+        if (matches[1] == data.me) {
+          return {
+            en: 'Tank Buster on YOU',
+            de: 'Tankbuster auf DIR',
+            fr: 'Tankbuster sur VOUS',
+          };
+        }
+        if (data.role == 'healer') {
+          return {
+            en: 'Buster on ' + data.ShortName(matches[1]),
+            de: 'Tankbuster auf ' + data.ShortName(matches[1]),
+            fr: 'Tankbuster sur ' + data.ShortName(matches[1]),
+          };
+        }
       },
       response: Responses.tankBusterSwap(),
     },
     {
       id: 'E1S Eden\'s Flare',
-      regex: Regexes.startsUsing({ id: '3D73', source: 'Eden Prime', capture: false }),
-      regexDe: Regexes.startsUsing({ id: '3D73', source: 'Prim-Eden', capture: false }),
-      regexFr: Regexes.startsUsing({ id: '3D73', source: 'Primo-Éden', capture: false }),
-      regexJa: Regexes.startsUsing({ id: '3D73', source: 'エデン・プライム', capture: false }),
-      regexCn: Regexes.startsUsing({ id: '3D73', source: '至尊伊甸', capture: false }),
-      regexKo: Regexes.startsUsing({ id: '3D73', source: '에덴 프라임', capture: false }),
-      response: Responses.getUnder('alert'),
+      regex: / 14:3D73:Eden Prime starts using Eden's Flare/,
+      regexDe: / 14:3D73:Prim-Eden starts using Eden-Flare/,
+      regexFr: / 14:3D73:Primo-Éden starts using Brasier Édénique/,
+      regexJa: / 14:3D73:エデン・プライム starts using エデン・フレア/,
+      alertText: {
+        en: 'Get inside the boss',
+        de: 'Unter den Boss',
+        fr: 'Sous le boss',
+      },
     },
     {
       id: 'E1S Delta Attack 1',
@@ -171,9 +206,8 @@
       regexCn: Regexes.startsUsing({ id: '44F4', source: '至尊伊甸', capture: false }),
       regexKo: Regexes.startsUsing({ id: '44F4', source: '에덴 프라임', capture: false }),
       alertText: {
-        en: 'Cross Spread',
+        en: 'Get to your corner',
         de: 'Verteilen',
-        ja: '散開',
         fr: 'Ecartez-vous en croix',
         cn: '四角躲避',
         ko: '산개',
@@ -190,21 +224,17 @@
       alertText: function(data) {
         if (data.role == 'tank') {
           return {
-            en: 'Get In, Spread',
+            en: 'Stack on rear, tanks spread out',
             de: 'Rein gehen, verteilen',
-            ja: '中で散開',
             fr: 'Intérieur, écartez-vous',
             cn: '中间散开',
             ko: '보스 가까이 탱 약산개',
           };
         }
         return {
-          en: 'In, Stack Behind',
+          en: 'Stack on rear, tanks spread out',
           de: 'Rein, hinten stacken',
-          ja: '背面集合',
-          fr: 'Intérieur, packez derrière',
-          cn: '背面集合',
-          ko: '보스 가까이, 뒤에서 쉐어',
+          fr: 'Intérieur, pack derrière',
         };
       },
     },
@@ -313,9 +343,8 @@
         return !data.paradise && data.vice == 'dps' && data.me == matches.target;
       },
       alertText: {
-        en: 'Puddle Spread',
+        en: 'Puddles',
         de: 'Flächen verteilen',
-        ja: '離れて散開',
         fr: 'Ecartez-vous',
         cn: '分散放圈',
         ko: '장판 유도 산개',
@@ -330,9 +359,8 @@
       regexCn: Regexes.startsUsing({ id: '3D7A', source: '至尊伊甸', capture: false }),
       regexKo: Regexes.startsUsing({ id: '3D7A', source: '에덴 프라임', capture: false }),
       alertText: {
-        en: 'Stack With Partner',
+        en: 'Stack with your buddy',
         de: 'Mit Partner stacken',
-        ja: '相方とスタック',
         fr: 'Packez-vous avec votre partenaire',
         cn: '与搭档集合',
         ko: '쉐어뎀 파트너랑 모이기',
@@ -345,12 +373,9 @@
         return data.vice == 'tank' && data.me == matches.target;
       },
       infoText: {
-        en: 'Tank Laser on YOU',
+        en: 'Tanks spread out',
         de: 'Tank Laser auf DIR',
         fr: 'Tank laser sur VOUS',
-        ja: '自分にレーザー',
-        cn: '坦克射线',
-        ko: '탱 레이저 대상자',
       },
     },
     {
@@ -365,9 +390,8 @@
         return data.role != 'tank';
       },
       infoText: {
-        en: 'Stack in front of tank',
+        en: 'Stack with your tank',
         de: 'Vorne mit dem Tank stacken',
-        ja: '左右に分かれて内側へ',
         fr: 'Packez-vous devant le tank',
         cn: 'T前集合',
         ko: '좌우 탱커 앞 산개',
@@ -387,18 +411,16 @@
       infoText: function(data) {
         if (data.paradise) {
           return {
-            en: 'Pass Prey to DPS',
+            en: 'Debuffs to tank',
             de: 'Marker einem DPS geben',
-            ja: 'DPSに移して',
             fr: 'Donnez la marque à un DPS',
             cn: '传毒DPS',
             ko: '딜러한테 표식 넘기기',
           };
         }
         return {
-          en: 'Pass Prey to Tank',
+          en: 'Debuffs to tank',
           de: 'Marker einem Tank geben',
-          ja: 'タンクに移して',
           fr: 'Donnez la marque à un Tank',
           cn: '传毒坦克',
           ko: '탱커한테 표식 넘기기',
@@ -422,9 +444,8 @@
       },
       suppressSeconds: 20,
       alertText: {
-        en: 'Take prey from healer',
+        en: 'Debuffs to tank',
         de: 'Marker vom Heiler nehmen',
-        ja: 'ヒーラーからマーカー取って',
         fr: 'Prenez la marque du healer',
         cn: '从奶妈拿毒',
         ko: '힐러한테서 표식 받기',
@@ -442,17 +463,23 @@
         return data.CanSilence();
       },
       suppressSeconds: 1,
-      response: Responses.interrupt(),
+      alertText: {
+        en: 'Interrupt',
+        de: 'Stumm auf Hüter ',
+        fr: 'Interrompez le gardien',
+      },
     },
     {
       id: 'E1S Pure Light',
-      regex: Regexes.startsUsing({ id: '3D8A', source: 'Eden Prime', capture: false }),
-      regexDe: Regexes.startsUsing({ id: '3D8A', source: 'Prim-Eden', capture: false }),
-      regexFr: Regexes.startsUsing({ id: '3D8A', source: 'Primo-Éden', capture: false }),
-      regexJa: Regexes.startsUsing({ id: '3D8A', source: 'エデン・プライム', capture: false }),
-      regexCn: Regexes.startsUsing({ id: '3D8A', source: '至尊伊甸', capture: false }),
-      regexKo: Regexes.startsUsing({ id: '3D8A', source: '에덴 프라임', capture: false }),
-      response: Responses.getBehind(),
+      regex: / 14:3D8A:Eden Prime starts using Pure Light/,
+      regexDe: / 14:3D8A:Prim-Eden starts using Läuterndes Licht/,
+      regexFr: / 14:3D8A:Primo-Éden starts using Lumière [pP]urificatrice/,
+      regexJa: / 14:3D8A:エデン・プライム starts using ピュアライト/,
+      alertText: {
+        en: 'Get behind the boss',
+        de: 'Hinter den Boss',
+        fr: 'Derrière le boss',
+      },
     },
     {
       id: 'E1S Pure Beam 1',
@@ -463,9 +490,8 @@
       regexCn: Regexes.startsUsing({ id: '3D80', source: '至尊伊甸', capture: false }),
       regexKo: Regexes.startsUsing({ id: '3D80', source: '에덴 프라임', capture: false }),
       infoText: {
-        en: 'Get Outside Your Orb',
+        en: 'Get ready to bait your orb',
         de: 'Geh zu deinem Orb',
-        ja: 'ピュアレイを外へ誘導',
         fr: 'Allez à l\'extérieur de votre orbe',
         cn: '球外站位',
         ko: '본인 레이저 바깥으로 유도',
@@ -480,7 +506,7 @@
       regexCn: Regexes.startsUsing({ id: '3D82', source: '至尊伊甸', capture: false }),
       regexKo: Regexes.startsUsing({ id: '3D82', source: '에덴 프라임', capture: false }),
       infoText: {
-        en: 'Bait Orb Lasers Outside',
+        en: 'Bait your sprinklers',
         de: 'Laser nach drausen ködern',
         fr: 'Placez les lasers à l\'extérieur',
         cn: '外侧吃激光',
@@ -652,113 +678,17 @@
     {
       'locale': 'cn',
       'replaceSync': {
-        'Eden Prime': '至尊伊甸',
+        'Engage!': '战斗开始！',
+        'Eden Prime': 'Eden Prime',
         'Arcane Sphere': '立体魔法阵',
-        'Guardian of Paradise': '伊甸守护者',
       },
       'replaceText': {
-        'Vice [oO]f Vanity': '虚荣之恶',
-        'Vice of Thievery': '盗窃之恶',
-        'Vice of Sloth': '怠惰之恶',
-        'Vice of Pride': '傲慢之恶',
-        'Vice of Greed': '贪婪之恶',
-        'Vice of Apathy': '冷漠之恶',
-        'Vice And Virtue! (T)': '恶习与美德！(坦克)',
-        'Vice And Virtue! (D)': '恶习与美德！(DPS)',
-        'Vice And Virtue! (H)': '恶习与美德！(奶妈)',
-        'Vice And Virtue (T)': '恶习与美德(坦克)',
-        'Vice And Virtue (D)': '恶习与美德(DPS)',
-        'Vice And Virtue (H)': '恶习与美德(奶妈)',
-        'Vice and Virtue': '恶习与美德',
-        'Spear [oO]f Paradise': '乐园之枪',
-        'Regained Thunder III': '复乐园暴雷',
-        'Regained Fire III': '复乐园爆炎',
-        'Regained Blizzard III': '复乐园冰封',
-        'Pure Light': '净土之光',
-        'Pure Beam': '净土射线',
-        'Primeval Stasis': '原初停滞',
-        'Paradise Regained': '复乐园',
-        'Paradise Lost': '失乐园',
-        'Paradisal Dive': '乐园冲',
-        'Mana Slice': '魔力斩击',
-        'Mana Burst': '魔力爆发',
-        'Mana Boost': '魔力增幅',
-        'Heavensunder': '天国分断',
-        'Fragor Maximus': '极大爆炸',
-        'Eternal Breath': '永恒吐息',
-        'Eden\'s Thunder III': '伊甸暴雷',
-        'Eden\'s Gravity': '伊甸重力',
-        'Eden\'s Flare': '伊甸核爆',
-        'Eden\'s Fire III': '伊甸爆炎',
-        'Eden\'s Blizzard III': '伊甸冰封',
-        'Dimensional Shift': '空间转换',
-        'Delta Attack (Cross)': '三角攻击(角落)',
-        'Delta Attack (Donut)': '三角攻击(月环)',
-        'Delta Attack': '三角攻击',
+        'attack': '攻击',
+        'Unknown Ability': 'Unknown Ability',
       },
       '~effectNames': {
         'Slippery Prey': '非目标',
         'Fetters': '拘束',
-        'Prey': '猎物',
-        'Poison': '中毒',
-        'Physical Vulnerability Up': '物理受伤加重',
-        'Magic Vulnerability Up': '魔法受伤加重',
-        'Lightning Resistance Down II': '雷属性耐性大幅降低',
-        'Healing Magic Down': '治疗魔法效果降低',
-        'Bleeding': '出血',
-      },
-    },
-    {
-      'locale': 'ko',
-      'replaceSync': {
-        'Eden Prime': '에덴 프라임',
-        'Arcane Sphere': '입체 마법진',
-        'Guardian of Paradise': '에덴 정원사',
-      },
-      'replaceText': {
-        'Vice of Vanity': '허영의 악덕',
-        'Vice of Thievery': '도둑질의 악덕',
-        'Vice of Sloth': '나태의 악덕',
-        'Vice of Pride': '교만의 악덕',
-        'Vice of Greed': '탐욕의 악덕',
-        'Vice of Apathy': '냉담의 악덕',
-        'Vice and Virtue': '선과 악',
-        'Spear of Paradise': '낙원의 창',
-        'Regained Thunder III': '되찾은 선더가',
-        'Regained Fire III': '되찾은 파이가',
-        'Regained Blizzard III': '되찾은 블리자가',
-        'Pure Light': '완전한 빛',
-        'Pure Beam': '완전한 광선',
-        'Primeval Stasis': '태초의 안정',
-        'Paradise Regained': '복낙원',
-        'Paradise Lost': '실낙원',
-        'Paradisal Dive': '낙원 강하',
-        'Mana Slice': '마나 베기',
-        'Mana Burst': '마나 폭발',
-        'Mana Boost': '마나 강화',
-        'Heavensunder': '천국의 낙뢰',
-        'Fragor Maximus': '우주 탄생',
-        'Eternal Breath': '영원의 숨결',
-        'Eden\'s Thunder III': '에덴 선더가',
-        'Eden\'s Gravity': '에덴 그라비데',
-        'Eden\'s Flare': '에덴 플레어',
-        'Eden\'s Fire III': '에덴 파이가',
-        'Eden\'s Blizzard III': '에덴 블리자가',
-        'Dimensional Shift': '차원 전환',
-        'Delta Attack': '델타 공격',
-        'Cross': '십자',
-        'Donut': '중앙',
-      },
-      '~effectNames': {
-        'Slippery Prey': '표식 대상 제외',
-        'Prey': '표식',
-        'Poison': '독',
-        'Physical Vulnerability Up': '받는 물리 피해량 증가',
-        'Magic Vulnerability Up': '받는 마법 피해량 증가',
-        'Lightning Resistance Down II': '번개속성 저항 감소[강]',
-        'Healing Magic Down': '회복마법 효과 감소',
-        'Fetters': '구속',
-        'Bleeding': '고통',
       },
     },
   ],

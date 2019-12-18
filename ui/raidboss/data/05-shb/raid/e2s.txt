@@ -12,57 +12,57 @@ hideall "Spell-In-Waiting"
 0.0 "--sync--" sync /:Engage!/ window 0,1
 1.5 "--sync--" sync /:Voidwalker:3E60/ window 2,0
 10.5 "--sync--" sync /:Voidwalker:3E63:/ window 11,5
-11.2 "Doomvoid Cleaver" sync /:Voidwalker:3E64:/
-25.4 "Unholy Darkness" sync /:Voidwalker:3E54:/
-31.8 "Slicer/Guillotine" sync /:Voidwalker:(3E4F|3E50):/
-43.8 "Dark Fire III" sync /:Voidwalker:3E57:/
+11.2 "Compass lasers" sync /:Voidwalker:3E64:/
+25.4 "Stack" sync /:Voidwalker:3E54:/
+31.8 "In or sides" sync /:Voidwalker:(3E4F|3E50):/
+43.8 "Spread" sync /:Voidwalker:3E57:/
 59.2 "Spell-In-Waiting" sync /:Voidwalker:3E52:/
-69.3 "Punishing Ray" sync /:Voidwalker:3E5B:/
+69.3 "Puddles" sync /:Voidwalker:3E5B:/
 72.7 "Spell-In-Waiting" sync /:Voidwalker:3E52:/
 86.1 "Spell-In-Waiting" sync /:Voidwalker:3E52:/
-95.3 "Dark Fire III" sync /:Voidwalker:3E57:/
-105.3 "Hell Wind" sync /:Voidwalker:3E66:/
-106.8 "Shadoweye" sync /:Voidwalker:3E69:/
-106.8 "Unholy Darkness" sync /:Voidwalker:3E54:/
-121.9 "Shadowflame" sync /:Voidwalker:3E61:/
-134.1 "Entropy" sync /:Voidwalker:3E70:/
-143.8 "Empty Rage" sync /:Voidwalker:3E6C:/
-148.7 "Doomvoid Guillotine" sync /:Voidwalker:3E4F:/
-156.9 "Doomvoid Slicer" sync /:Voidwalker:3E50:/
-164.9 "Empty Hate" sync /:Voidwalker:3E5A:/
-175.8 "Doomvoid Cleaver" sync /:Voidwalker:3E64:/
-191.2 "Shadowflame" sync /:Voidwalker:3E61:/
-203.4 "Entropy" sync /:Voidwalker:3E70:/
+95.3 "Spread" sync /:Voidwalker:3E57:/
+105.3 "1HP" sync /:Voidwalker:3E66:/
+106.8 "Gaze" sync /:Voidwalker:3E69:/
+106.8 "Stack" sync /:Voidwalker:3E54:/
+121.9 "Tankbuster" sync /:Voidwalker:3E61:/
+134.1 "Raid damage" sync /:Voidwalker:3E70:/
+143.8 "Away from the hand" sync /:Voidwalker:3E6C:/
+148.7 "Sides" sync /:Voidwalker:3E4F:/
+156.9 "Under boss" sync /:Voidwalker:3E50:/
+164.9 "Hand push" sync /:Voidwalker:3E5A:/
+175.8 "Compass lasers" sync /:Voidwalker:3E64:/
+191.2 "Tankbuster" sync /:Voidwalker:3E61:/
+203.4 "Raid damage" sync /:Voidwalker:3E70:/
 208.0 "Spell-In-Waiting" sync /:Voidwalker:3E52:/
-224.9 "Flare" sync /:Voidwalker:4685:/
+224.9 "Proximity" sync /:Voidwalker:4685:/
 229.3 "Spell-In-Waiting" sync /:Voidwalker:3E52:/
-242.5 "Hell Wind" sync /:Voidwalker:3E66:/
-248.5 "Punishing Ray" sync /:Voidwalker:3E5B:/
-248.9 "Shadoweye" sync /:Voidwalker:3E69:/
-260.7 "Shadowflame" sync /:Voidwalker:3E61:/
-272.9 "Entropy" sync /:Voidwalker:3E70:/
+242.5 "1HP" sync /:Voidwalker:3E66:/
+248.5 "Puddles" sync /:Voidwalker:3E5B:/
+248.9 "Gaze" sync /:Voidwalker:3E69:/
+260.7 "Tankbuster" sync /:Voidwalker:3E61:/
+272.9 "Raid damage" sync /:Voidwalker:3E70:/
 282.9 "Light/Dark Circles" # ???
-286.4 "Doomvoid Cleaver" sync /:Voidwalker:3E64:/
-295.7 "Unholy Darkness" sync /:Voidwalker:3E54:/
-304.1 "Slicer/Guillotine" sync /:Voidwalker:(3E4F|3E50):/
-330.3 "Shadowflame" sync /:Voidwalker:3E61:/
-342.5 "Entropy" sync /:Voidwalker:3E70:/
+286.4 "Compass lasers" sync /:Voidwalker:3E64:/
+295.7 "Stack" sync /:Voidwalker:3E54:/
+304.1 "In or sides" sync /:Voidwalker:(3E4F|3E50):/
+330.3 "Tankbuster" sync /:Voidwalker:3E61:/
+342.5 "Raid damage" sync /:Voidwalker:3E70:/
 348.1 "Spell-In-Waiting" sync /:Voidwalker:3E52:/
-358.2 "Empty Hate/Rage" sync /:Voidwalker:(3E5A|3E6C):/
+358.2 "Hand" sync /:Voidwalker:(3E5A|3E6C):/
 361.4 "Spell-In-Waiting" sync /:Voidwalker:3E52:/
 374.7 "Spell-In-Waiting" sync /:Voidwalker:3E52:/
-381.6 "Flare" sync /:Voidwalker:4685:/
-386.9 "Unholy Darkness" sync /:Voidwalker:3E54:/
-399.9 "Shadowflame" sync /:Voidwalker:3E61:/
+381.6 "Proximity" sync /:Voidwalker:4685:/
+386.9 "Stack" sync /:Voidwalker:3E54:/
+399.9 "Tankbuster" sync /:Voidwalker:3E61:/
 408.5 "Spell-In-Waiting" sync /:Voidwalker:3E52:/
 421.8 "Spell-In-Waiting" sync /:Voidwalker:3E52:/
-430.0 "Shadoweye" sync /:Voidwalker:3E69:/
+430.0 "Gaze" sync /:Voidwalker:3E69:/
 430.0 "Flare" sync /:Voidwalker:4685:/
-437.4 "Dark Fire III" sync /:Voidwalker:3E57:/
+437.4 "Spread" sync /:Voidwalker:3E57:/
 445.4 "Light/Dark Circles" # ???
-450.2 "Punishing Ray" sync /:Voidwalker:3E5B:/
-455.0 "Doomvoid Cleaver" sync /:Voidwalker:3E64:/
-469.4 "Shadowflame" sync /:Voidwalker:3E61:/
+450.2 "Puddles" sync /:Voidwalker:3E5B:/
+455.0 "Compass lasers" sync /:Voidwalker:3E64:/
+469.4 "Tankbuster" sync /:Voidwalker:3E61:/
 
 # FIXME: I've seen this push ~6s earlier once
 # but is pretty consistent otherwise?

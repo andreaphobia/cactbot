@@ -349,6 +349,70 @@
         ko: '첫 넉백 대상자',
       },
     },
+
+    // Tsunami 1
+    {
+      id: 'E3S Sundering Waters',
+      regex: / 1A:\y{ObjectId}:(\y{Name}) gains the effect of Sundering Waters from (?:.*) for (.*) Seconds/,
+      regexDe: / 1A:\y{ObjectId}:(\y{Name}) gains the effect of Omen der Zerstörung from (?:.*) for (.*) Seconds/,
+      regexFr: / 1A:\y{ObjectId}:(\y{Name}) gains the effect of Eaux Fracturantes from (?:.*) for (.*) Seconds/,
+      regexJa: / 1A:\y{ObjectId}:(\y{Name}) gains the effect of 断絶の兆し from (?:.*) for (.*) Seconds/,
+      condition: function(data) {
+        return data.refreshed == null;
+      },
+      alertText: function(data, matches) {
+        return {
+          en: data.ShortName(matches[1]) + ' get behind',
+          de: 'Knockback auf Dir',
+          fr: 'Pousée sur VOUS',
+          ja: '自分にノックバック',
+        };
+      },
+    },
+
+    // Tsunami 2
+    {
+      id: 'E3S Surging Waters',
+      regex: / 1A:\y{ObjectId}:(\y{Name}) gains the effect of Surging Waters/,
+      regexDe: / 1A:\y{ObjectId}:(\y{Name}) gains the effect of Omen der Erdrückung/,
+      regexFr: / 1A:\y{ObjectId}:(\y{Name}) gains the effect of Eaux Écrasantes/,
+      regexJa: / 1A:\y{ObjectId}:(\y{Name}) gains the effect of 強圧の兆し/,
+      condition: function(data) {
+        return data.refreshed;
+      },
+      alertText: function(data, matches) {
+        return {
+          en: data.ShortName(matches[1]) + ' to the front',
+          de: '',
+          fr: '',
+          ja: '',
+        };
+      },
+    },
+
+    {
+      id: 'E3S Sundering Waters',
+      regex: / 1A:\y{ObjectId}:(\y{Name}) gains the effect of Sundering Waters from (?:.*) for (.*) Seconds/,
+      regexDe: / 1A:\y{ObjectId}:(\y{Name}) gains the effect of Omen der Zerstörung from (?:.*) for (.*) Seconds/,
+      regexFr: / 1A:\y{ObjectId}:(\y{Name}) gains the effect of Eaux Fracturantes from (?:.*) for (.*) Seconds/,
+      regexJa: / 1A:\y{ObjectId}:(\y{Name}) gains the effect of 断絶の兆し from (?:.*) for (.*) Seconds/,
+      delaySeconds: 9,
+      condition: function(data) {
+        return data.refreshed;
+      },
+      alertText: function(data, matches) {
+        let seconds = matches[2];
+        if (seconds > 21) {
+          return {
+            en: data.ShortName(matches[1]) + ' to the front, everyone stack',
+            de: 'Knockback auf Dir',
+            fr: 'Pousée sur VOUS',
+            ja: '自分にノックバック',
+          };
+        }
+      },
+    },
+
     {
       // TODO probably need to call out knockbacks later
       // TODO maybe tell other people about stacking for knockbacks
@@ -482,6 +546,7 @@
         ko: '안으로 이동, 폭풍 피하기',
       },
     },
+
     {
       id: 'E3S Sweeping Waters Gain',
       regex: Regexes.gainsEffect({ effect: 'Sweeping Waters' }),
@@ -502,28 +567,113 @@
         ko: '확산의 징조 대상자',
       },
     },
+
     {
       id: 'E3S Sweeping Waters',
-      regex: Regexes.gainsEffect({ effect: 'Sweeping Waters' }),
-      regexDe: Regexes.gainsEffect({ effect: 'Omen Der Auflösung' }),
-      regexFr: Regexes.gainsEffect({ effect: 'Eaux Pulvérisantes' }),
-      regexJa: Regexes.gainsEffect({ effect: '拡散の兆し' }),
-      regexCn: Regexes.gainsEffect({ effect: '扩散之兆' }),
-      regexKo: Regexes.gainsEffect({ effect: '확산의 징조' }),
-      condition: function(data, matches) {
-        return data.me == matches.target || data.role == 'tank';
+      regex: / 1A:\y{ObjectId}:(\y{Name}) gains the effect of Sweeping Waters from (?:.*) for (.*) Seconds/,
+      regexDe: / 1A:\y{ObjectId}:(\y{Name}) gains the effect of Omen der Auflösung from (?:.*) for (.*) Seconds/,
+      regexFr: / 1A:\y{ObjectId}:(\y{Name}) gains the effect of Eaux Pulvérisantes from (?:.*) for (.*) Seconds/,
+      regexJa: / 1A:\y{ObjectId}:(\y{Name}) gains the effect of 拡散の兆し from (?:.*) for (.*) Seconds/,
+      condition: function(data) {
+        return data.refreshed;
       },
       delaySeconds: 13,
       suppressSeconds: 1,
-      infoText: {
-        en: 'Tank Cone',
-        de: 'Tank Kegel',
-        fr: 'Cône tank',
-        ja: '断絶',
-        cn: '坦克三角',
-        ko: '확산: 탱 멀리 / 대상자 앞으로',
+      alertText: function(data, matches) {
+        return {
+          en: 'Tank cones',
+          de: 'Vermeide Knockback, dann nach hinten bewegen',
+          fr: 'Evitez la pousée, allez à l\'arrière',
+          ja: '後ろへ',
+        };
       },
     },
+
+    // {
+    //   id: 'E3S Sweeping Waters',
+    //   regex: / 1A:\y{ObjectId}:(\y{Name}) gains the effect of Sweeping Waters from (?:.*) for (?:.*) Seconds/,
+    //   regexDe: / 1A:\y{ObjectId}:(\y{Name}) gains the effect of Omen der Auflösung from (?:.*) for (?:.*) Seconds/,
+    //   regexFr: / 1A:\y{ObjectId}:(\y{Name}) gains the effect of Eaux Pulvérisantes from (?:.*) for (?:.*) Seconds/,
+    //   regexJa: / 1A:\y{ObjectId}:(\y{Name}) gains the effect of 拡散の兆し from (?:.*) for (?:.*) Seconds/,
+    //   condition: function(data, matches) {
+    //     return data.me == matches[1] || data.role == 'tank';
+    //   },
+    //   delaySeconds: 13,
+    //   suppressSeconds: 1,
+    //   infoText: {
+    //     en: 'Tank Cone',
+    //     de: 'Tank Kegel',
+    //     fr: 'Cône tank',
+    //     ja: '断絶',
+    //   },
+    // },
+
+    {
+      id: 'E3S Sundering Waters',
+      regex: / 1A:\y{ObjectId}:(\y{Name}) gains the effect of Sundering Waters from (?:.*) for (.*) Seconds/,
+      regexDe: / 1A:\y{ObjectId}:(\y{Name}) gains the effect of Omen der Zerstörung from (?:.*) for (.*) Seconds/,
+      regexFr: / 1A:\y{ObjectId}:(\y{Name}) gains the effect of Eaux Fracturantes from (?:.*) for (.*) Seconds/,
+      regexJa: / 1A:\y{ObjectId}:(\y{Name}) gains the effect of 断絶の兆し from (?:.*) for (.*) Seconds/,
+      delaySeconds: 14,
+      condition: function(data) {
+        return data.refreshed;
+      },
+      alertText: function(data, matches) {
+        let seconds = matches[2];
+        if (seconds <= 21) {
+          return {
+            en: data.ShortName(matches[1]) + ' to the front',
+            de: 'Knockback auf Dir',
+            fr: 'Pousée sur VOUS',
+            ja: '自分にノックバック',
+          };
+        }
+      },
+    },
+
+    {
+      id: 'E3S Sundering Waters',
+      regex: / 1A:\y{ObjectId}:(\y{Name}) gains the effect of Sundering Waters from (?:.*) for (.*) Seconds/,
+      regexDe: / 1A:\y{ObjectId}:(\y{Name}) gains the effect of Omen der Zerstörung from (?:.*) for (.*) Seconds/,
+      regexFr: / 1A:\y{ObjectId}:(\y{Name}) gains the effect of Eaux Fracturantes from (?:.*) for (.*) Seconds/,
+      regexJa: / 1A:\y{ObjectId}:(\y{Name}) gains the effect of 断絶の兆し from (?:.*) for (.*) Seconds/,
+      delaySeconds: 21,
+      condition: function(data) {
+        return data.refreshed;
+      },
+      alertText: function(data, matches) {
+        let seconds = matches[2];
+        if (seconds > 21) {
+          return {
+            en: data.ShortName(matches[1]) + ' face the group',
+            de: 'Knockback auf Dir',
+            fr: 'Pousée sur VOUS',
+            ja: '自分にノックバック',
+          };
+        }
+      },
+    },
+
+    {
+      id: 'E3S Scouring Waters',
+      regex: / 1A:\y{ObjectId}:(\y{Name}) gains the effect of Scouring Waters/,
+      regexDe: / 1A:\y{ObjectId}:(\y{Name}) gains the effect of Omen der Böen/,
+      regexFr: / 1A:\y{ObjectId}:(\y{Name}) gains the effect of Eaux Dévastatrices/,
+      regexJa: / 1A:\y{ObjectId}:(\y{Name}) gains the effect of 暴風の兆し/,
+      delaySeconds: 21,
+      condition: function(data) {
+        return data.refreshed;
+      },
+      infoText: function(data, matches) {
+        return {
+          en: data.ShortName(matches[1]) + ' to the back corner',
+          de: 'Vermeide Knockback, dann nach hinten bewegen',
+          fr: 'Evitez la pousée, allez à l\'arrière',
+          ja: '後ろへ',
+        };
+      },
+    },
+
     {
       id: 'E3S Refreshed',
       regex: Regexes.startsUsing({ id: '400F', source: 'Leviathan', capture: false }),

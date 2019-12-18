@@ -133,7 +133,7 @@
       regexCn: Regexes.ability({ id: '40E6', source: '泰坦', capture: false }),
       regexKo: Regexes.ability({ id: '40E6', source: '타이탄', capture: false }),
       alertText: {
-        en: 'Landslide: In Front',
+        en: 'Get in Front',
         de: 'Armberge: Vor ihm',
         fr: 'Glissement: Devant',
         ja: 'ランスラ: 正面へ',
@@ -143,13 +143,17 @@
     },
     {
       id: 'E4S Massive Landslide - Sides',
-      regex: Regexes.ability({ id: '4117', source: 'Titan', capture: false }),
-      regexDe: Regexes.ability({ id: '4117', source: 'Titan', capture: false }),
-      regexFr: Regexes.ability({ id: '4117', source: 'Titan', capture: false }),
-      regexJa: Regexes.ability({ id: '4117', source: 'タイタン', capture: false }),
-      regexCn: Regexes.ability({ id: '4117', source: '泰坦', capture: false }),
-      regexKo: Regexes.ability({ id: '4117', source: '타이탄', capture: false }),
-      response: Responses.goSides('info'),
+      regex: / 15:\y{ObjectId}:Titan:4117:Massive Landslide:/,
+      regexCn: / 15:\y{ObjectId}:泰坦:4117:Massive Landslide:/,
+      regexDe: / 15:\y{ObjectId}:Titan:4117:Gigantischer Bergsturz:/,
+      regexFr: / 15:\y{ObjectId}:Titan:4117:Glissement Apocalyptique:/,
+      regexJa: / 15:\y{ObjectId}:タイタン:4117:メガ・ランドスライド:/,
+      infoText: {
+        en: 'Sides',
+        de: 'Zur Seite',
+        fr: 'Sur les côtés',
+        ja: '横へ',
+      },
     },
     {
       id: 'E4S Landslide',
@@ -262,7 +266,7 @@
       regexCn: Regexes.ability({ id: '40E8', source: '泰坦', capture: false }),
       regexKo: Regexes.ability({ id: '40E8', source: '타이탄', capture: false }),
       alertText: {
-        en: 'Wheels: On Sides',
+        en: 'Go Side',
         de: 'Räder: Zur Seite',
         fr: 'Roues : Sur les côtés',
         ja: '車輪: 横へ',
@@ -430,6 +434,37 @@
         };
       },
     },
+
+    // uplift #1?
+    {
+      id: 'E4S Tectonic Uplift',
+      regex: / 14:4125:Titan Maximum starts using Tectonic Uplift/,
+      regexCn: / 14:4125:泰坦 Maximum starts using Tectonic Uplift/,
+      regexDe: / 14:4125:Gigantitan starts using Tektonische Hebung/,
+      regexFr: / 14:4125:Maxi Titan starts using Soulèvement tectonique/,
+      regexJa: / 14:4125:マキシタイタン starts using クラスタルアップリフト/,
+      run: function(data, matches) {
+        data.uplift = true;
+      },
+      infoText: function(data, matches) {
+        if (!data.uplift) {
+          return {
+            en: 'Uplift #1',
+            de: 'VON VORNE RECHTS RUNTER',
+            fr: 'PARTEZ DE L\'AVANT DROITE',
+            ja: '右前壊れるよ',
+          };
+        } else {
+          return {
+            en: 'Uplift #2',
+            de: 'VON VORNE RECHTS RUNTER',
+            fr: 'PARTEZ DE L\'AVANT DROITE',
+            ja: '右前壊れるよ',
+          }
+        }
+      },
+    },
+
     {
       id: 'E4S Granite Gaol',
       regex: Regexes.headMarker({ id: '00BF' }),
@@ -460,7 +495,7 @@
       regexCn: Regexes.startsUsing({ id: '4125', source: '极大泰坦', capture: false }),
       regexKo: Regexes.startsUsing({ id: '4125', source: '거대 타이탄', capture: false }),
       infoText: {
-        en: 'GET OFF FRONT RIGHT',
+        en: 'Go left - destroying front right',
         de: 'VON VORNE RECHTS RUNTER',
         fr: 'PARTEZ DE L\'AVANT DROITE',
         ja: '右前壊れるよ',
@@ -477,7 +512,7 @@
       regexCn: Regexes.startsUsing({ id: '4126', source: '极大泰坦', capture: false }),
       regexKo: Regexes.startsUsing({ id: '4126', source: '거대 타이탄', capture: false }),
       infoText: {
-        en: 'GET OFF BACK RIGHT',
+        en: 'Go left -  destroying back right',
         de: 'VON HINTEN RECHTS RUNTER',
         fr: 'PARTEZ DE L\'ARRIERE DROITE',
         ja: '右後ろ壊れるよ',
@@ -494,7 +529,7 @@
       regexCn: Regexes.startsUsing({ id: '4127', source: '极大泰坦', capture: false }),
       regexKo: Regexes.startsUsing({ id: '4127', source: '거대 타이탄', capture: false }),
       infoText: {
-        en: 'GET OFF BACK LEFT',
+        en: 'Go right - destroying back left',
         de: 'VON HINTEN LINKS RUNTER',
         fr: 'PARTEZ DE L\'ARRIERE GAUCHE',
         ja: '左後ろ壊れるよ',
@@ -511,7 +546,7 @@
       regexCn: Regexes.startsUsing({ id: '4128', source: '极大泰坦', capture: false }),
       regexKo: Regexes.startsUsing({ id: '4128', source: '거대 타이탄', capture: false }),
       infoText: {
-        en: 'GET OFF FRONT LEFT',
+        en: 'Go right - destroying front left',
         de: 'VON VORNE LINKS RUNTER',
         fr: 'PARTEZ DE L\'AVANT GAUCHE',
         ja: '左前壊れるよ',
