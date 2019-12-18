@@ -6,7 +6,7 @@
 // Options.InfoSound = 'file://C:/path/to/info/sound.ogg'
 // See user/raidboss-example.js for documentation.
 let Options = {
-  Skin: 'default',
+  Skin: 'lippe',
 
   TimelineEnabled: true,
   AlertsEnabled: true,

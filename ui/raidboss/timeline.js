@@ -564,7 +564,7 @@ class TimelineUI {
 
     this.barWidth = window.getComputedStyle(this.root).width;
     let windowHeight = parseFloat(window.getComputedStyle(this.root).height.match(/([0-9.]+)px/)[1]);
-    this.barHeight = windowHeight / this.options.MaxNumberOfTimerBars - 2;
+    this.barHeight = 40;
 
     this.barColor = computeBackgroundColorFrom(this.root, 'timeline-bar-color');
     this.barExpiresSoonColor = computeBackgroundColorFrom(this.root, 'timeline-bar-color.soon');

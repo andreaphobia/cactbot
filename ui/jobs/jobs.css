@@ -58,6 +58,10 @@
   margin-top: 1px;
 }
 
+#hp-bar {
+  display: none;
+}
+
 #pull-bar {
   position: absolute;
   left: 100px;
@@ -139,6 +143,12 @@
   position: absolute;
   left: 202px;
   top: 0px;
+}
+
+#war-boxes {
+  position: relative;
+  left: 0;
+  top: 0;
 }
 
 #rdm-boxes>div, #war-boxes>div, #mnk-boxes>div, #pld-boxes>div, #drk-boxes>div, #blm-boxes>div, #gnb-boxes>div  {
@@ -233,6 +243,12 @@
   position: absolute;
   top: 146px;
   left: 10px;
+}
+
+#war-procs {
+  position: relative;
+  top: 0;
+  left: 0;
 }
 
 #mnk-procs-dragonkick, #ast-procs-combust, #blu-procs-offguard, #blm-procs-fire{
