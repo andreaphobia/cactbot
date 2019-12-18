@@ -13,8 +13,8 @@
   top: 0;
   left: 0;
   width: 220px;
-  height: 100%;
-  font-size: 14px;
+  height: 120px;
+  font-size: 20px;
 }
 
 .hide-timeline #timeline-container {
@@ -64,10 +64,11 @@
 }
 
 .alert-text {
-  color: #fb0;
-  font-size: 170%;
+  color: #f30;
+  font-size: 200%;
   text-shadow: -2px 0 4px black, 0 2px 4px black, 2px 0 4px black, 0 -2px 4px black;
   will-change: transform;
+  text-transform: uppercase;
 }
 
 .alarm-text {
@@ -75,6 +76,7 @@
   font-size: 230%;
   text-shadow: -2px 0 4px black, 0 2px 4px black, 2px 0 4px black, 0 -2px 4px black;
   will-change: transform;
+  text-transform: uppercase;
 }
 
 .animate-text {
@@ -103,7 +105,8 @@
 }
 
 #timeline-resize-helper .resize-helper-bar {
-  border: 1px solid black;
+  border: none;
+  margin-bottom: 2;
   padding: 0 0.2em 0 0.2em;
   vertical-align: middle;
   height: 18px;
@@ -131,11 +134,11 @@
 }
 
 .timeline-bar-color {
-  background-color: #88f;
+  background-color: transparent;
 }
 
 .timeline-bar-color.soon {
-  background-color: #f88;
+  background-color: transparent;
 }
 
 #timeline-debug {

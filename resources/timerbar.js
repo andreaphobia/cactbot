@@ -206,17 +206,17 @@ class TimerBar extends HTMLElement {
         .timerbar-lefttext {
           position: relative;
           text-align: left;
-          padding: 0px 0.4em 0px 0.4em;
+          padding: 0.4em 0;
         }
         .timerbar-centertext {
           position: relative;
           text-align: center;
-          padding: 0px 0.4em 0px 0.4em;
+          padding: 0.4em 0;
         }
         .timerbar-righttext {
           position: relative;
           text-align: right;
-          padding: 0px 0.4em 0px 0.4em;
+          padding: 0.4em 0;
         }
 
         :host-context(.skin-lippe) .timerbar-root {
@@ -247,9 +247,11 @@ class TimerBar extends HTMLElement {
 
         :host-context(.skin-lippe) .text {
           text-shadow:
-            0 0 3px #AA6E03,
-            0 1px 3px #AA6E03,
-            0 -1px 3px #AA6E03;
+          3px 3px 0 #000,
+          -1px -1px 0 #000,  
+          1px -1px 0 #000,
+          -1px 1px 0 #000,
+          1px 1px 0 #000;
         }
 
         :host-context(.skin-lippe) .text-container {

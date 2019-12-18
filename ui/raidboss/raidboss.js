@@ -2,7 +2,15 @@
 
 // See user/raidboss-example.js for documentation.
 let Options = {
-  // These options are ones that are not auto-defined by raidboss_config.js.
+  Skin: 'lippe',
+
+  TimelineEnabled: true,
+  AlertsEnabled: true,
+  TextAlertsEnabled: true,
+  SoundAlertsEnabled: true,
+  SpokenAlertsEnabled: false,
+  GroupSpokenAlertsEnabled: false,
+
   PlayerNicks: {},
 
   InfoSound: '../../resources/sounds/freesound/percussion_hit.ogg',

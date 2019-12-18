@@ -100,7 +100,7 @@ class WidgetList extends HTMLElement {
     // Default values.
     this._scale = 1;
     this._elementwidth = 100;
-    this._elementheight = 100;
+    this._elementheight = 200;
     this._rowcolsize = 5;
     this._maxnumber = 1000;
     // Multiplier how far to move X for each item.
