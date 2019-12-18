@@ -157,7 +157,7 @@
       regexFr: / 15:\y{ObjectId}:Titan:40E6:Poing Tellurique:/,
       regexJa: / 15:\y{ObjectId}:タイタン:40E6:大地の手甲:/,
       alertText: {
-        en: 'Landslide: In Front',
+        en: 'Get in Front',
         de: 'Armberge: Vor ihm',
         fr: 'Devant',
         ja: 'ランスラ: 正面へ',
@@ -171,7 +171,7 @@
       regexFr: / 15:\y{ObjectId}:Titan:4117:Glissement Apocalyptique:/,
       regexJa: / 15:\y{ObjectId}:タイタン:4117:メガ・ランドスライド:/,
       infoText: {
-        en: 'Get to Sides',
+        en: 'Sides',
         de: 'Zur Seite',
         fr: 'Sur les côtés',
         ja: '横へ',
@@ -273,7 +273,7 @@
       regexFr: / 15:\y{ObjectId}:Titan:40E8:Pas Tellurique:/,
       regexJa: / 15:\y{ObjectId}:タイタン:40E8:大地の車輪:/,
       alertText: {
-        en: 'Wheels: On Sides',
+        en: 'Go Side',
         de: 'Räder: Zur Seite',
         fr: 'Roues : Sur les côtés',
         ja: '車輪: 横へ',
@@ -435,6 +435,37 @@
         };
       },
     },
+
+    // uplift #1?
+    {
+      id: 'E4S Tectonic Uplift',
+      regex: / 14:4125:Titan Maximum starts using Tectonic Uplift/,
+      regexCn: / 14:4125:泰坦 Maximum starts using Tectonic Uplift/,
+      regexDe: / 14:4125:Gigantitan starts using Tektonische Hebung/,
+      regexFr: / 14:4125:Maxi Titan starts using Soulèvement tectonique/,
+      regexJa: / 14:4125:マキシタイタン starts using クラスタルアップリフト/,
+      run: function(data, matches) {
+        data.uplift = true;
+      },
+      infoText: function(data, matches) {
+        if (!data.uplift) {
+          return {
+            en: 'Uplift #1',
+            de: 'VON VORNE RECHTS RUNTER',
+            fr: 'PARTEZ DE L\'AVANT DROITE',
+            ja: '右前壊れるよ',
+          };
+        } else {
+          return {
+            en: 'Uplift #2',
+            de: 'VON VORNE RECHTS RUNTER',
+            fr: 'PARTEZ DE L\'AVANT DROITE',
+            ja: '右前壊れるよ',
+          }
+        }
+      },
+    },
+
     {
       id: 'E4S Granite Gaol',
       regex: / 1B:\y{ObjectId}:(\y{Name}):....:....:00BF:/,
@@ -462,7 +493,7 @@
       regexFr: / 14:4125:Maxi Titan starts using Fracture Rocheuse/,
       regexJa: / 14:4125:マキシタイタン starts using ロックフラクチャー/,
       infoText: {
-        en: 'GET OFF FRONT RIGHT',
+        en: 'Go left - destroying front right',
         de: 'VON VORNE RECHTS RUNTER',
         fr: 'PARTEZ DE L\'AVANT DROITE',
         ja: '右前壊れるよ',
@@ -476,7 +507,7 @@
       regexFr: / 14:4126:Maxi Titan starts using Fracture Rocheuse/,
       regexJa: / 14:4126:マキシタイタン starts using ロックフラクチャー/,
       infoText: {
-        en: 'GET OFF BACK RIGHT',
+        en: 'Go left -  destroying back right',
         de: 'VON HINTEN RECHTS RUNTER',
         fr: 'PARTEZ DE L\'ARRIERE DROITE',
         ja: '右後ろ壊れるよ',
@@ -490,7 +521,7 @@
       regexFr: / 14:4127:Maxi Titan starts using Fracture Rocheuse/,
       regexJa: / 14:4127:マキシタイタン starts using ロックフラクチャー/,
       infoText: {
-        en: 'GET OFF BACK LEFT',
+        en: 'Go right - destroying back left',
         de: 'VON HINTEN LINKS RUNTER',
         fr: 'PARTEZ DE L\'ARRIERE GAUCHE',
         ja: '左後ろ壊れるよ',
@@ -504,7 +535,7 @@
       regexFr: / 14:4128:Maxi Titan starts using Fracture Rocheuse/,
       regexJa: / 14:4128:マキシタイタン starts using ロックフラクチャー/,
       infoText: {
-        en: 'GET OFF FRONT LEFT',
+        en: 'Go right - destroying front left',
         de: 'VON VORNE LINKS RUNTER',
         fr: 'PARTEZ DE L\'AVANT GAUCHE',
         ja: '左前壊れるよ',

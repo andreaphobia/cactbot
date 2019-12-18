@@ -1,4 +1,4 @@
-'use strict';
+﻿'use strict';
 
 [{
   zoneRegex: /^Eden's Gate: Resurrection \(Savage\)$/,
@@ -73,10 +73,9 @@
         return data.role == 'healer';
       },
       infoText: {
-        en: 'aoe',
+        en: 'Raid damage',
         de: 'AoE',
         fr: 'Dégâts de zone',
-        ja: 'AoE',
       },
     },
     {
@@ -89,10 +88,9 @@
         return data.role == 'healer';
       },
       infoText: {
-        en: 'aoe',
+        en: 'Raid damage',
         de: 'AoE',
         fr: 'Dégâts de zone',
-        ja: 'AoE',
       },
     },
     {
@@ -105,10 +103,9 @@
         return data.role == 'healer';
       },
       infoText: {
-        en: 'aoe',
+        en: 'Raid damage',
         de: 'AoE',
         fr: 'Dégâts de zone',
-        ja: 'AoE',
       },
     },
     {
@@ -125,7 +122,6 @@
           en: 'Tank Swap!',
           de: 'Tankwechsel!',
           fr: 'Tank swap !',
-          ja: 'タンクスイッチ',
         };
       },
       alertText: function(data, matches) {
@@ -134,7 +130,6 @@
             en: 'Tank Buster on YOU',
             de: 'Tankbuster auf DIR',
             fr: 'Tankbuster sur VOUS',
-            ja: '自分にタンクバスター',
           };
         }
         if (data.role == 'healer') {
@@ -142,7 +137,6 @@
             en: 'Buster on ' + data.ShortName(matches[1]),
             de: 'Tankbuster auf ' + data.ShortName(matches[1]),
             fr: 'Tankbuster sur ' + data.ShortName(matches[1]),
-            ja: data.ShortName(matches[1]) + 'にタンクバスター',
           };
         }
       },
@@ -154,10 +148,9 @@
       regexFr: / 14:3D73:Primo-Éden starts using Brasier Édénique/,
       regexJa: / 14:3D73:エデン・プライム starts using エデン・フレア/,
       alertText: {
-        en: 'Under',
+        en: 'Get inside the boss',
         de: 'Unter den Boss',
         fr: 'Sous le boss',
-        ja: '中へ',
       },
     },
     {
@@ -167,9 +160,8 @@
       regexFr: / 14:44F4:Primo-Éden starts using Attaque Delta/,
       regexJa: / 14:44F4:エデン・プライム starts using デルタアタック/,
       alertText: {
-        en: 'Cross Spread',
+        en: 'Get to your corner',
         de: 'Verteilen',
-        ja: '散開',
         fr: 'Ecartez-vous en croix',
       },
     },
@@ -182,16 +174,14 @@
       alertText: function(data) {
         if (data.role == 'tank') {
           return {
-            en: 'Get In, Spread',
+            en: 'Stack on rear, tanks spread out',
             de: 'Rein gehen, verteilen',
-            ja: '中で散開',
             fr: 'Intérieur, écartez-vous',
           };
         }
         return {
-          en: 'In, Stack Behind',
+          en: 'Stack on rear, tanks spread out',
           de: 'Rein, hinten stacken',
-          ja: '背面集合',
           fr: 'Intérieur, pack derrière',
         };
       },
@@ -289,9 +279,8 @@
         return !data.paradise && data.vice == 'dps' && data.me == matches[1];
       },
       alertText: {
-        en: 'Puddle Spread',
+        en: 'Puddles',
         de: 'Flächen verteilen',
-        ja: '離れて散開',
         fr: 'Ecartez-vous',
       },
     },
@@ -302,9 +291,8 @@
       regexFr: / 14:3D7A:Primo-Éden starts using Vice [eE]t [vV]ertu/,
       regexJa: / 14:3D7A:エデン・プライム starts using ヴァイス・アンド・ヴァーチュー/,
       alertText: {
-        en: 'Stack With Partner',
+        en: 'Stack with your buddy',
         de: 'Mit Partner stacken',
-        ja: '相方とスタック',
         fr: 'Packez-vous avec votre partenaire',
       },
     },
@@ -315,10 +303,9 @@
         return data.vice == 'tank' && data.me == matches[1];
       },
       infoText: {
-        en: 'Tank Laser on YOU',
+        en: 'Tanks spread out',
         de: 'Tank Laser auf DIR',
         fr: 'Tank laser sur VOUS',
-        ja: '自分にレーザー',
       },
     },
     {
@@ -331,9 +318,8 @@
         return data.role != 'tank';
       },
       infoText: {
-        en: 'Stack in front of tank',
+        en: 'Stack with your tank',
         de: 'Vorne mit dem Tank stacken',
-        ja: '左右に分かれて内側へ',
         fr: 'Packez-vous devant le tank',
       },
     },
@@ -349,16 +335,14 @@
       infoText: function(data) {
         if (data.paradise) {
           return {
-            en: 'Pass Prey to DPS',
+            en: 'Debuffs to tank',
             de: 'Marker einem DPS geben',
-            ja: 'DPSに移して',
             fr: 'Donnez la marque à un DPS',
           };
         }
         return {
-          en: 'Pass Prey to Tank',
+          en: 'Debuffs to tank',
           de: 'Marker einem Tank geben',
-          ja: 'タンクに移して',
           fr: 'Donnez la marque à un Tank',
         };
       },
@@ -378,9 +362,8 @@
       },
       suppressSeconds: 20,
       alertText: {
-        en: 'Take prey from healer',
+        en: 'Debuffs to tank',
         de: 'Marker vom Heiler nehmen',
-        ja: 'ヒーラーからマーカー取って',
         fr: 'Prenez la marque du healer',
       },
     },
@@ -395,9 +378,8 @@
       },
       suppressSeconds: 1,
       alertText: {
-        en: 'Silence Guardian',
+        en: 'Interrupt',
         de: 'Stumm auf Hüter ',
-        ja: '沈黙',
         fr: 'Interrompez le gardien',
       },
     },
@@ -408,10 +390,9 @@
       regexFr: / 14:3D8A:Primo-Éden starts using Lumière [pP]urificatrice/,
       regexJa: / 14:3D8A:エデン・プライム starts using ピュアライト/,
       alertText: {
-        en: 'Get Behind',
+        en: 'Get behind the boss',
         de: 'Hinter den Boss',
         fr: 'Derrière le boss',
-        ja: '背面へ',
       },
     },
     {
@@ -421,9 +402,8 @@
       regexFr: / 14:3D80:Primo-Éden starts using Rayon [pP]urificateur/,
       regexJa: / 14:3D80:エデン・プライム starts using ピュアレイ/,
       infoText: {
-        en: 'Get Outside Your Orb',
+        en: 'Get ready to bait your orb',
         de: 'Geh zu deinem Orb',
-        ja: 'ピュアレイを外へ誘導',
         fr: 'Allez à l\'extérieur de votre orbe',
       },
     },
@@ -434,7 +414,7 @@
       regexFr: / 14:3D82:Primo-Éden starts using Rayon [pP]urificateur/,
       regexJa: / 14:3D82:エデン・プライム starts using ピュアレイ/,
       infoText: {
-        en: 'Bait Orb Lasers Outside',
+        en: 'Bait your sprinklers',
         de: 'Laser nach drausen ködern',
         fr: 'Placez les lasers à l\'extérieur',
       },
@@ -620,53 +600,16 @@
       'locale': 'cn',
       'replaceSync': {
         'Engage!': '战斗开始！',
-        'Eden Prime': '',
-        'Arcane Sphere': '',
+        'Eden Prime': 'Eden Prime',
+        'Arcane Sphere': '立体魔法阵',
       },
       'replaceText': {
         'attack': '攻击',
-        'Vice of Vanity': '',
-        'Vice of Thievery': '',
-        'Vice of Sloth': '',
-        'Vice of Pride': '',
-        'Vice of Greed': '',
-        'Vice of Apathy': '',
-        'Vice and Virtue': '',
-        'Unknown Ability': '',
-        'Spear of Paradise': '',
-        'Regained Thunder III': '',
-        'Regained Fire III': '',
-        'Regained Blizzard III': '',
-        'Pure Light': '',
-        'Pure Beam': '',
-        'Primeval Stasis': '',
-        'Paradise Regained': '',
-        'Paradise Lost': '',
-        'Paradisal Dive': '',
-        'Mana Slice': '',
-        'Mana Burst': '',
-        'Mana Boost': '',
-        'Heavensunder': '',
-        'Fragor Maximus': '',
-        'Eternal Breath': '',
-        'Eden\'s Thunder III': '',
-        'Eden\'s Gravity': '',
-        'Eden\'s Flare': '',
-        'Eden\'s Fire III': '',
-        'Eden\'s Blizzard III': '',
-        'Dimensional Shift': '',
-        'Delta Attack': '',
+        'Unknown Ability': 'Unknown Ability',
       },
       '~effectNames': {
-        'Slippery Prey': '',
-        'Fetters': '',
-        'Prey': '',
-        'Poison': '',
-        'Physical Vulnerability Up': '',
-        'Magic Vulnerability Up': '',
-        'Lightning Resistance Down II': '',
-        'Healing Magic Down': '',
-        'Bleeding': '',
+        'Slippery Prey': '非目标',
+        'Fetters': '拘束',
       },
     },
   ],
