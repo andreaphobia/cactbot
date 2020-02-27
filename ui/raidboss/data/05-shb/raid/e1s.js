@@ -1,7 +1,11 @@
 ﻿'use strict';
 
 [{
-  zoneRegex: /^Eden's Gate: Resurrection \(Savage\)$/,
+  zoneRegex: {
+    en: /^Eden's Gate: Resurrection \(Savage\)$/,
+    cn: /^伊甸零式希望乐园 \(觉醒之章1\)$/,
+    ko: /^희망의 낙원 에덴: 각성편\(영웅\) \(1\)$/,
+  },
   timelineFile: 'e1s.txt',
   timeline: [
     function(data) {
@@ -21,6 +25,15 @@
           'Eden\'s Snoozefest',
           'rip enochian',
         ],
+        cn: [
+          '马上回来',
+          '困了睡会儿',
+          'LAHEE~',
+          '冲杯咖啡',
+          '圣诞快乐',
+          '我柜子动了等下再玩',
+          'CG',
+        ],
       }[data.lang];
       if (!goofs)
         return;
@@ -32,10 +45,12 @@
   triggers: [
     {
       id: 'E1S Initial',
-      regex: / 14:3D70:Eden Prime starts using Eden's Gravity/,
-      regexDe: / 14:3D70:Prim-Eden starts using Eden-Gravitas/,
-      regexFr: / 14:3D70:Primo-Éden starts using Gravité Édénique/,
-      regexJa: / 14:3D70:エデン・プライム starts using エデン・グラビデ/,
+      regex: Regexes.startsUsing({ id: '3D70', source: 'Eden Prime', capture: false }),
+      regexDe: Regexes.startsUsing({ id: '3D70', source: 'Prim-Eden', capture: false }),
+      regexFr: Regexes.startsUsing({ id: '3D70', source: 'Primo-Éden', capture: false }),
+      regexJa: Regexes.startsUsing({ id: '3D70', source: 'エデン・プライム', capture: false }),
+      regexCn: Regexes.startsUsing({ id: '3D70', source: '至尊伊甸', capture: false }),
+      regexKo: Regexes.startsUsing({ id: '3D70', source: '에덴 프라임', capture: false }),
       run: function(data) {
         if (!data.viceCount) {
           data.viceCount = 1;
@@ -45,30 +60,36 @@
     },
     {
       id: 'E1S Paradise Regained',
-      regex: / 1A:\y{ObjectId}:Eden Prime gains the effect of Paradise Regained/,
-      regexDe: / 1A:\y{ObjectId}:Prim-Eden gains the effect of Wiedergewonnenes Paradies/,
-      regexFr: / 1A:\y{ObjectId}:Primo-Éden gains the effect of Paradis [rR]etrouvé/,
-      regexJa: / 1A:\y{ObjectId}:エデン・プライム gains the effect of パラダイスリゲイン/,
+      regex: Regexes.gainsEffect({ target: 'Eden Prime', effect: 'Paradise Regained', capture: false }),
+      regexDe: Regexes.gainsEffect({ target: 'Prim-Eden', effect: 'Wiedergewonnenes Paradies', capture: false }),
+      regexFr: Regexes.gainsEffect({ target: 'Primo-Éden', effect: 'Paradis Retrouvé', capture: false }),
+      regexJa: Regexes.gainsEffect({ target: 'エデン・プライム', effect: 'パラダイスリゲイン', capture: false }),
+      regexCn: Regexes.gainsEffect({ target: '至尊伊甸', effect: '复乐园', capture: false }),
+      regexKo: Regexes.gainsEffect({ target: '에덴 프라임', effect: '복낙원', capture: false }),
       run: function(data) {
         data.paradise = true;
       },
     },
     {
       id: 'E1S Paradise Regained But Lost',
-      regex: / 1E:\y{ObjectId}:Eden Prime loses the effect of Paradise Regained/,
-      regexDe: / 1E:\y{ObjectId}:Prim-Eden loses the effect of Wiedergewonnenes Paradies/,
-      regexFr: / 1E:\y{ObjectId}:Primo-Éden loses the effect of Paradis [rR]etrouvé/,
-      regexJa: / 1E:\y{ObjectId}:エデン・プライム loses the effect of パラダイスリゲイン/,
+      regex: Regexes.losesEffect({ target: 'Eden Prime', effect: 'Paradise Regained', capture: false }),
+      regexDe: Regexes.losesEffect({ target: 'Prim-Eden', effect: 'Wiedergewonnenes Paradies', capture: false }),
+      regexFr: Regexes.losesEffect({ target: 'Primo-Éden', effect: 'Paradis Retrouvé', capture: false }),
+      regexJa: Regexes.losesEffect({ target: 'エデン・プライム', effect: 'パラダイスリゲイン', capture: false }),
+      regexCn: Regexes.losesEffect({ target: '至尊伊甸', effect: '复乐园', capture: false }),
+      regexKo: Regexes.losesEffect({ target: '에덴 프라임', effect: '복낙원', capture: false }),
       run: function(data) {
         data.paradise = false;
       },
     },
     {
       id: 'E1S Eden\'s Gravity',
-      regex: / 14:3D70:Eden Prime starts using Eden's Gravity/,
-      regexDe: / 14:3D70:Prim-Eden starts using Eden-Gravitas/,
-      regexFr: / 14:3D70:Primo-Éden starts using Gravité Édénique/,
-      regexJa: / 14:3D70:エデン・プライム starts using エデン・グラビデ/,
+      regex: Regexes.startsUsing({ id: '3D70', source: 'Eden Prime', capture: false }),
+      regexDe: Regexes.startsUsing({ id: '3D70', source: 'Prim-Eden', capture: false }),
+      regexFr: Regexes.startsUsing({ id: '3D70', source: 'Primo-Éden', capture: false }),
+      regexJa: Regexes.startsUsing({ id: '3D70', source: 'エデン・プライム', capture: false }),
+      regexCn: Regexes.startsUsing({ id: '3D70', source: '至尊伊甸', capture: false }),
+      regexKo: Regexes.startsUsing({ id: '3D70', source: '에덴 프라임', capture: false }),
       condition: function(data) {
         return data.role == 'healer';
       },
@@ -80,10 +101,12 @@
     },
     {
       id: 'E1S Fragor Maximus',
-      regex: / 14:3D8B:Eden Prime starts using Fragor Maximus/,
-      regexDe: / 14:3D8B:Prim-Eden starts using Fragor Maximus/,
-      regexFr: / 14:3D8B:Primo-Éden starts using Fragor Maximus/,
-      regexJa: / 14:3D8B:エデン・プライム starts using フラゴルマクシマス/,
+      regex: Regexes.startsUsing({ id: '3D8B', source: 'Eden Prime', capture: false }),
+      regexDe: Regexes.startsUsing({ id: '3D8B', source: 'Prim-Eden', capture: false }),
+      regexFr: Regexes.startsUsing({ id: '3D8B', source: 'Primo-Éden', capture: false }),
+      regexJa: Regexes.startsUsing({ id: '3D8B', source: 'エデン・プライム', capture: false }),
+      regexCn: Regexes.startsUsing({ id: '3D8B', source: '至尊伊甸', capture: false }),
+      regexKo: Regexes.startsUsing({ id: '3D8B', source: '에덴 프라임', capture: false }),
       condition: function(data) {
         return data.role == 'healer';
       },
@@ -95,10 +118,12 @@
     },
     {
       id: 'E1S Dimensional Shift',
-      regex: / 14:3D7F:Eden Prime starts using Dimensional Shift/,
-      regexDe: / 14:3D7F:Prim-Eden starts using Dimensionsverschiebung/,
-      regexFr: / 14:3D7F:Primo-Éden starts using Translation Dimensionnelle/,
-      regexJa: / 14:3D7F:エデン・プライム starts using ディメンションシフト/,
+      regex: Regexes.startsUsing({ id: '3D7F', source: 'Eden Prime', capture: false }),
+      regexDe: Regexes.startsUsing({ id: '3D7F', source: 'Prim-Eden', capture: false }),
+      regexFr: Regexes.startsUsing({ id: '3D7F', source: 'Primo-Éden', capture: false }),
+      regexJa: Regexes.startsUsing({ id: '3D7F', source: 'エデン・プライム', capture: false }),
+      regexCn: Regexes.startsUsing({ id: '3D7F', source: '至尊伊甸', capture: false }),
+      regexKo: Regexes.startsUsing({ id: '3D7F', source: '에덴 프라임', capture: false }),
       condition: function(data) {
         return data.role == 'healer';
       },
@@ -110,12 +135,14 @@
     },
     {
       id: 'E1S Spear Of Paradise',
-      regex: / 14:3D88:Eden Prime starts using Spear Of Paradise on (\y{Name})/,
-      regexDe: / 14:3D88:Prim-Eden starts using Paradiesspeer on (\y{Name})/,
-      regexFr: / 14:3D88:Primo-Éden starts using Lance [Dd]u [Pp]aradis on (\y{Name})/,
-      regexJa: / 14:3D88:エデン・プライム starts using スピア・オブ・パラダイス on (\y{Name})/,
+      regex: Regexes.startsUsing({ id: '3D88', source: 'Eden Prime' }),
+      regexDe: Regexes.startsUsing({ id: '3D88', source: 'Prim-Eden' }),
+      regexFr: Regexes.startsUsing({ id: '3D88', source: 'Primo-Éden' }),
+      regexJa: Regexes.startsUsing({ id: '3D88', source: 'エデン・プライム' }),
+      regexCn: Regexes.startsUsing({ id: '3D88', source: '至尊伊甸' }),
+      regexKo: Regexes.startsUsing({ id: '3D88', source: '에덴 프라임' }),
       alarmText: function(data, matches) {
-        if (matches[1] == data.me || data.role != 'tank')
+        if (matches.target == data.me || data.role != 'tank')
           return;
 
         return {
@@ -125,7 +152,7 @@
         };
       },
       alertText: function(data, matches) {
-        if (matches[1] == data.me) {
+        if (matches.target == data.me) {
           return {
             en: 'Tank Buster on YOU',
             de: 'Tankbuster auf DIR',
@@ -143,10 +170,12 @@
     },
     {
       id: 'E1S Eden\'s Flare',
-      regex: / 14:3D73:Eden Prime starts using Eden's Flare/,
-      regexDe: / 14:3D73:Prim-Eden starts using Eden-Flare/,
-      regexFr: / 14:3D73:Primo-Éden starts using Brasier Édénique/,
-      regexJa: / 14:3D73:エデン・プライム starts using エデン・フレア/,
+      regex: Regexes.startsUsing({ id: '3D73', source: 'Eden Prime', capture: false }),
+      regexDe: Regexes.startsUsing({ id: '3D73', source: 'Prim-Eden', capture: false }),
+      regexFr: Regexes.startsUsing({ id: '3D73', source: 'Primo-Éden', capture: false }),
+      regexJa: Regexes.startsUsing({ id: '3D73', source: 'エデン・プライム', capture: false }),
+      regexCn: Regexes.startsUsing({ id: '3D73', source: '至尊伊甸', capture: false }),
+      regexKo: Regexes.startsUsing({ id: '3D73', source: '에덴 프라임', capture: false }),
       alertText: {
         en: 'Get inside the boss',
         de: 'Unter den Boss',
@@ -155,34 +184,44 @@
     },
     {
       id: 'E1S Delta Attack 1',
-      regex: / 14:44F4:Eden Prime starts using Delta Attack/,
-      regexDe: / 14:44F4:Prim-Eden starts using Delta-Attacke/,
-      regexFr: / 14:44F4:Primo-Éden starts using Attaque Delta/,
-      regexJa: / 14:44F4:エデン・プライム starts using デルタアタック/,
+      regex: Regexes.startsUsing({ id: '44F4', source: 'Eden Prime', capture: false }),
+      regexDe: Regexes.startsUsing({ id: '44F4', source: 'Prim-Eden', capture: false }),
+      regexFr: Regexes.startsUsing({ id: '44F4', source: 'Primo-Éden', capture: false }),
+      regexJa: Regexes.startsUsing({ id: '44F4', source: 'エデン・プライム', capture: false }),
+      regexCn: Regexes.startsUsing({ id: '44F4', source: '至尊伊甸', capture: false }),
+      regexKo: Regexes.startsUsing({ id: '44F4', source: '에덴 프라임', capture: false }),
       alertText: {
         en: 'Get to your corner',
         de: 'Verteilen',
         fr: 'Ecartez-vous en croix',
+        cn: '四角躲避',
+        ko: '산개',
       },
     },
     {
       id: 'E1S Delta Attack 2',
-      regex: / 14:44F8:Eden Prime starts using Delta Attack/,
-      regexDe: / 14:44F8:Prim-Eden starts using Delta-Attacke/,
-      regexFr: / 14:44F8:Primo-Éden starts using Attaque Delta/,
-      regexJa: / 14:44F8:エデン・プライム starts using デルタアタック/,
+      regex: Regexes.startsUsing({ id: '44F8', source: 'Eden Prime', capture: false }),
+      regexDe: Regexes.startsUsing({ id: '44F8', source: 'Prim-Eden', capture: false }),
+      regexFr: Regexes.startsUsing({ id: '44F8', source: 'Primo-Éden', capture: false }),
+      regexJa: Regexes.startsUsing({ id: '44F8', source: 'エデン・プライム', capture: false }),
+      regexCn: Regexes.startsUsing({ id: '44F8', source: '至尊伊甸', capture: false }),
+      regexKo: Regexes.startsUsing({ id: '44F8', source: '에덴 프라임', capture: false }),
       alertText: function(data) {
         if (data.role == 'tank') {
           return {
             en: 'Stack on rear, tanks spread out',
             de: 'Rein gehen, verteilen',
             fr: 'Intérieur, écartez-vous',
+            cn: '中间散开',
+            ko: '보스 가까이 탱 약산개',
           };
         }
         return {
           en: 'Stack on rear, tanks spread out',
           de: 'Rein, hinten stacken',
           fr: 'Intérieur, pack derrière',
+          cn: '背面集合',
+          ko: '보스 가까이, 뒤에서 쉐어',
         };
       },
     },
@@ -193,11 +232,13 @@
       // 3D78: tank2
       // 44F0: healer1
       // 3D7D: healer2
-      id: 'E1S Vice and Virtue DPS 1',
-      regex: / 14:(?:44EF|3D7A|44EE|3D78|44F0|3D7D):Eden Prime starts using Vice [Aa]nd Virtue/,
-      regexDe: / 14:(?:44EF|3D7A|44EE|3D78|44F0|3D7D):Prim-Eden starts using Laster [Uu]nd Tugend/,
-      regexFr: / 14:(?:44EF|3D7A|44EE|3D78|44F0|3D7D):Primo-Éden starts using Vice [eE]t [vV]ertu/,
-      regexJa: / 14:(?:44EF|3D7A|44EE|3D78|44F0|3D7D):エデン・プライム starts using ヴァイス・アンド・ヴァーチュー/,
+      id: 'E1S Vice and Virtue Tracker',
+      regex: Regexes.startsUsing({ id: ['44EF', '3D7A', '44EE', '3D78', '44F0', '3D7D'], source: 'Eden Prime', capture: false }),
+      regexDe: Regexes.startsUsing({ id: ['44EF', '3D7A', '44EE', '3D78', '44F0', '3D7D'], source: 'Prim-Eden', capture: false }),
+      regexFr: Regexes.startsUsing({ id: ['44EF', '3D7A', '44EE', '3D78', '44F0', '3D7D'], source: 'Primo-Éden', capture: false }),
+      regexJa: Regexes.startsUsing({ id: ['44EF', '3D7A', '44EE', '3D78', '44F0', '3D7D'], source: 'エデン・プライム', capture: false }),
+      regexCn: Regexes.startsUsing({ id: ['44EF', '3D7A', '44EE', '3D78', '44F0', '3D7D'], source: '至尊伊甸', capture: false }),
+      regexKo: Regexes.startsUsing({ id: ['44EF', '3D7A', '44EE', '3D78', '44F0', '3D7D'], source: '에덴 프라임', capture: false }),
       run: function(data) {
         // Note: this happens *after* the marks, so is setting up vice for the next marks.
         data.viceCount++;
@@ -223,84 +264,100 @@
       },
     },
     {
-      id: 'E1S Vice and Virtue DPS 2',
-      regex: / 14:3D7A:Eden Prime starts using Vice [Aa]nd Virtue/,
-      regexDe: / 14:3D7A:Prim-Eden starts using Laster [Uu]nd Tugend/,
-      regexFr: / 14:3D7A:Primo-Éden starts using Vice [eE]t [vV]ertu/,
-      regexJa: / 14:3D7A:エデン・プライム starts using ヴァイス・アンド・ヴァーチュー/,
+      id: 'E1S Vice and Virtue DPS 2 Tracker',
+      regex: Regexes.startsUsing({ id: '3D7A', source: 'Eden Prime', capture: false }),
+      regexDe: Regexes.startsUsing({ id: '3D7A', source: 'Prim-Eden', capture: false }),
+      regexFr: Regexes.startsUsing({ id: '3D7A', source: 'Primo-Éden', capture: false }),
+      regexJa: Regexes.startsUsing({ id: '3D7A', source: 'エデン・プライム', capture: false }),
+      regexCn: Regexes.startsUsing({ id: '3D7A', source: '至尊伊甸', capture: false }),
+      regexKo: Regexes.startsUsing({ id: '3D7A', source: '에덴 프라임', capture: false }),
       run: function(data) {
         data.vice = 'dps';
       },
     },
     {
       id: 'E1S Vice and Virtue Tank 1',
-      regex: / 14:44EE:Eden Prime starts using Vice [Aa]nd Virtue/,
-      regexDe: / 14:44EE:Prim-Eden starts using Laster [Uu]nd Tugend/,
-      regexFr: / 14:44EE:Primo-Éden starts using Vice [eE]t [vV]ertu/,
-      regexJa: / 14:44EE:エデン・プライム starts using ヴァイス・アンド・ヴァーチュー/,
+      regex: Regexes.startsUsing({ id: '44EE', source: 'Eden Prime', capture: false }),
+      regexDe: Regexes.startsUsing({ id: '44EE', source: 'Prim-Eden', capture: false }),
+      regexFr: Regexes.startsUsing({ id: '44EE', source: 'Primo-Éden', capture: false }),
+      regexJa: Regexes.startsUsing({ id: '44EE', source: 'エデン・プライム', capture: false }),
+      regexCn: Regexes.startsUsing({ id: '44EE', source: '至尊伊甸', capture: false }),
+      regexKo: Regexes.startsUsing({ id: '44EE', source: '에덴 프라임', capture: false }),
       run: function(data) {
         data.vice = 'healer';
       },
     },
     {
       id: 'E1S Vice and Virtue Tank 2',
-      regex: / 14:3D78:Eden Prime starts using Vice [Aa]nd Virtue/,
-      regexDe: / 14:3D78:Prim-Eden starts using Laster [Uu]nd Tugend/,
-      regexFr: / 14:3D78:Primo-Éden starts using Vice [eE]t [vV]ertu/,
-      regexJa: / 14:3D78:エデン・プライム starts using ヴァイス・アンド・ヴァーチュー/,
+      regex: Regexes.startsUsing({ id: '3D78', source: 'Eden Prime', capture: false }),
+      regexDe: Regexes.startsUsing({ id: '3D78', source: 'Prim-Eden', capture: false }),
+      regexFr: Regexes.startsUsing({ id: '3D78', source: 'Primo-Éden', capture: false }),
+      regexJa: Regexes.startsUsing({ id: '3D78', source: 'エデン・プライム', capture: false }),
+      regexCn: Regexes.startsUsing({ id: '3D78', source: '至尊伊甸', capture: false }),
+      regexKo: Regexes.startsUsing({ id: '3D78', source: '에덴 프라임', capture: false }),
       run: function(data) {
         data.vice = 'dps';
       },
     },
     {
       id: 'E1S Vice and Virtue Healer 1',
-      regex: / 14:44F0:Eden Prime starts using Vice [Aa]nd Virtue/,
-      regexDe: / 14:44F0:Prim-Eden starts using Laster [Uu]nd Tugend/,
-      regexFr: / 14:44F0:Primo-Éden starts using Vice [eE]t [vV]ertu/,
-      regexJa: / 14:44F0:エデン・プライム starts using ヴァイス・アンド・ヴァーチュー/,
+      regex: Regexes.startsUsing({ id: '44F0', source: 'Eden Prime', capture: false }),
+      regexDe: Regexes.startsUsing({ id: '44F0', source: 'Prim-Eden', capture: false }),
+      regexFr: Regexes.startsUsing({ id: '44F0', source: 'Primo-Éden', capture: false }),
+      regexJa: Regexes.startsUsing({ id: '44F0', source: 'エデン・プライム', capture: false }),
+      regexCn: Regexes.startsUsing({ id: '44F0', source: '至尊伊甸', capture: false }),
+      regexKo: Regexes.startsUsing({ id: '44F0', source: '에덴 프라임', capture: false }),
       run: function(data) {
         data.vice = 'tank';
       },
     },
     {
       id: 'E1S Vice and Virtue Healer 2',
-      regex: / 14:3D7D:Eden Prime starts using Vice [Aa]nd Virtue/,
-      regexDe: / 14:3D7D:Prim-Eden starts using Laster [Uu]nd Tugend/,
-      regexFr: / 14:3D7D:Primo-Éden starts using Vice [eE]t [vV]ertu/,
-      regexJa: / 14:3D7D:エデン・プライム starts using ヴァイス・アンド・ヴァーチュー/,
+      regex: Regexes.startsUsing({ id: '3D7D', source: 'Eden Prime', capture: false }),
+      regexDe: Regexes.startsUsing({ id: '3D7D', source: 'Prim-Eden', capture: false }),
+      regexFr: Regexes.startsUsing({ id: '3D7D', source: 'Primo-Éden', capture: false }),
+      regexJa: Regexes.startsUsing({ id: '3D7D', source: 'エデン・プライム', capture: false }),
+      regexCn: Regexes.startsUsing({ id: '3D7D', source: '至尊伊甸', capture: false }),
+      regexKo: Regexes.startsUsing({ id: '3D7D', source: '에덴 프라임', capture: false }),
       run: function(data) {
         data.vice = 'tank';
       },
     },
     {
       id: 'E1S Vice and Virtue DPS 1',
-      regex: / 1B:\y{ObjectId}:(\y{Name}):....:....:00AE:/,
+      regex: Regexes.headMarker({ id: '00AE' }),
       condition: function(data, matches) {
-        return !data.paradise && data.vice == 'dps' && data.me == matches[1];
+        return !data.paradise && data.vice == 'dps' && data.me == matches.target;
       },
       alertText: {
         en: 'Puddles',
         de: 'Flächen verteilen',
         fr: 'Ecartez-vous',
+        cn: '分散放圈',
+        ko: '장판 유도 산개',
       },
     },
     {
       id: 'E1S Vice and Virtue DPS 2',
-      regex: / 14:3D7A:Eden Prime starts using Vice [Aa]nd Virtue/,
-      regexDe: / 14:3D7A:Prim-Eden starts using Laster [Uu]nd Tugend/,
-      regexFr: / 14:3D7A:Primo-Éden starts using Vice [eE]t [vV]ertu/,
-      regexJa: / 14:3D7A:エデン・プライム starts using ヴァイス・アンド・ヴァーチュー/,
+      regex: Regexes.startsUsing({ id: '3D7A', source: 'Eden Prime', capture: false }),
+      regexDe: Regexes.startsUsing({ id: '3D7A', source: 'Prim-Eden', capture: false }),
+      regexFr: Regexes.startsUsing({ id: '3D7A', source: 'Primo-Éden', capture: false }),
+      regexJa: Regexes.startsUsing({ id: '3D7A', source: 'エデン・プライム', capture: false }),
+      regexCn: Regexes.startsUsing({ id: '3D7A', source: '至尊伊甸', capture: false }),
+      regexKo: Regexes.startsUsing({ id: '3D7A', source: '에덴 프라임', capture: false }),
       alertText: {
         en: 'Stack with your buddy',
         de: 'Mit Partner stacken',
         fr: 'Packez-vous avec votre partenaire',
+        cn: '与搭档集合',
+        ko: '쉐어뎀 파트너랑 모이기',
       },
     },
     {
       id: 'E1S Vice and Virtue Tank Mark',
-      regex: / 1B:\y{ObjectId}:(\y{Name}):....:....:00AE:/,
+      regex: Regexes.headMarker({ id: '00AE' }),
       condition: function(data, matches) {
-        return data.vice == 'tank' && data.me == matches[1];
+        return data.vice == 'tank' && data.me == matches.target;
       },
       infoText: {
         en: 'Tanks spread out',
@@ -310,10 +367,12 @@
     },
     {
       id: 'E1S Vice and Virtue Tank Stack',
-      regex: / 14:3D78:Eden Prime starts using Vice [Aa]d Virtue/,
-      regexDe: / 14:3D78:Prim-Eden starts using Laster [Uu]nd Tugend/,
-      regexFr: / 14:3D78:Primo-Éden starts using Vice [eE]t [vV]ertu/,
-      regexJa: / 14:3D78:エデン・プライム starts using ヴァイス・アンド・ヴァーチュー/,
+      regex: Regexes.startsUsing({ id: '3D78', source: 'Eden Prime', capture: false }),
+      regexDe: Regexes.startsUsing({ id: '3D78', source: 'Prim-Eden', capture: false }),
+      regexFr: Regexes.startsUsing({ id: '3D78', source: 'Primo-Éden', capture: false }),
+      regexJa: Regexes.startsUsing({ id: '3D78', source: 'エデン・プライム', capture: false }),
+      regexCn: Regexes.startsUsing({ id: '3D78', source: '至尊伊甸', capture: false }),
+      regexKo: Regexes.startsUsing({ id: '3D78', source: '에덴 프라임', capture: false }),
       condition: function(data) {
         return data.role != 'tank';
       },
@@ -321,16 +380,20 @@
         en: 'Stack with your tank',
         de: 'Vorne mit dem Tank stacken',
         fr: 'Packez-vous devant le tank',
+        cn: 'T前集合',
+        ko: '좌우 탱커 앞 산개',
       },
     },
     {
       id: 'E1S Vice and Virtue Healer Mark YOU',
-      regex: / 1A:\y{ObjectId}:(\y{Name}) gains the effect of Prey/,
-      regexDe: / 1A:\y{ObjectId}:(\y{Name}) gains the effect of Markiert/,
-      regexFr: / 1A:\y{ObjectId}:(\y{Name}) gains the effect of Marquage/,
-      regexJa: / 1A:\y{ObjectId}:(\y{Name}) gains the effect of マーキング/,
+      regex: Regexes.gainsEffect({ effect: 'Prey' }),
+      regexDe: Regexes.gainsEffect({ effect: 'Markiert' }),
+      regexFr: Regexes.gainsEffect({ effect: 'Marquage' }),
+      regexJa: Regexes.gainsEffect({ effect: 'マーキング' }),
+      regexCn: Regexes.gainsEffect({ effect: '猎物' }),
+      regexKo: Regexes.gainsEffect({ effect: '표식' }),
       condition: function(data, matches) {
-        return data.me == matches[1];
+        return data.me == matches.target;
       },
       infoText: function(data) {
         if (data.paradise) {
@@ -338,21 +401,27 @@
             en: 'Debuffs to tank',
             de: 'Marker einem DPS geben',
             fr: 'Donnez la marque à un DPS',
+            cn: '传毒DPS',
+            ko: '딜러한테 표식 넘기기',
           };
         }
         return {
           en: 'Debuffs to tank',
           de: 'Marker einem Tank geben',
           fr: 'Donnez la marque à un Tank',
+          cn: '传毒坦克',
+          ko: '탱커한테 표식 넘기기',
         };
       },
     },
     {
       id: 'E1S Vice and Virtue Healer Mark Not You',
-      regex: / 1A:\y{ObjectId}:\y{Name} gains the effect of Prey/,
-      regexDe: / 1A:\y{ObjectId}:\y{Name} gains the effect of Markiert/,
-      regexFr: / 1A:\y{ObjectId}:\y{Name} gains the effect of Marquage/,
-      regexJa: / 1A:\y{ObjectId}:\y{Name} gains the effect of マーキング/,
+      regex: Regexes.gainsEffect({ effect: 'Prey', capture: false }),
+      regexDe: Regexes.gainsEffect({ effect: 'Markiert', capture: false }),
+      regexFr: Regexes.gainsEffect({ effect: 'Marquage', capture: false }),
+      regexJa: Regexes.gainsEffect({ effect: 'マーキング', capture: false }),
+      regexCn: Regexes.gainsEffect({ effect: '猎物', capture: false }),
+      regexKo: Regexes.gainsEffect({ effect: '표식', capture: false }),
       condition: function(data) {
         if (data.role == 'dps')
           return data.paradise;
@@ -365,14 +434,18 @@
         en: 'Debuffs to tank',
         de: 'Marker vom Heiler nehmen',
         fr: 'Prenez la marque du healer',
+        cn: '从奶妈拿毒',
+        ko: '힐러한테서 표식 받기',
       },
     },
     {
       id: 'E1S Mana Boost',
-      regex: / 14:3D8D:Guardian Of Paradise starts using Mana Boost/,
-      regexDe: / 14:3D8D:Hüter von Eden starts using Mana-Verstärker/,
-      regexFr: / 14:3D8D:Gardien du Jardin starts using Amplificateur [dD]e [mM]ana/,
-      regexJa: / 14:3D8D:エデン・ガーデナー starts using マナブースター/,
+      regex: Regexes.startsUsing({ id: '3D8D', source: 'Guardian Of Paradise', capture: false }),
+      regexDe: Regexes.startsUsing({ id: '3D8D', source: 'Hüter Von Eden', capture: false }),
+      regexFr: Regexes.startsUsing({ id: '3D8D', source: 'Gardien Du Jardin', capture: false }),
+      regexJa: Regexes.startsUsing({ id: '3D8D', source: 'エデン・ガーデナー', capture: false }),
+      regexCn: Regexes.startsUsing({ id: '3D8D', source: '伊甸守护者', capture: false }),
+      regexKo: Regexes.startsUsing({ id: '3D8D', source: '에덴의 수호자', capture: false }),
       condition: function(data) {
         return data.CanSilence();
       },
@@ -381,14 +454,18 @@
         en: 'Interrupt',
         de: 'Stumm auf Hüter ',
         fr: 'Interrompez le gardien',
+        cn: '沉默小怪',
+        ko: '쫄 침묵',
       },
     },
     {
       id: 'E1S Pure Light',
-      regex: / 14:3D8A:Eden Prime starts using Pure Light/,
-      regexDe: / 14:3D8A:Prim-Eden starts using Läuterndes Licht/,
-      regexFr: / 14:3D8A:Primo-Éden starts using Lumière [pP]urificatrice/,
-      regexJa: / 14:3D8A:エデン・プライム starts using ピュアライト/,
+      regex: Regexes.startsUsing({ id: '3D8A', source: 'Eden Prime', capture: false }),
+      regexDe: Regexes.startsUsing({ id: '3D8A', source: 'Prim-Eden', capture: false }),
+      regexFr: Regexes.startsUsing({ id: '3D8A', source: 'Primo-Éden', capture: false }),
+      regexJa: Regexes.startsUsing({ id: '3D8A', source: 'エデン・プライム', capture: false }),
+      regexCn: Regexes.startsUsing({ id: '3D8A', source: '至尊伊甸', capture: false }),
+      regexKo: Regexes.startsUsing({ id: '3D8A', source: '에덴 프라임', capture: false }),
       alertText: {
         en: 'Get behind the boss',
         de: 'Hinter den Boss',
@@ -397,26 +474,34 @@
     },
     {
       id: 'E1S Pure Beam 1',
-      regex: / 14:3D80:Eden Prime starts using Pure Beam/,
-      regexDe: / 14:3D80:Prim-Eden starts using Läuternder Strahl/,
-      regexFr: / 14:3D80:Primo-Éden starts using Rayon [pP]urificateur/,
-      regexJa: / 14:3D80:エデン・プライム starts using ピュアレイ/,
+      regex: Regexes.startsUsing({ id: '3D80', source: 'Eden Prime', capture: false }),
+      regexDe: Regexes.startsUsing({ id: '3D80', source: 'Prim-Eden', capture: false }),
+      regexFr: Regexes.startsUsing({ id: '3D80', source: 'Primo-Éden', capture: false }),
+      regexJa: Regexes.startsUsing({ id: '3D80', source: 'エデン・プライム', capture: false }),
+      regexCn: Regexes.startsUsing({ id: '3D80', source: '至尊伊甸', capture: false }),
+      regexKo: Regexes.startsUsing({ id: '3D80', source: '에덴 프라임', capture: false }),
       infoText: {
         en: 'Get ready to bait your orb',
         de: 'Geh zu deinem Orb',
         fr: 'Allez à l\'extérieur de votre orbe',
+        cn: '球外站位',
+        ko: '본인 레이저 바깥으로 유도',
       },
     },
     {
       id: 'E1S Pure Beam 2',
-      regex: / 14:3D82:Eden Prime starts using Pure Beam/,
-      regexDe: / 14:3D82:Prim-Eden starts using Läuternder Strahl/,
-      regexFr: / 14:3D82:Primo-Éden starts using Rayon [pP]urificateur/,
-      regexJa: / 14:3D82:エデン・プライム starts using ピュアレイ/,
+      regex: Regexes.startsUsing({ id: '3D82', source: 'Eden Prime', capture: false }),
+      regexDe: Regexes.startsUsing({ id: '3D82', source: 'Prim-Eden', capture: false }),
+      regexFr: Regexes.startsUsing({ id: '3D82', source: 'Primo-Éden', capture: false }),
+      regexJa: Regexes.startsUsing({ id: '3D82', source: 'エデン・プライム', capture: false }),
+      regexCn: Regexes.startsUsing({ id: '3D82', source: '至尊伊甸', capture: false }),
+      regexKo: Regexes.startsUsing({ id: '3D82', source: '에덴 프라임', capture: false }),
       infoText: {
         en: 'Bait your sprinklers',
         de: 'Laser nach drausen ködern',
         fr: 'Placez les lasers à l\'extérieur',
+        cn: '外侧吃激光',
+        ko: '원/힐 레이저 바깥으로 유도',
       },
     },
   ],
@@ -424,13 +509,11 @@
     {
       'locale': 'de',
       'replaceSync': {
-        'Engage!': 'Start!',
         'Eden Prime': 'Prim-Eden',
         'Arcane Sphere': 'Arkane Sphäre',
         'Guardian of Paradise': 'Hüter von Eden',
       },
       'replaceText': {
-        'attack': 'Attacke',
         'Vice of Vanity': 'Laster der Eitelkeit',
         'Vice of Thievery': 'Laster der Habgier',
         'Vice of Sloth': 'Laster der Faulheit',
@@ -455,7 +538,6 @@
         'Heavensunder': 'Himmelsdonner',
         'Fragor Maximus': 'Fragor Maximus',
         'Eternal Breath': 'Ewiger Atem',
-        'Enrage': 'Finalangriff',
         'Eden\'s Thunder III': 'Eden-Blitzga',
         'Eden\'s Gravity': 'Eden-Gravitas',
         'Eden\'s Flare': 'Eden-Flare',
@@ -463,8 +545,6 @@
         'Eden\'s Blizzard III': 'Eden-Eisga',
         'Dimensional Shift': 'Dimensionsverschiebung',
         'Delta Attack': 'Delta-Attacke',
-        '--untargetable--': '--nich anvisierbar--',
-        '--targetable--': '--anvisierbar--',
         '--center--': '--mitte--',
         'Vice And Virtue': 'Laster und Tugend',
         'Spear Of Paradise': 'Paradiesspeer',
@@ -484,13 +564,12 @@
     },
     {
       'locale': 'fr',
+      'missingTranslations': true,
       'replaceSync': {
-        'Engage!': 'À l\'attaque',
         'Eden Prime': 'Primo-Éden',
         'Arcane Sphere': 'Sphère Arcanique',
       },
       'replaceText': {
-        'attack': 'Attaque',
         'Vice of Vanity': 'Péché de vanité',
         'Vice of Thievery': 'Péché de larcin',
         'Vice of Sloth': 'Péché de paresse',
@@ -515,7 +594,6 @@
         'Heavensunder': 'Ravageur de paradis',
         'Fragor Maximus': 'Fragor Maximus',
         'Eternal Breath': 'Souffle de l\'éternel',
-        'Enrage': 'Enrage',
         'Eden\'s Thunder III': 'Méga Foudre édénique',
         'Eden\'s Gravity': 'Gravité édénique',
         'Eden\'s Flare': 'Brasier édénique',
@@ -523,8 +601,6 @@
         'Eden\'s Blizzard III': 'Méga Glace édénique',
         'Dimensional Shift': 'Translation dimensionnelle',
         'Delta Attack': 'Attaque Delta',
-        '--untargetable--': '--Impossible à cibler--',
-        '--targetable--': '--Ciblable--',
         '--sync--': '--Synchronisation--',
         '--Reset--': '--Réinitialisation--',
         '--center--': '--Centre--',
@@ -544,14 +620,13 @@
     },
     {
       'locale': 'ja',
+      'missingTranslations': true,
       'replaceSync': {
         'Guardian of Paradise': 'エデン・ガーデナー',
-        'Engage!': '戦闘開始！',
         'Eden Prime': 'エデン・プライム',
         'Arcane Sphere': '立体魔法陣',
       },
       'replaceText': {
-        'attack': '攻撃',
         'Vice of Vanity': 'ヴァイス・オブ・ヴァニティー',
         'Vice of Thievery': 'ヴァイス・オブ・シーヴァリィ',
         'Vice of Sloth': 'ヴァイス・オブ・スロース',
