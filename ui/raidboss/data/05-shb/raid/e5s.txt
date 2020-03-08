@@ -9,108 +9,108 @@ hideall "--sync--"
 
 0 "Start"
 0.0 "--sync--" sync /:Engage!/ window 0,1
-12.0 "Judgment Volts" sync /:Ramuh:4BB5:/ window 12,5
-22.2 "Stratospear Summons" sync /:Ramuh:4BA5:/
-27.1 "Impact" sync /:Ramuh:4E3B:/
-35.6 "Judgment Jolt" sync /:Ramuh:4BA6:/
-42.7 "Executor Summons" sync /:Ramuh:4BBC:/
-52.2 "Fury's Bolt" sync /:Ramuh:4BAA:/
-63.3 "Judgment Volts" sync /:Ramuh:4BB5:/
-69.5 "Shock Blast" sync /:Raiden:4BBE:/
-73.4 "Crippling Blow" sync /:Ramuh:4BCA:/
-79.7 "Stormcloud Summons" sync /:Ramuh:4BB8:/
-84.8 "Chaos Strike" sync /:Ramuh:4BBB:/
+12.0 "Raidwide" sync /:Ramuh:4BB5:/ window 12,5
+22.2 "Here they come" sync /:Ramuh:4BA5:/
+27.1 "Kaboom" sync /:Ramuh:4E3B:/
+35.6 "Spears explode" sync /:Ramuh:4BA6:/
+42.7 "Babadook" sync /:Ramuh:4BBC:/
+52.2 "Get a stack" sync /:Ramuh:4BAA:/
+63.3 "Raidwide" sync /:Ramuh:4BB5:/
+69.5 "OT Buster" sync /:Raiden:4BBE:/
+73.4 "MT Buster" sync /:Ramuh:4BCA:/
+79.7 "Clock spots" sync /:Ramuh:4BB8:/
+84.8 "Debuffs applied" sync /:Ramuh:4BBB:/
 89.2 "--sync--" sync /:Ramuh:4BCB:/
-89.9 "Lightning Bolt" duration 24.5 # sync /:Stormcloud:4BB9:/
-96.2 "Levinforce" sync /:Ramuh:4BCC:/
+89.9 "Debuffs removed" duration 24.5 # sync /:Stormcloud:4BB9:/
+96.2 "Knockback" sync /:Ramuh:4BCC:/
 
-110.6 "Fury's Bolt?" sync /:Ramuh:4BAA:/
-117.7 "Tribunal Summons" sync /:Ramuh:4BAC:/
+110.6 "Get a stack?" sync /:Ramuh:4BAA:/
+117.7 "Stand on the line" sync /:Ramuh:4BAC:/
 128.6 "Gallop" sync /:Will Of Ixion:4BB3:/
-138.1 "Crippling Blow" sync /:Ramuh:4BCA:/
-148.3 "Judgment Volts" sync /:Ramuh:4BB5:/
-155.5 "Fury's Bolt" sync /:Ramuh:4BAA:/
-163.6 "Thunderstorm" sync /:Ramuh:4BBF:/
-174.5 "Volt Strike" sync /:Ramuh:4BC3:/
-182.6 "Volt Strike" sync /:Ramuh:4BC3:/
-189.1 "Executor Summons" sync /:Ramuh:4BBC:/
-198.5 "Crippling Blow" sync /:Ramuh:4BCA:/
-210.1 "Stepped Leader" sync /:Ramuh:4BC7:/
-215.9 "Shock Blast" sync /:Raiden:4BBE:/
-221.2 "Judgment Volts" sync /:Ramuh:4BB5:/
+138.1 "MT Buster" sync /:Ramuh:4BCA:/
+148.3 "Raidwide" sync /:Ramuh:4BB5:/
+155.5 "Get a stack" sync /:Ramuh:4BAA:/
+163.6 "Random AOEs" sync /:Ramuh:4BBF:/
+174.5 "Big AOEs" sync /:Ramuh:4BC3:/
+182.6 "Big AOEs" sync /:Ramuh:4BC3:/
+189.1 "Babadook" sync /:Ramuh:4BBC:/
+198.5 "MT Buster" sync /:Ramuh:4BCA:/
+210.1 "Move move move" sync /:Ramuh:4BC7:/
+215.9 "OT Buster" sync /:Raiden:4BBE:/
+221.2 "Raidwide" sync /:Ramuh:4BB5:/
 
-230.5 "Fury's Fourteen" sync /:Ramuh:4BAB:/
-244.6 "Stratospear Summons" sync /:Ramuh:4BA5:/
-249.5 "Impact" sync /:Ramuh:4E3B:/
-253.0 "Tribunal Summons" sync /:Ramuh:4BAC:/
+230.5 "Many spears" sync /:Ramuh:4BAB:/
+244.6 "Here they come" sync /:Ramuh:4BA5:/
+249.5 "Kaboom" sync /:Ramuh:4E3B:/
+253.0 "He's gettin a horse" sync /:Ramuh:4BAC:/
 255.4 "--sync--" sync /:Ramuh:4BCB:/
 262.3 "Centaur's Charge" sync /:Ramuh:4BAD:/
 267.3 "Gallop" sync /:Will Of Ixion:4BB3:/
 
-267.5 "Judgment Jolt" sync /:Will Of Ramuh:4BA9:/
-279.1 "Fury's Bolt" sync /:Ramuh:4BAA:/
-287.9 "Stepped Leader" sync /:Ramuh:4BC8:/
+267.5 "Spears explode" sync /:Will Of Ramuh:4BA9:/
+279.1 "Get a stack" sync /:Ramuh:4BAA:/
+287.9 "Donuts" sync /:Ramuh:4BC8:/
 297.8 "Chain Lightning" sync /:Ramuh:4BC4:/
 301.6 "Chain Lightning 1" #sync /:Ramuh:4BC5:/
-305.2 "Crippling Blow" sync /:Ramuh:4BCA:/
+305.2 "MT Buster" sync /:Ramuh:4BCA:/
 305.3 "Chain Lightning 2" #sync /:Ramuh:4BC5:/
 309.0 "Chain Lightning 3" #sync /:Ramuh:4BC5:/
 312.7 "Chain Lightning 4" #sync /:Ramuh:4BC5:/
 316.4 "Chain Lightning 5" #sync /:Ramuh:4BC5:/
-317.4 "Judgment Volts" sync /:Ramuh:4BB5:/
+317.4 "Raidwide" sync /:Ramuh:4BB5:/
 320.1 "Chain Lightning 6" #sync /:Ramuh:4BC5:/
 323.8 "Chain Lightning 7" #sync /:Ramuh:4BC5:/
 327.5 "Chain Lightning 8" #sync /:Ramuh:4BC5:/
 
-329.6 "Executor Summons" sync /:Ramuh:4BBC:/
-337.0 "Fury's Bolt" sync /:Ramuh:4BAA:/
-346.2 "Thunderstorm" sync /:Ramuh:4BBF:/
-356.4 "Shock Blast" sync /:Raiden:4BBE:/
-357.1 "Volt Strike" sync /:Ramuh:4BC3:/
-365.2 "Volt Strike" sync /:Ramuh:4BC3:/
-368.0 "Stepped Leader" sync /:Ramuh:4BC7:/
-380.1 "Crippling Blow" sync /:Ramuh:4BCA:/
-388.3 "Judgment Volts" sync /:Ramuh:4BB5:/
+329.6 "Babadook" sync /:Ramuh:4BBC:/
+337.0 "Get a stack" sync /:Ramuh:4BAA:/
+346.2 "Random AOEs" sync /:Ramuh:4BBF:/
+356.4 "OT Buster" sync /:Raiden:4BBE:/
+357.1 "Big AOEs" sync /:Ramuh:4BC3:/
+365.2 "Big AOEs" sync /:Ramuh:4BC3:/
+368.0 "Move move move" sync /:Ramuh:4BC7:/
+380.1 "MT Buster" sync /:Ramuh:4BCA:/
+388.3 "Raidwide" sync /:Ramuh:4BB5:/
 
-395.6 "Fury's Fourteen" sync /:Ramuh:4BAB:/
-411.7 "Stratospear Summons" sync /:Ramuh:4BA5:/
-416.6 "Impact" sync /:Ramuh:4E3B:/
-420.1 "Tribunal Summons" sync /:Ramuh:4BAC:/
+395.6 "Many spears" sync /:Ramuh:4BAB:/
+411.7 "Here they come" sync /:Ramuh:4BA5:/
+416.6 "Kaboom" sync /:Ramuh:4E3B:/
+420.1 "He's gettin a horse" sync /:Ramuh:4BAC:/
 422.5 "--sync--" sync /:Ramuh:4BCB:/
 429.4 "Centaur's Charge" sync /:Ramuh:4BAD:/
 434.4 "Gallop" sync /:Will Of Ixion:4BB3:/
 
-434.6 "Judgment Jolt" sync /:Will Of Ramuh:4BA9:/
-440.2 "Fury's Bolt" sync /:Ramuh:4BAA:/
-450.4 "Judgment Volts" sync /:Ramuh:4BB5:/
-460.5 "Stormcloud Summons" sync /:Ramuh:4BB8:/
-465.6 "Chaos Strike" sync /:Ramuh:4BBB:/
-470.7 "Lightning Bolt" duration 24.5 # sync /:Stormcloud:4BB9:/
+434.6 "Spears explode" sync /:Will Of Ramuh:4BA9:/
+440.2 "Get a stack" sync /:Ramuh:4BAA:/
+450.4 "Raidwide" sync /:Ramuh:4BB5:/
+460.5 "Clock spots" sync /:Ramuh:4BB8:/
+465.6 "Debuffs applied" sync /:Ramuh:4BBB:/
+470.7 "Debuffs removed" duration 24.5 # sync /:Stormcloud:4BB9:/
 470.0 "--sync--" sync /:Ramuh:4BCB:/
-477.0 "Levinforce" sync /:Ramuh:4BCC:/
-487.4 "Judgment Volts" sync /:Ramuh:4BB5:/
+477.0 "Knockback" sync /:Ramuh:4BCC:/
+487.4 "Raidwide" sync /:Ramuh:4BB5:/
 502.6 "Chain Lightning" sync /:Ramuh:4BC4:/
 506.4 "Chain Lightning 1" #sync /:Ramuh:4BC5:/
-510.0 "Crippling Blow" sync /:Ramuh:4BCA:/
+510.0 "MT Buster" sync /:Ramuh:4BCA:/
 510.1 "Chain Lightning 2" #sync /:Ramuh:4BC5:/
 513.8 "Chain Lightning 3" #sync /:Ramuh:4BC5:/
 517.5 "Chain Lightning 4" #sync /:Ramuh:4BC5:/
 521.2 "Chain Lightning 5" #sync /:Ramuh:4BC5:/
-523.2 "Judgment Volts" sync /:Ramuh:4BB5:/
+523.2 "Raidwide" sync /:Ramuh:4BB5:/
 524.8 "Chain Lightning 6" #sync /:Ramuh:4BC5:/
 528.5 "Chain Lightning 7" #sync /:Ramuh:4BC5:/
 532.2 "Chain Lightning 8" #sync /:Ramuh:4BC5:/
 
-539.7 "Stepped Leader" sync /:Ramuh:4BC7:/
-545.8 "Fury's Bolt" sync /:Ramuh:4BAA:/
-554.9 "Judgment Volts" sync /:Ramuh:4BB5:/
-566.0 "Judgment Volts" sync /:Ramuh:4BB5:/
-574.1 "Fury's Bolt" sync /:Ramuh:4BAA:/
-583.2 "Judgment Volts" sync /:Ramuh:4BB5:/
-594.3 "Judgment Volts" sync /:Ramuh:4BB5:/
-605.4 "Judgment Volts" sync /:Ramuh:4BB5:/
+539.7 "Move move move OR Donuts" sync /:Ramuh:4BC7:/
+545.8 "Get a stack" sync /:Ramuh:4BAA:/
+554.9 "Raidwide" sync /:Ramuh:4BB5:/
+566.0 "Raidwide" sync /:Ramuh:4BB5:/
+574.1 "Get a stack" sync /:Ramuh:4BAA:/
+583.2 "Raidwide" sync /:Ramuh:4BB5:/
+594.3 "Raidwide" sync /:Ramuh:4BB5:/
+605.4 "Raidwide" sync /:Ramuh:4BB5:/
 
-612.3 "Fury's Fourteen" sync /:Ramuh:4BAB:/
-628.4 "Stratospear Summons" sync /:Ramuh:4BA5:/
+612.3 "Many spears" sync /:Ramuh:4BAB:/
+628.4 "Here they come" sync /:Ramuh:4BA5:/
 
-#??? "Judgment Volts Enrage"
+#??? "Raidwide Enrage"
