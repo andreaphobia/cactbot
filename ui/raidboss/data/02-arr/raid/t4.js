@@ -1,7 +1,10 @@
 'use strict';
 
 [{
-  zoneRegex: /^The Binding Coil Of Bahamut - Turn \(4\)$/,
+  zoneRegex: {
+    en: /^The Binding Coil Of Bahamut - Turn \(4\)$/,
+    cn: /^巴哈姆特大迷宫 邂逅之章4$/,
+  },
   timelineFile: 't4.txt',
   triggers: [
     {
@@ -17,6 +20,7 @@
       },
       alertText: {
         en: 'LOS Thrust',
+        de: 'LOS Gravitationsschlag',
       },
     },
     {
@@ -32,6 +36,7 @@
       },
       alarmText: {
         en: 'LOS Pox',
+        de: 'LOS Pocken',
       },
     },
     {
@@ -45,6 +50,7 @@
       suppressSeconds: 100000,
       infoText: {
         en: 'Magic on Soldier, Physical on Knights',
+        de: 'Magier auf Soldat, Physische auf Ritter',
       },
     },
   ],

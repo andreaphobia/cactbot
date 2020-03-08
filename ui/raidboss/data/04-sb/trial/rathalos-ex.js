@@ -7,6 +7,7 @@
   zoneRegex: {
     en: /^The Great Hunt \(Extreme\)$/,
     ko: /^극 리오레우스 수렵전$/,
+    cn: /^火龙上位狩猎战$/,
   },
   triggers: [
     {
@@ -66,20 +67,7 @@
     {
       id: 'RathEx Fireball',
       regex: Regexes.headMarker({ id: ['0084', '005D'] }),
-      alertText: function(data, matches) {
-        if (data.me == matches.target) {
-          return {
-            en: 'Stack on YOU',
-            de: 'Stack auf DIR',
-            ko: '쉐어징 대상자',
-          };
-        }
-        return {
-          en: 'Stack on ' + data.ShortName(matches.target),
-          de: 'Stack auf ' + data.ShortName(matches.target),
-          ko: '쉐어징 "' + data.ShortName(matches.target) + '"',
-        };
-      },
+      response: Responses.stackOn(),
     },
     {
       id: 'RathEx Adds',
@@ -89,15 +77,11 @@
       regexJa: Regexes.addedCombatant({ name: 'ステップ・シープ', capture: false }),
       regexCn: Regexes.addedCombatant({ name: '草原绵羊', capture: false }),
       regexKo: Regexes.addedCombatant({ name: '초원 양', capture: false }),
-      suppressSeconds: 5,
       condition: function(data) {
         return data.role == 'tank';
       },
-      infoText: {
-        en: 'Adds',
-        de: 'Adds',
-        ko: '쫄',
-      },
+      suppressSeconds: 5,
+      response: Responses.killAdds(),
     },
   ],
 }];

@@ -1,7 +1,10 @@
 'use strict';
 
 [{
-  zoneRegex: /^Alexander - The Cuff Of The Son \(Savage\)$/,
+  zoneRegex: {
+    en: /^Alexander - The Cuff Of The Son \(Savage\)$/,
+    cn: /^亚历山大零式机神城 律动之章2$/,
+  },
   timelineFile: 'a6s.txt',
   triggers: [
     {
@@ -45,7 +48,7 @@
       condition: function(data) {
         return data.CanSilence();
       },
-      response: Responses.interupt(),
+      response: Responses.interrupt(),
     },
     {
       id: 'A6S Hidden Minefield',
@@ -59,11 +62,13 @@
         if (data.role == 'tank' && !data.magicVulnerability) {
           return {
             en: 'Get Mines',
+            de: 'Mienen nehmen',
             fr: 'Prenez les mines',
           };
         }
         return {
           en: 'Avoid Mines',
+          de: 'Mienen vermeiden',
           fr: 'Evitez les mines',
         };
       },
@@ -79,6 +84,7 @@
       suppressSeconds: 1,
       infoText: {
         en: 'Dodge Mirage Charge',
+        de: 'Superladung ausweichen',
         fr: 'Esquivez la charge de la réplique',
       },
     },
@@ -95,6 +101,7 @@
       },
       alertText: {
         en: 'Look Away from Mirage',
+        de: 'Von Replikant wegschauen',
         fr: 'Ne regardez pas la réplique',
       },
     },
@@ -111,6 +118,7 @@
       },
       alertText: {
         en: 'Look Towards Mirage',
+        de: 'Von Replikant hinschauen',
         fr: 'Regardez la réplique',
       },
     },
@@ -137,6 +145,7 @@
       regexKo: Regexes.ability({ source: '폭격자', id: '1603', capture: false }),
       infoText: {
         en: 'Double Buster: Group Soak',
+        de: 'Doppel Buster: Gruppe sammeln',
         fr: 'Double buster: Packez-vous',
       },
     },
@@ -153,6 +162,7 @@
       },
       alertText: {
         en: 'Get Away from Boss',
+        de: 'Gehe weit weg vom Boss',
         fr: 'Eloignez-vous du boss',
       },
     },
@@ -169,6 +179,7 @@
       },
       alarmText: {
         en: 'Double Drill: Be Near/Far',
+        de: 'Doppel Bohrer: Sei weit weg/nah dran',
         fr: 'Double foreuse : Soyez Loin/Près',
       },
     },
@@ -185,6 +196,7 @@
       },
       alertText: {
         en: 'Go High',
+        de: 'Geh Hoch',
         fr: 'Allez en haut',
       },
     },
@@ -201,6 +213,7 @@
       },
       alertText: {
         en: 'Go Low',
+        de: 'Geh Runter',
         fr: 'Allez en bas',
       },
     },
@@ -234,6 +247,7 @@
       regexKo: Regexes.startsUsing({ source: '교반자', id: '161A', capture: false }),
       alertText: {
         en: 'Hide Behind Tornado',
+        de: 'Hinter Tornado verstecken',
         fr: 'Cachez vous derrière la tornade',
       },
     },
@@ -245,6 +259,7 @@
       },
       alarmText: {
         en: 'Ice Missile on YOU',
+        de: 'Eis Rakete auf DIR',
         fr: 'Missile de glace sur VOUS',
       },
     },

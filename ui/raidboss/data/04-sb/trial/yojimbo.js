@@ -1,7 +1,10 @@
 'use strict';
 
 [{
-  zoneRegex: /^Kugane Ohashi$/,
+  zoneRegex: {
+    en: /^Kugane Ohashi$/,
+    cn: /^保镖歼灭战$/,
+  },
   timelineFile: 'yojimbo.txt',
   triggers: [
     {
@@ -21,11 +24,7 @@
       condition: function(data, matches) {
         return matches.target == data.me;
       },
-      alertText: {
-        en: 'Dorito Stack',
-        de: 'Stacken',
-        fr: 'Packez-vous',
-      },
+      response: Responses.doritoStack(),
     },
     {
       id: 'Yojimbo Gekko',
@@ -44,10 +43,7 @@
       condition: function(data, matches) {
         return matches.target == data.me;
       },
-      alarmText: {
-        en: 'GTFO',
-        de: 'WEG!',
-      },
+      response: Responses.getOut(),
     },
   ],
   timelineReplace: [

@@ -111,14 +111,7 @@
       condition: function(data) {
         return data.role == 'healer';
       },
-      infoText: {
-        en: 'aoe',
-        de: 'AoE',
-        ja: 'AoE',
-        fr: 'Dégâts de zone',
-        cn: 'AOE',
-        ko: '광딜',
-      },
+      response: Responses.aoe(),
     },
     {
       id: 'InnoEx Righteous Bolt',
@@ -196,14 +189,7 @@
       condition: function(data, matches) {
         return matches.target == data.me;
       },
-      alertText: {
-        en: 'Tank Buster on YOU',
-        de: 'Tankbuster auf DIR',
-        fr: 'Tankbuster sur VOUS',
-        ja: '自分にタンクバスター',
-        cn: '死刑点名',
-        ko: '나에게 탱버',
-      },
+      response: Responses.tankBuster(),
     },
     {
       id: 'InnoEx Charge',
@@ -242,10 +228,10 @@
       regexJa: Regexes.startsUsing({ id: '3EEF', source: 'イノセンス', capture: false }),
       regexCn: Regexes.startsUsing({ id: '3EEF', source: '无瑕灵君', capture: false }),
       regexKo: Regexes.startsUsing({ id: '3EEF', source: '이노센스', capture: false }),
-      delaySeconds: 6,
       condition: function(data) {
         return data.starbirthCount == 1;
       },
+      delaySeconds: 6,
       alertText: {
         en: 'Get to Safe Corner',
         de: 'Geh in die sichere Ecke',

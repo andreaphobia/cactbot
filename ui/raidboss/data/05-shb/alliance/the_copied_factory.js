@@ -66,13 +66,7 @@
       regexDe: Regexes.startsUsing({ id: '48B5', source: 'Befehlsmodell Mit Omnigelenk', capture: false }),
       regexFr: Regexes.startsUsing({ id: '48B5', source: 'Modèle Multiarticulé : Commandant', capture: false }),
       regexJa: Regexes.startsUsing({ id: '48B5', source: '多関節型：司令機', capture: false }),
-      alertText: {
-        en: 'Get Behind',
-        de: 'Hinter Ihn',
-        fr: 'Derrière le boss',
-        cn: '背面',
-        ko: '보스 앞 피하기',
-      },
+      response: Responses.getBehind(),
     },
     {
       id: 'Copied Serial High-Caliber Laser',
@@ -106,13 +100,7 @@
       regexDe: Regexes.startsUsing({ id: '48C8', source: 'Befehlsmodell Mit Omnigelenk', capture: false }),
       regexFr: Regexes.startsUsing({ id: '48C8', source: 'Modèle Multiarticulé : Commandant', capture: false }),
       regexJa: Regexes.startsUsing({ id: '48C8', source: '多関節型：司令機', capture: false }),
-      alertText: {
-        en: 'Go To Sides',
-        de: 'Geh zu den Seiten',
-        fr: 'Sur les côtés',
-        cn: '两侧躲避',
-        ko: '양옆으로 이동',
-      },
+      response: Responses.goSides(),
     },
     {
       id: 'Copied Serial Sidestriking Spin',
@@ -121,13 +109,7 @@
       regexDe: Regexes.startsUsing({ id: '48CA', source: 'Befehlsmodell Mit Omnigelenk', capture: false }),
       regexFr: Regexes.startsUsing({ id: '48CA', source: 'Modèle Multiarticulé : Commandant', capture: false }),
       regexJa: Regexes.startsUsing({ id: '48CA', source: '多関節型：司令機', capture: false }),
-      alertText: {
-        en: 'Go Front/Back',
-        de: 'Geh nach Vorne/ Hinten',
-        fr: 'Devant/Derrière',
-        cn: '去前/后',
-        ko: '양옆 피하기',
-      },
+      response: Responses.goFrontBack(),
     },
     {
       id: 'Copied Serial Shockwave',
@@ -136,7 +118,7 @@
       regexDe: Regexes.startsUsing({ id: '48C3', source: 'Befehlsmodell Mit Omnigelenk', capture: false }),
       regexFr: Regexes.startsUsing({ id: '48C3', source: 'Modèle Multiarticulé : Commandant', capture: false }),
       regexJa: Regexes.startsUsing({ id: '48C3', source: '多関節型：司令機', capture: false }),
-      response: Responses.knockback(),
+      response: Responses.knockback('info'),
     },
     {
       id: 'Copied Hobbes Laser-Resistance Test',
@@ -157,15 +139,15 @@
       regexDe: Regexes.message({ line: 'Der wandmontierte rechte Arm ist aktiv!', capture: false }),
       regexFr: Regexes.message({ line: 'Le bras mural droit s\'active!', capture: false }),
       regexJa: Regexes.message({ line: '壁面のライトアームが稼働を始めた……！', capture: false }),
-      run: function(data) {
-        data.alliance = data.alliance || 'A';
-      },
       infoText: {
         en: 'Dodge Moving Circle',
         de: 'Bewegenden Kreisen ausweichen',
         fr: 'Evitez les cercles mouvants',
         cn: '躲避移动圆圈',
         ko: '시계방향 회전하면서 나오는 장판 피하기',
+      },
+      run: function(data) {
+        data.alliance = data.alliance || 'A';
       },
     },
     {
@@ -175,15 +157,15 @@
       regexDe: Regexes.message({ line: 'Die wandmontierten Flammenwerfer sind aktiv!', capture: false }),
       regexFr: Regexes.message({ line: 'Les lance-flammes muraux s\'activent!', capture: false }),
       regexJa: Regexes.message({ line: '壁面の火炎放射器が稼働を始めた……！', capture: false }),
-      run: function(data) {
-        data.alliance = data.alliance || 'B';
-      },
       alertText: {
         en: 'Look Behind For Flamethrowers',
         de: 'Flammenwerfer hinter dir',
         fr: 'Regardez derrière (lance-flammes)',
         cn: '观察后方放火',
         ko: '뒤에서 불 나오는 곳 확인',
+      },
+      run: function(data) {
+        data.alliance = data.alliance || 'B';
       },
     },
     {
@@ -194,15 +176,9 @@
       regexFr: Regexes.message({ line: 'Le bras mural gauche s\'active!', capture: false }),
       regexJa: Regexes.message({ line: '壁面のレフトアームが稼働を始めた……！', capture: false }),
       durationSeconds: 6,
+      response: Responses.getOut('info'),
       run: function(data) {
         data.alliance = data.alliance || 'C';
-      },
-      infoText: {
-        en: 'Out',
-        de: 'Raus',
-        fr: 'Dehors',
-        cn: '远离',
-        ko: '외곽으로',
       },
     },
     {
@@ -261,8 +237,8 @@
       regexDe: Regexes.message({ line: 'Die Maschinenwesen zu deinen Füßen bewegen sich!', capture: false }),
       regexFr: Regexes.message({ line: 'Les formes de vie mécaniques sous vos pieds s\'activent!', capture: false }),
       regexJa: Regexes.message({ line: '床下の機械生命体が怪しく動き始めた……！', capture: false }),
-      suppressSeconds: 15,
       durationSeconds: 10,
+      suppressSeconds: 15,
       infoText: {
         en: 'Dodge Electric Floor',
         de: 'Elektrischem Boden ausweichen',
@@ -293,8 +269,8 @@
       regexDe: Regexes.message({ line: 'Zu deinen Füßen wird brennbare Flüssigkeit eingelassen!', capture: false }),
       regexFr: Regexes.message({ line: 'Le sol s\'imbibe de liquide inflammable!', capture: false }),
       regexJa: Regexes.message({ line: '床下に可燃性の液体が満ち始めた……！', capture: false }),
-      suppressSeconds: 15,
       durationSeconds: 3,
+      suppressSeconds: 15,
       alertText: {
         en: 'Oil Vats',
         de: 'Ölbehälter',
@@ -310,9 +286,9 @@
       regexDe: Regexes.message({ line: 'Zu deinen Füßen wird brennbare Flüssigkeit eingelassen!', capture: false }),
       regexFr: Regexes.message({ line: 'Le sol s\'imbibe de liquide inflammable!', capture: false }),
       regexJa: Regexes.message({ line: '床下に可燃性の液体が満ち始めた……！', capture: false }),
-      suppressSeconds: 15,
       delaySeconds: 6,
       durationSeconds: 3,
+      suppressSeconds: 15,
       alertText: {
         en: 'Oil Vats',
         de: 'Ölbehälter',
@@ -366,13 +342,7 @@
       regexDe: Regexes.startsUsing({ id: '4727', source: 'Engels', capture: false }),
       regexFr: Regexes.startsUsing({ id: '4727', source: 'Engels', capture: false }),
       regexJa: Regexes.startsUsing({ id: '4727', source: 'エンゲルス', capture: false }),
-      alertText: {
-        en: 'Right',
-        de: 'Rechts',
-        fr: 'Droite',
-        cn: '右',
-        ko: '오른쪽으로',
-      },
+      response: Responses.goRight(),
     },
     {
       id: 'Copied Engels Marx Smash Left',
@@ -381,13 +351,7 @@
       regexDe: Regexes.startsUsing({ id: '4726', source: 'Engels', capture: false }),
       regexFr: Regexes.startsUsing({ id: '4726', source: 'Engels', capture: false }),
       regexJa: Regexes.startsUsing({ id: '4726', source: 'エンゲルス', capture: false }),
-      alertText: {
-        en: 'Left',
-        de: 'Links',
-        fr: 'Gauche',
-        cn: '左',
-        ko: '왼쪽으로',
-      },
+      response: Responses.goLeft(),
     },
     {
       id: 'Copied Engels Marx Smash Forward',
@@ -596,13 +560,7 @@
       regexDe: Regexes.startsUsing({ id: '4A74', source: '9S\' Mehrbeinig(?:e|er|es|en) Panzer', capture: false }),
       regexFr: Regexes.startsUsing({ id: '4A74', source: '9S : Avec Multipède Esclave', capture: false }),
       regexJa: Regexes.startsUsing({ id: '4A74', source: '９Ｓ：多脚戦車従属', capture: false }),
-      alertText: {
-        en: 'Away From Front',
-        de: 'Weg von Vorne',
-        fr: 'Eloignez vous de l\'avant',
-        cn: '远离前方',
-        ko: '정면 피하기',
-      },
+      response: Responses.awayFromFront(),
     },
     {
       id: 'Copied 9S Ballistic Impact',
@@ -610,7 +568,7 @@
       condition: function(data, matches) {
         return data.me == matches.target;
       },
-      response: Responses.spread(),
+      response: Responses.spread('alert'),
     },
     {
       id: 'Copied 9S Goliath Laser Turret',
@@ -633,13 +591,7 @@
       regexDe: Regexes.startsUsing({ id: '48DF', source: '9S\' Mehrbeinig(?:e|er|es|en) Panzer', capture: false }),
       regexFr: Regexes.startsUsing({ id: '48DF', source: '9S : Avec Multipède Esclave', capture: false }),
       regexJa: Regexes.startsUsing({ id: '48DF', source: '９Ｓ：多脚戦車従属', capture: false }),
-      infoText: {
-        en: 'Go Sides',
-        de: 'Zu den Seiten',
-        fr: 'Sur les côtés',
-        cn: '两侧',
-        ko: '양옆으로',
-      },
+      response: Responses.goSides('info'),
     },
     {
       id: 'Copied 9S Dual-Flank Cannons',
@@ -648,13 +600,7 @@
       regexDe: Regexes.startsUsing({ id: '48DE', source: '9S\' Mehrbeinig(?:e|er|es|en) Panzer', capture: false }),
       regexFr: Regexes.startsUsing({ id: '48DE', source: '9S : Avec Multipède Esclave', capture: false }),
       regexJa: Regexes.startsUsing({ id: '48DE', source: '９Ｓ：多脚戦車従属', capture: false }),
-      infoText: {
-        en: 'Go Front / Back',
-        de: 'Geh nach Vorne / Hinten',
-        fr: 'Allez devant / derrière',
-        cn: '前往前/后',
-        ko: '앞/뒤로',
-      },
+      response: Responses.goFrontBack('info'),
     },
     {
       id: 'Copied 9S Engage Marx Support',
@@ -681,13 +627,7 @@
       regexDe: Regexes.ability({ id: '48EA', source: '9S\' Mehrbeinig(?:e|er|es|en) Panzer', capture: false }),
       regexFr: Regexes.ability({ id: '48EA', source: '9S : Avec Multipède Esclave', capture: false }),
       regexJa: Regexes.ability({ id: '48EA', source: '９Ｓ：多脚戦車従属', capture: false }),
-      infoText: {
-        en: 'Adds',
-        de: 'Adds',
-        fr: 'Adds',
-        cn: '小怪',
-        ko: '쫄',
-      },
+      response: Responses.killAdds(),
     },
     {
       id: 'Copied 9S Engage Goliath Tank Support',
@@ -696,13 +636,7 @@
       regexDe: Regexes.startsUsing({ id: '48E5', source: '9S\' Mehrbeinig(?:e|er|es|en) Panzer', capture: false }),
       regexFr: Regexes.startsUsing({ id: '48E5', source: '9S : Avec Multipède Esclave', capture: false }),
       regexJa: Regexes.startsUsing({ id: '48E5', source: '９Ｓ：多脚戦車従属', capture: false }),
-      infoText: {
-        en: 'Adds',
-        de: 'Adds',
-        fr: 'Adds',
-        cn: '小怪',
-        ko: '탱크 쫄 나옴',
-      },
+      response: Responses.killAdds(),
     },
     {
       id: 'Copied 9S Hack Goliath Tank',
@@ -727,7 +661,7 @@
       regexFr: Regexes.startsUsing({ id: '48F3', source: '9S : Avec Multipède Esclave', capture: false }),
       regexJa: Regexes.startsUsing({ id: '48F3', source: '９Ｓ：多脚戦車従属', capture: false }),
       suppressSeconds: 2,
-      response: Responses.stack(),
+      response: Responses.stack('info'),
     },
     {
       id: 'Copied 9S Bubble',

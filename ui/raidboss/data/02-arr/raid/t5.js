@@ -1,7 +1,10 @@
 'use strict';
 
 [{
-  zoneRegex: /^The Binding Coil Of Bahamut - Turn \(5\)$/,
+  zoneRegex: {
+    en: /^The Binding Coil Of Bahamut - Turn \(5\)$/,
+    cn: /^巴哈姆特大迷宫 邂逅之章5$/,
+  },
   timelineFile: 't5.txt',
   triggers: [
     {
@@ -32,6 +35,7 @@
       suppressSeconds: 5,
       infoText: {
         en: 'Death Sentence Soon',
+        de: 'Todesurteil bald',
         fr: 'Sentence de mort bientôt',
       },
     },
@@ -45,6 +49,7 @@
       regexKo: Regexes.startsUsing({ source: '메라시디아 와이번', id: '4DB', capture: false }),
       infoText: {
         en: 'Liquid Hell',
+        de: 'Höllenschmelze',
         fr: 'Enfer liquide',
       },
     },
@@ -70,6 +75,7 @@
         if (data.me == matches.target) {
           return {
             en: 'Fireball on YOU',
+            de: 'Feuerball auf DIR',
             fr: 'Boule de feu sur VOUS',
           };
         }
@@ -78,6 +84,7 @@
         if (data.me != matches.target) {
           return {
             en: 'Fireball on ' + data.ShortName(matches.target),
+            de: 'Feuerball auf ' + data.ShortName(matches.target),
             fr: 'Boule de feu sur ' + data.ShortName(matches.target),
           };
         }
@@ -95,6 +102,7 @@
         if (data.me == matches.target) {
           return {
             en: 'Conflag on YOU',
+            de: 'Feuersturm auf DIR',
             fr: 'Incendie sur VOUS',
           };
         }
@@ -103,6 +111,7 @@
         if (data.me != matches.target) {
           return {
             en: 'Conflag on ' + data.ShortName(matches.target),
+            de: 'Feuersturm auf ' + data.ShortName(matches.target),
             fr: 'Incendie sur ' + data.ShortName(matches.target),
           };
         }
@@ -128,6 +137,7 @@
       regexKo: Regexes.ability({ source: '트윈타니아', id: '5B0', capture: false }),
       alertText: {
         en: 'DIVEBOMB',
+        de: 'STURZBOMBE',
         fr: 'BOMBE PLONGEANTE',
       },
     },
@@ -143,6 +153,7 @@
       suppressSeconds: 5000,
       infoText: {
         en: 'Divebombs Soon',
+        de: 'Sturzbombe bald',
         fr: 'Bombe plongeante bientôt',
       },
     },
@@ -159,11 +170,13 @@
         if (data.me == matches.target) {
           return {
             en: 'Knight on YOU',
+            de: 'Furchtritter auf DIR',
             fr: 'Chevalier sur VOUS',
           };
         }
         return {
           en: 'Knight on ' + data.ShortName(matches.target),
+          de: 'Furchtritter auf ' + data.ShortName(matches.target),
           fr: 'Chevalier sur ' + data.ShortName(matches.target),
         };
       },
@@ -178,6 +191,7 @@
       regexKo: Regexes.startsUsing({ source: '트윈타니아', id: '4E1', capture: false }),
       alertText: {
         en: 'Twister!',
+        de: 'Wirbelsturm!',
         fr: 'Grande tornade !',
       },
     },
@@ -203,6 +217,7 @@
         if (data.me == matches.target) {
           return {
             en: 'Hatch on YOU',
+            de: 'Austritt auf DIR',
             fr: 'Eclosion sur VOUS',
           };
         }
@@ -211,6 +226,7 @@
         if (data.me != matches.target) {
           return {
             en: 'Hatch on ' + data.ShortName(matches.target),
+            de: 'Austritt auf ' + data.ShortName(matches.target),
             fr: 'Eclosion sur ' + data.ShortName(matches.target),
           };
         }
@@ -221,7 +237,7 @@
     {
       'locale': 'de',
       'replaceSync': {
-        'The Right Hand of Bahamut': 'Rechte Hand von Bahamut',
+        'The Right Hand of Bahamut': 'Rechten Hand von Bahamut',
         'Twintania': 'Twintania',
       },
       'replaceText': {

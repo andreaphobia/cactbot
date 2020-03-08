@@ -1,7 +1,10 @@
 'use strict';
 
 [{
-  zoneRegex: /^The Final Coil Of Bahamut - Turn \(3\)$/,
+  zoneRegex: {
+    en: /^The Final Coil Of Bahamut - Turn \(3\)$/,
+    cn: /^巴哈姆特大迷宫 真源之章3$/,
+  },
   timelineFile: 't12.txt',
   triggers: [
     {
@@ -32,7 +35,7 @@
           return;
         return {
           en: 'Bennu Soon',
-          de: 'Bennu Add',
+          de: 'Bennu Add bald',
           fr: 'Bénou bientôt',
         };
       },

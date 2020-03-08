@@ -27,12 +27,12 @@
     {
       id: 'General Frog Legs',
       regex: Regexes.ability({ id: '4783' }),
-      suppressSeconds: 0.5,
       condition: function(data, matches) {
         if (matches.source !== data.me && !data.party.inAlliance(matches.source))
           return false;
         return data.role == 'tank' || data.job == 'BLU';
       },
+      suppressSeconds: 0.5,
       infoText: function(data, matches) {
         let name = data.ShortName(matches.source);
         return {
@@ -77,6 +77,7 @@
         let name = data.ShortName(matches.source);
         return {
           en: 'Holmgang: ' + name,
+          de: 'Holmgang: ' + name,
           ja: 'ホルムギャング: ' + name,
           cn: '死斗: ' + name,
           ko: '일대일 결투: ' + name,

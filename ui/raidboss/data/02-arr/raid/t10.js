@@ -1,7 +1,10 @@
 'use strict';
 
 [{
-  zoneRegex: /^The Final Coil Of Bahamut - Turn \(1\)$/,
+  zoneRegex: {
+    en: /^The Final Coil Of Bahamut - Turn \(1\)$/,
+    cn: /^巴哈姆特大迷宫 真源之章1$/,
+  },
   timelineFile: 't10.txt',
   triggers: [
     {
@@ -31,6 +34,7 @@
         if (data.me == matches.target) {
           return {
             en: 'Charge on YOU',
+            de: 'Ansturm auf DIR',
             fr: 'Charge sur VOUS',
           };
         }
@@ -39,6 +43,7 @@
         if (data.me != matches.target) {
           return {
             en: 'Charge on ' + data.ShortName(matches.target),
+            de: 'Ansturm auf ' + data.ShortName(matches.target),
             fr: 'Charge sur ' + data.ShortName(matches.target),
           };
         }
@@ -61,6 +66,7 @@
         if (data.me == matches.target) {
           return {
             en: 'Cyclonic on YOU',
+            de: 'Zyklon-Chaos auf DIR',
             fr: 'Chaos cyclonique sur VOUS',
           };
         }
@@ -69,6 +75,7 @@
         if (data.me != matches.target) {
           return {
             en: 'Cyclonic on ' + data.ShortName(matches.target),
+            de: 'Zyklon-Chaos auf ' + data.ShortName(matches.target),
             fr: 'Chaos cyclonique sur ' + data.ShortName(matches.target),
           };
         }

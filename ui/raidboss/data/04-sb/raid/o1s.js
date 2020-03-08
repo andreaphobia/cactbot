@@ -2,7 +2,10 @@
 
 // O1S - Deltascape 1.0 Savage
 [{
-  zoneRegex: /^Deltascape V1\.0 \(Savage\)$/,
+  zoneRegex: {
+    en: /^Deltascape V1\.0 \(Savage\)$/,
+    cn: /^欧米茄零式时空狭缝 德尔塔幻境1$/,
+  },
   timelineFile: 'o1s.txt',
   triggers: [
     {
@@ -13,14 +16,7 @@
       regexJa: Regexes.startsUsing({ id: '1EDD', source: 'アルテ・ロイテ', capture: false }),
       regexCn: Regexes.startsUsing({ id: '1EDD', source: '老者', capture: false }),
       regexKo: Regexes.startsUsing({ id: '1EDD', source: '알테 로이테', capture: false }),
-      infoText: {
-        en: 'Blaze: Stack up',
-        de: 'Flamme: Stacken',
-      },
-      tts: {
-        en: 'stack',
-        de: 'stek',
-      },
+      response: Responses.stack(),
     },
     {
       id: 'O1S Breath Wing',
@@ -47,14 +43,7 @@
       regexJa: Regexes.startsUsing({ id: '1EDE', source: 'アルテ・ロイテ', capture: false }),
       regexCn: Regexes.startsUsing({ id: '1EDE', source: '老者', capture: false }),
       regexKo: Regexes.startsUsing({ id: '1EDE', source: '알테 로이테', capture: false }),
-      infoText: {
-        en: 'Clamp: Get out of front',
-        de: 'Klammer: Vorm Boss weg',
-      },
-      tts: {
-        en: 'clamp',
-        de: 'klammer',
-      },
+      response: Responses.awayFromFront(),
     },
     {
       id: 'O1S Downburst',
@@ -64,14 +53,7 @@
       regexJa: Regexes.startsUsing({ id: '1ED8', source: 'アルテ・ロイテ', capture: false }),
       regexCn: Regexes.startsUsing({ id: '1ED8', source: '老者', capture: false }),
       regexKo: Regexes.startsUsing({ id: '1ED8', source: '알테 로이테', capture: false }),
-      infoText: {
-        en: 'Downburst: Knockback',
-        de: 'Fallböe: Rückstoß',
-      },
-      tts: {
-        en: 'knockback',
-        de: 'rückstoß',
-      },
+      response: Responses.knockback(),
     },
     {
       id: 'O1S Roar',
@@ -81,17 +63,10 @@
       regexJa: Regexes.startsUsing({ id: '1ED8', source: 'アルテ・ロイテ', capture: false }),
       regexCn: Regexes.startsUsing({ id: '1ED8', source: '老者', capture: false }),
       regexKo: Regexes.startsUsing({ id: '1ED8', source: '알테 로이테', capture: false }),
-      infoText: {
-        en: 'Roar: AOE damage',
-        de: 'Brüllen: Flächenschaden',
-      },
       condition: function(data) {
         return data.role == 'healer';
       },
-      tts: {
-        en: 'roar',
-        de: 'brüllen',
-      },
+      response: Responses.aoe(),
     },
     {
       id: 'O1S Charybdis',
@@ -101,17 +76,10 @@
       regexJa: Regexes.startsUsing({ id: '1ED4', source: 'アルテ・ロイテ', capture: false }),
       regexCn: Regexes.startsUsing({ id: '1ED4', source: '老者', capture: false }),
       regexKo: Regexes.startsUsing({ id: '1ED4', source: '알테 로이테', capture: false }),
-      infoText: {
-        en: 'Charybdis: AOE damage',
-        de: 'Charybdis: Flächenschaden',
-      },
       condition: function(data) {
         return data.role == 'healer';
       },
-      tts: {
-        en: 'roar',
-        de: 'brüllen',
-      },
+      response: Responses.aoe(),
     },
   ],
   timelineReplace: [

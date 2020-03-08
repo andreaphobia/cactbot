@@ -2,7 +2,10 @@
 
 // O4S - Deltascape 4.0 Savage
 [{
-  zoneRegex: /^Deltascape V4\.0 \(Savage\)$/,
+  zoneRegex: {
+    en: /^Deltascape V4\.0 \(Savage\)$/,
+    cn: /^欧米茄零式时空狭缝 德尔塔幻境4$/,
+  },
   timelineFile: 'o4s.txt',
   timelineTriggers: [
     {
@@ -11,6 +14,7 @@
       beforeSeconds: 8,
       alertText: {
         en: 'Vacuum Wave soon',
+        de: 'Vakuumwelle bald',
       },
     },
   ],
@@ -66,14 +70,6 @@
       regexJa: Regexes.startsUsing({ id: '23F9', source: 'エクスデス', capture: false }),
       regexCn: Regexes.startsUsing({ id: '23F9', source: '艾克斯迪司', capture: false }),
       regexKo: Regexes.startsUsing({ id: '23F9', source: '엑스데스', capture: false }),
-      infoText: function(data) {
-        // Tanks/healers always get an alert.
-        if (data.role == 'tank' || data.role == 'healer') return false;
-        return {
-          en: 'Thunder III',
-          de: 'Blitzga',
-        };
-      },
       alertText: function(data) {
         // Tanks/healers always get an alert.
         if (data.role == 'tank' || data.role == 'healer') {
@@ -82,6 +78,14 @@
             de: 'Blitzga: Tank buster',
           };
         }
+      },
+      infoText: function(data) {
+        // Tanks/healers always get an alert.
+        if (data.role == 'tank' || data.role == 'healer') return false;
+        return {
+          en: 'Thunder III',
+          de: 'Blitzga',
+        };
       },
       tts: function(data) {
         if (data.role == 'tank' || data.role == 'healer') {
@@ -101,14 +105,7 @@
       regexJa: Regexes.startsUsing({ id: '23FB', source: 'エクスデス', capture: false }),
       regexCn: Regexes.startsUsing({ id: '23FB', source: '艾克斯迪司', capture: false }),
       regexKo: Regexes.startsUsing({ id: '23FB', source: '엑스데스', capture: false }),
-      alarmText: {
-        en: 'Fire III: Stop',
-        de: 'Feuga: Stehenbleiben',
-      },
-      tts: {
-        en: 'fire stop moving',
-        de: 'feuga stehenbleiben',
-      },
+      response: Responses.stopMoving(),
     },
     {
       // Blizzard III after Decisive Battle.
@@ -119,14 +116,7 @@
       regexJa: Regexes.startsUsing({ id: '23FC', source: 'エクスデス', capture: false }),
       regexCn: Regexes.startsUsing({ id: '23FC', source: '艾克斯迪司', capture: false }),
       regexKo: Regexes.startsUsing({ id: '23FC', source: '엑스데스', capture: false }),
-      alertText: {
-        en: 'Blizzard III: Keep moving',
-        de: 'Eisga: Bewegen',
-      },
-      tts: {
-        en: 'blizzard keep moving',
-        de: 'eisga bewegen',
-      },
+      response: Responses.move(),
     },
     {
       // Thunder III after Decisive Battle.
@@ -137,14 +127,7 @@
       regexJa: Regexes.startsUsing({ id: '23FD', source: 'エクスデス', capture: false }),
       regexCn: Regexes.startsUsing({ id: '23FD', source: '艾克斯迪司', capture: false }),
       regexKo: Regexes.startsUsing({ id: '23FD', source: '엑스데스', capture: false }),
-      alertText: {
-        en: 'Thunder III: Get out',
-        de: 'Blitzga: Raus da',
-      },
-      tts: {
-        en: 'thunder get out',
-        de: 'blitzga raus da',
-      },
+      response: Responses.getOut(),
     },
     {
       // Flare
@@ -372,6 +355,10 @@
       regexCn: Regexes.startsUsing({ id: '240E', source: '新生艾克斯迪司', capture: false }),
       regexKo: Regexes.startsUsing({ id: '240E', source: '네오 엑스데스', capture: false }),
       durationSeconds: 6,
+      sound: function(data) {
+        if (data.shouldDieOnLaser())
+          return data.dieDieDieSound;
+      },
       alarmText: function(data) {
         if (data.shouldDieOnLaser()) {
           return {
@@ -387,10 +374,6 @@
             de: 'Nach Außen',
           };
         }
-      },
-      sound: function(data) {
-        if (data.shouldDieOnLaser())
-          return data.dieDieDieSound;
       },
       tts: function(data) {
         if (data.shouldDieOnLaser()) {
@@ -414,6 +397,10 @@
       regexCn: Regexes.startsUsing({ id: '240F', source: '新生艾克斯迪司', capture: false }),
       regexKo: Regexes.startsUsing({ id: '240F', source: '네오 엑스데스', capture: false }),
       durationSeconds: 6,
+      sound: function(data) {
+        if (data.shouldDieOnLaser())
+          return data.dieDieDieSound;
+      },
       alarmText: function(data) {
         if (data.shouldDieOnLaser()) {
           return {
@@ -429,10 +416,6 @@
             de: 'Rein gehen',
           };
         }
-      },
-      sound: function(data) {
-        if (data.shouldDieOnLaser())
-          return data.dieDieDieSound;
       },
       tts: function(data) {
         if (data.shouldDieOnLaser()) {
@@ -456,6 +439,10 @@
       regexCn: Regexes.startsUsing({ id: '2411', source: '新生艾克斯迪司', capture: false }),
       regexKo: Regexes.startsUsing({ id: '2411', source: '네오 엑스데스', capture: false }),
       durationSeconds: 6,
+      sound: function(data) {
+        if (data.shouldDieOnLaser())
+          return data.dieDieDieSound;
+      },
       alarmText: function(data) {
         if (!data.shouldDieOnLaser())
           return;
@@ -496,10 +483,6 @@
           de: 'Farbige Seiten',
         };
       },
-      sound: function(data) {
-        if (data.shouldDieOnLaser())
-          return data.dieDieDieSound;
-      },
       tts: {
         en: 'colors',
         de: 'Farben',
@@ -514,6 +497,10 @@
       regexCn: Regexes.startsUsing({ id: '2412', source: '新生艾克斯迪司', capture: false }),
       regexKo: Regexes.startsUsing({ id: '2412', source: '네오 엑스데스', capture: false }),
       durationSeconds: 6,
+      sound: function(data) {
+        if (data.shouldDieOnLaser())
+          return data.dieDieDieSound;
+      },
       alarmText: function(data) {
         if (!data.shouldDieOnLaser())
           return;
@@ -553,10 +540,6 @@
           en: 'Color sides',
           de: 'Farbige Seiten',
         };
-      },
-      sound: function(data) {
-        if (data.shouldDieOnLaser())
-          return data.dieDieDieSound;
       },
       tts: {
         en: 'colors',
@@ -719,14 +702,7 @@
       regexJa: Regexes.startsUsing({ id: '242D', source: 'ネオエクスデス', capture: false }),
       regexCn: Regexes.startsUsing({ id: '242D', source: '新生艾克斯迪司', capture: false }),
       regexKo: Regexes.startsUsing({ id: '242D', source: '네오 엑스데스', capture: false }),
-      infoText: {
-        en: 'Grand Cross Omega: Go to middle',
-        de: 'Supernova Omega: In die Mitte',
-      },
-      tts: {
-        en: 'go to middle',
-        de: 'in die Mitte',
-      },
+      response: Responses.goMiddle(),
     },
     {
       id: 'O4S Neo Forked Lightning',
@@ -736,18 +712,11 @@
       regexJa: Regexes.gainsEffect({ effect: 'フォークライトニング' }),
       regexCn: Regexes.gainsEffect({ effect: '叉形闪电' }),
       regexKo: Regexes.gainsEffect({ effect: '갈래 번개' }),
-      delaySeconds: 1,
-      alertText: {
-        en: 'Forked Lightning: Don\'t Stack',
-        de: 'Gabelblitz: Nicht stacken',
-      },
       condition: function(data, matches) {
         return matches.target == data.me;
       },
-      tts: {
-        en: 'lightning get out',
-        de: 'blitz raus da',
-      },
+      delaySeconds: 1,
+      response: Responses.spread(),
     },
     {
       id: 'O4S Neo Acceleration Bomb',
@@ -948,31 +917,20 @@
       },
     },
     {
-      id: 'O4S Neo Earthshaker',
+      id: 'O4S Neo Earthshaker on Tank',
       regex: Regexes.headMarker({ id: '0028' }),
       condition: function(data, matches) {
-        return matches.target == data.me;
+        return matches.target == data.me && data.role == 'tank';
       },
-      alarmText: function(data) {
-        if (data.role != 'tank') {
-          return {
-            en: 'Earthshaker on YOU',
-            de: 'Erdstoß auf DIR',
-          };
-        }
+      response: Responses.earthshaker('info'),
+    },
+    {
+      id: 'O4S Neo Earthshaker on not Tank',
+      regex: Regexes.headMarker({ id: '0028' }),
+      condition: function(data, matches) {
+        return matches.target == data.me && data.role != 'tank';
       },
-      infoText: function(data) {
-        if (data.role == 'tank') {
-          return {
-            en: 'Earthshaker on YOU',
-            de: 'Erdstoß auf DIR',
-          };
-        }
-      },
-      tts: {
-        en: 'shaker',
-        de: 'erstoß',
-      },
+      response: Responses.earthshaker('alarm'),
     },
     {
       id: 'O4S Neo Delta Attack',
@@ -982,14 +940,7 @@
       regexJa: Regexes.startsUsing({ id: '241E', source: 'ネオエクスデス', capture: false }),
       regexCn: Regexes.startsUsing({ id: '241E', source: '新生艾克斯迪司', capture: false }),
       regexKo: Regexes.startsUsing({ id: '241E', source: '네오 엑스데스', capture: false }),
-      infoText: {
-        en: 'Delta Attack: Stack',
-        de: 'Delta Attacke: Stack',
-      },
-      tts: {
-        en: 'stack for delta',
-        de: 'für delta stek en',
-      },
+      response: Responses.stack(),
     },
     {
       id: 'O4S Neo Almagest',
@@ -1019,13 +970,10 @@
       regexJa: Regexes.startsUsing({ id: '2401', source: 'ネオエクスデス' }),
       regexCn: Regexes.startsUsing({ id: '2401', source: '新生艾克斯迪司' }),
       regexKo: Regexes.startsUsing({ id: '2401', source: '네오 엑스데스' }),
-      infoText: function(data) {
-        if (data.flareTargets.indexOf(data.me) < 0) {
-          return {
-            en: 'Light and Darkness: Stack',
-            de: 'Licht und Dunkel: Stack',
-          };
-        }
+      condition: function(data, matches) {
+        data.flareTargets = data.flareTargets || [];
+        data.flareTargets.push(matches.target);
+        return data.flareTargets.length == 3;
       },
       alarmText: function(data) {
         if (data.flareTargets.indexOf(data.me) >= 0) {
@@ -1035,10 +983,13 @@
           };
         }
       },
-      condition: function(data, matches) {
-        data.flareTargets = data.flareTargets || [];
-        data.flareTargets.push(matches.target);
-        return data.flareTargets.length == 3;
+      infoText: function(data) {
+        if (data.flareTargets.indexOf(data.me) < 0) {
+          return {
+            en: 'Light and Darkness: Stack',
+            de: 'Licht und Dunkel: Stack',
+          };
+        }
       },
       tts: function(data) {
         if (data.flareTargets.indexOf(data.me) >= 0) {

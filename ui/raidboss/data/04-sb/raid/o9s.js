@@ -4,7 +4,7 @@
 [{
   zoneRegex: {
     en: /^Alphascape V1\.0 \(Savage\)$/,
-    cn: /^欧米茄零式时空狭缝 \(阿尔法幻境1\)$/,
+    cn: /^欧米茄零式时空狭缝 阿尔法幻境1$/,
     ko: /^차원의 틈 오메가: 알파편\(영웅\) \(1\)$/,
   },
   timelineFile: 'o9s.txt',
@@ -18,57 +18,7 @@
       regexJa: Regexes.startsUsing({ id: '3170', source: 'カオス' }),
       regexCn: Regexes.startsUsing({ id: '3170', source: '卡奥斯' }),
       regexKo: Regexes.startsUsing({ id: '3170', source: '카오스' }),
-      alertText: function(data, matches) {
-        if (matches.target == data.me) {
-          return {
-            en: 'Tank Buster on YOU',
-            de: 'Tankbuster auf DIR',
-            fr: 'Tankbuster sur VOUS',
-            cn: '死刑减伤',
-            ko: '탱버 대상자',
-          };
-        }
-        if (data.role == 'tank') {
-          return {
-            en: 'Tank Swap',
-            de: 'Tank-Wechsel',
-            fr: 'Tank Swap',
-            ja: 'スイッチ',
-            cn: '换T',
-            ko: '탱 교대',
-          };
-        }
-        if (data.role == 'healer') {
-          return {
-            en: 'Buster on ' + data.ShortName(matches.target),
-            de: 'Tankbuster auf ' + data.ShortName(matches.target),
-            fr: 'Tankbuster sur ' + data.ShortName(matches.target),
-            cn: '死刑-> ' + data.ShortName(matches.target),
-            ko: '"' + data.ShortName(matches.target) + ' 탱버',
-          };
-        }
-      },
-      tts: function(data, matches) {
-        if (matches.target == data.me) {
-          return {
-            en: 'buster',
-            de: 'basta',
-            fr: 'tankbuster',
-            ja: 'バスター',
-            cn: '死刑',
-            ko: '탱버',
-          };
-        } else if (data.role == 'tank') {
-          return {
-            en: 'tank swap',
-            de: 'tenk wechsel',
-            fr: 'tank swap',
-            ja: 'スイッチ',
-            cn: '换T',
-            ko: '탱 교대',
-          };
-        }
-      },
+      response: Responses.tankBuster(),
     },
     {
       id: 'O9S Longitudinal Implosion',
@@ -184,13 +134,7 @@
       regexJa: Regexes.startsUsing({ id: '3171', source: 'カオス', capture: false }),
       regexCn: Regexes.startsUsing({ id: '3171', source: '卡奥斯', capture: false }),
       regexKo: Regexes.startsUsing({ id: '3171', source: '카오스', capture: false }),
-      infoText: {
-        en: 'Get Behind',
-        de: 'Hinten dran',
-        fr: 'Derrière le boss',
-        ja: '背面へ',
-        ko: '뒤로 이동',
-      },
+      response: Responses.getBehind(),
     },
     {
       id: 'O9S Orbs Fiend',
@@ -333,11 +277,11 @@
       regexJa: Regexes.startsUsing({ id: '3180', source: 'カオス', capture: false }),
       regexCn: Regexes.startsUsing({ id: '3180', source: '卡奥斯', capture: false }),
       regexKo: Regexes.startsUsing({ id: '3180', source: '카오스', capture: false }),
-      // Each big bang has its own cast, so suppress.
-      suppressSeconds: 1,
       condition: function(data) {
         return data.phaseType == 'fire';
       },
+      // Each big bang has its own cast, so suppress.
+      suppressSeconds: 1,
       alertText: {
         en: 'Hide Middle',
         de: 'Zur Mitte',
@@ -372,9 +316,9 @@
       condition: function(data) {
         return data.phaseType == 'water';
       },
+      delaySeconds: 5,
       suppressSeconds: 1,
       // T/H get 10s & DPS get 17s
-      delaySeconds: 5,
       infoText: {
         en: 'Stack Donut',
         de: 'Sammeln Donut',
@@ -395,9 +339,9 @@
       condition: function(data) {
         return data.phaseType == 'water';
       },
-      suppressSeconds: 1,
       // T/H get 10s & DPS get 17s
       delaySeconds: 12,
+      suppressSeconds: 1,
       infoText: {
         en: 'Stack Donut',
         de: 'Sammeln Donut',
@@ -418,9 +362,9 @@
       condition: function(data) {
         return data.phaseType == 'enrage';
       },
-      suppressSeconds: 1,
       // enrage -> 6s
       delaySeconds: 1,
+      suppressSeconds: 1,
       infoText: {
         en: 'Stack Donut',
         de: 'Sammeln Donut',
@@ -657,10 +601,10 @@
       condition: function(data, matches) {
         return matches.target != data.me && data.phaseType == 'orb';
       },
-      suppressSeconds: 10,
       delaySeconds: function(data, matches) {
         return parseFloat(matches.duration) - 3;
       },
+      suppressSeconds: 10,
       alertText: function(data) {
         if (data.head == 'wind') {
           return {

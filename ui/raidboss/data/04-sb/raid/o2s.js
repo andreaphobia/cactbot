@@ -2,7 +2,10 @@
 
 // O2S - Deltascape 2.0 Savage
 [{
-  zoneRegex: /^Deltascape V2\.0 \(Savage\)$/,
+  zoneRegex: {
+    en: /^Deltascape V2\.0 \(Savage\)$/,
+    cn: /^欧米茄零式时空狭缝 德尔塔幻境2$/,
+  },
   timelineFile: 'o2s.txt',
   timelineTriggers: [
     {
@@ -85,14 +88,7 @@
       regexJa: Regexes.startsUsing({ id: '236F', source: 'カタストロフィー', capture: false }),
       regexCn: Regexes.startsUsing({ id: '236F', source: '灾变者', capture: false }),
       regexKo: Regexes.startsUsing({ id: '236F', source: '카타스트로피', capture: false }),
-      alarmText: {
-        en: 'Death\'s Gaze: Look away',
-        de: 'Todesblick: Wegschauen',
-      },
-      tts: {
-        en: 'look away',
-        de: 'weckschauen',
-      },
+      response: Responses.lookAway(),
     },
     {
       id: 'O2S Earthquake',
@@ -102,19 +98,19 @@
       regexJa: Regexes.startsUsing({ id: '2374', source: 'カタストロフィー', capture: false }),
       regexCn: Regexes.startsUsing({ id: '2374', source: '灾变者', capture: false }),
       regexKo: Regexes.startsUsing({ id: '2374', source: '카타스트로피', capture: false }),
-      infoText: function(data) {
-        if (data.levitating) {
-          return {
-            en: 'Earthquake',
-            de: 'Erdbeben',
-          };
-        }
-      },
       alertText: function(data) {
         if (!data.levitating) {
           return {
             en: 'Earthquake: Levitate',
             de: 'Erdbeben: Schweben',
+          };
+        }
+      },
+      infoText: function(data) {
+        if (data.levitating) {
+          return {
+            en: 'Earthquake',
+            de: 'Erdbeben',
           };
         }
       },
@@ -135,19 +131,19 @@
       regexJa: Regexes.gainsEffect({ effect: '高度固定：高', capture: false }),
       regexCn: Regexes.gainsEffect({ effect: '固定高位', capture: false }),
       regexKo: Regexes.gainsEffect({ effect: '고도 고정: 위', capture: false }),
-      infoText: function(data) {
-        if (!data.role.startsWith('dps')) {
-          return {
-            en: 'DPS up, T/H down',
-            de: 'DDs hoch, T/H runter',
-          };
-        }
-      },
       alarmText: function(data) {
         if (data.role.startsWith('dps') && !data.levitating) {
           return {
             en: 'DPS: Levitate',
             de: 'DDs: Schweben',
+          };
+        }
+      },
+      infoText: function(data) {
+        if (!data.role.startsWith('dps')) {
+          return {
+            en: 'DPS up, T/H down',
+            de: 'DDs hoch, T/H runter',
           };
         }
       },
@@ -167,14 +163,7 @@
       condition: function(data) {
         return data.role == 'healer';
       },
-      infoText: {
-        en: 'aoe',
-        de: 'AoE',
-      },
-      tts: {
-        en: 'wave',
-        de: 'welle',
-      },
+      response: Responses.aoe(),
     },
     {
       id: 'O2S Maniacal Probe',
@@ -184,8 +173,8 @@
       regexJa: Regexes.startsUsing({ id: '235A', source: 'カタストロフィー', capture: false }),
       regexCn: Regexes.startsUsing({ id: '235A', source: '灾变者', capture: false }),
       regexKo: Regexes.startsUsing({ id: '235A', source: '카타스트로피', capture: false }),
-      infoText: function(data) {
-        if (!data.myProbe) {
+      alertText: function(data) {
+        if (data.myProbe) {
           if (!data.dpsProbe) {
             return {
               en: 'Maniacal Probe: Tanks & Healers',
@@ -198,8 +187,8 @@
           };
         }
       },
-      alertText: function(data) {
-        if (data.myProbe) {
+      infoText: function(data) {
+        if (!data.myProbe) {
           if (!data.dpsProbe) {
             return {
               en: 'Maniacal Probe: Tanks & Healers',
@@ -233,10 +222,10 @@
       regexJa: Regexes.gainsEffect({ effect: 'グラビティバースト' }),
       regexCn: Regexes.gainsEffect({ effect: '重力爆发' }),
       regexKo: Regexes.gainsEffect({ effect: '중력 폭발' }),
-      delaySeconds: 9,
       condition: function(data, matches) {
         return matches.target == data.me;
       },
+      delaySeconds: 9,
       alarmText: {
         en: 'Unstable Gravity: Elevate and outside stack',
         de: 'Schwerkraftschwankung: Schweben und außen stacken',
@@ -254,15 +243,10 @@
       regexJa: Regexes.gainsEffect({ effect: '沈下' }),
       regexCn: Regexes.gainsEffect({ effect: '下陷' }),
       regexKo: Regexes.gainsEffect({ effect: '침하' }),
-      delaySeconds: 5,
-      infoText: function(data) {
-        if (data.levitating) {
-          return {
-            en: '6 Fulms Under',
-            de: 'Versinkend',
-          };
-        }
+      condition: function(data, matches) {
+        return !data.under && matches.target == data.me;
       },
+      delaySeconds: 5,
       alertText: function(data) {
         if (!data.levitating) {
           return {
@@ -271,8 +255,13 @@
           };
         }
       },
-      condition: function(data, matches) {
-        return !data.under && matches.target == data.me;
+      infoText: function(data) {
+        if (data.levitating) {
+          return {
+            en: '6 Fulms Under',
+            de: 'Versinkend',
+          };
+        }
       },
       tts: {
         en: 'float',

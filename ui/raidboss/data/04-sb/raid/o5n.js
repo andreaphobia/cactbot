@@ -2,7 +2,10 @@
 
 // O5N - Sigmascape 1.0 Normal
 [{
-  zoneRegex: /^Sigmascape \(V1\.0\)$/,
+  zoneRegex: {
+    en: /^Sigmascape \(V1\.0\)$/,
+    cn: /^欧米茄时空狭缝 西格玛幻境1$/,
+  },
   timelineFile: 'o5n.txt',
   resetWhenOutOfCombat: false,
   triggers: [
@@ -27,31 +30,7 @@
       regexJa: Regexes.startsUsing({ source: '魔列車', id: '28A3' }),
       regexCn: Regexes.startsUsing({ source: '魔列车', id: '28A3' }),
       regexKo: Regexes.startsUsing({ source: '마열차', id: '28A3' }),
-      alertText: function(data, matches) {
-        if (matches.target == data.me) {
-          return {
-            en: 'Tank Buster on YOU',
-            de: 'Tank Buster auf DIR',
-            fr: 'Tank Buster sur VOUS',
-          };
-        }
-        if (data.role == 'healer') {
-          return {
-            en: 'Buster on ' + data.ShortName(matches[1]),
-            de: 'Buster auf ' + data.ShortName(matches[1]),
-            fr: 'Buster sur ' + data.ShortName(matches[1]),
-          };
-        }
-      },
-      tts: function(data, matches) {
-        if (matches.target == data.me) {
-          return {
-            en: 'buster',
-            de: 'tenkbasta',
-            fr: 'tankbuster',
-          };
-        }
-      },
+      response: Responses.tankBuster(),
     },
     {
       id: 'O5N Head On',
@@ -61,16 +40,7 @@
       regexJa: Regexes.startsUsing({ id: '28A4', source: '魔列車', capture: false }),
       regexCn: Regexes.startsUsing({ id: '28A4', source: '魔列车', capture: false }),
       regexKo: Regexes.startsUsing({ id: '28A4', source: '마열차', capture: false }),
-      alertText: {
-        en: 'Go to back',
-        de: 'Nach hinten laufen',
-        fr: 'S\'éloigner',
-      },
-      tts: {
-        en: 'run away',
-        de: 'ab nach hinten',
-        fr: 's\'éloigner',
-      },
+      response: Responses.getOut(),
     },
     {
       id: 'O5N Diabolic Headlamp',
@@ -80,11 +50,7 @@
       regexJa: Regexes.startsUsing({ id: '28A6', source: '魔列車', capture: false }),
       regexCn: Regexes.startsUsing({ id: '28A6', source: '魔列车', capture: false }),
       regexKo: Regexes.startsUsing({ id: '28A6', source: '마열차', capture: false }),
-      alertText: {
-        en: 'Stack middle',
-        de: 'Stack in der Mitte',
-        fr: 'Stack au milieu',
-      },
+      response: Responses.stackMiddle(),
     },
     {
       id: 'O5N Diabolic Light',

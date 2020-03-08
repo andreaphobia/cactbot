@@ -2,7 +2,10 @@
 
 // Susano Extreme
 [{
-  zoneRegex: /^The Pool Of Tribute \(Extreme\)$/,
+  zoneRegex: {
+    en: /^The Pool Of Tribute \(Extreme\)$/,
+    cn: /^须佐之男歼殛战$/,
+  },
   timelineFile: 'susano-ex.txt',
   timelineTriggers: [
     {
@@ -11,6 +14,7 @@
       beforeSeconds: 1.5,
       infoText: {
         en: 'look for cloud',
+        de: 'Nach Wolke ausschau halten',
       },
     },
   ],
@@ -215,6 +219,9 @@
       regexJa: Regexes.gainsEffect({ effect: '禍泡', capture: true }),
       regexCn: Regexes.gainsEffect({ effect: '祸泡', capture: true }),
       regexKo: Regexes.gainsEffect({ effect: '재앙거품', capture: true }),
+      condition: function(data, matches) {
+        return matches.target == data.me;
+      },
       delaySeconds: function(data, matches) {
         return parseFloat(matches.duration) - 3;
       },
@@ -222,9 +229,7 @@
         en: 'Stop',
         de: 'Stopp',
       },
-      condition: function(data, matches) {
-        return matches.target == data.me;
-      },
+
     },
   ],
   timelineReplace: [

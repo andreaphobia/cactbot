@@ -2,7 +2,10 @@
 
 // Fractal Continuum
 [{
-  zoneRegex: /^The Fractal Continuum$/,
+  zoneRegex: {
+    en: /^The Fractal Continuum$/,
+    cn: /^博物战舰无限回廊$/,
+  },
   timelineFile: 'fractal_continuum.txt',
   timelineTriggers: [
     {
@@ -81,6 +84,7 @@
       regexKo: Regexes.startsUsing({ id: 'F87', source: '미노타우로스', capture: false }),
       alertText: {
         en: 'Use a cage',
+        de: 'Benutze einen Käfig',
         fr: 'Utilisez une cage',
       },
     },
@@ -97,6 +101,7 @@
       },
       infoText: {
         en: 'Cleanse bomb',
+        de: 'Reinige Bomben-Debuff',
         fr: 'Guérissez la bombe',
       },
     },

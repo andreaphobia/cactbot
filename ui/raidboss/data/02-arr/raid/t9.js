@@ -1,16 +1,19 @@
 'use strict';
 
 [{
-  zoneRegex: /^The Second Coil Of Bahamut - Turn \(4\)$/,
+  zoneRegex: {
+    en: /^The Second Coil Of Bahamut - Turn \(4\)$/,
+    cn: /^巴哈姆特大迷宫 入侵之章4$/,
+  },
   timelineFile: 't9.txt',
   timelineTriggers: [
     {
       id: 'T9 Claw',
       regex: /Bahamut's Claw x5/,
+      beforeSeconds: 5,
       condition: function(data) {
         return data.role == 'tank' || data.role == 'healer' || data.job == 'BLU';
       },
-      beforeSeconds: 5,
       response: Responses.tankBuster(),
     },
     {
@@ -19,6 +22,7 @@
       beforeSeconds: 5,
       infoText: {
         en: 'Dive on Main Tank',
+        de: 'Sturz auf den Main Tank',
         fr: 'Plongeon sur le main tank',
       },
     },
@@ -28,6 +32,7 @@
       beforeSeconds: 4,
       infoText: {
         en: 'Bait Super Novas Outside',
+        de: 'Köder Supernova draußen',
         fr: 'Attirer super novas à l\'extérieur',
       },
     },
@@ -50,6 +55,7 @@
       durationSeconds: 5,
       alarmText: {
         en: 'Blight on YOU',
+        de: 'Pestschwinge auf DIR',
         fr: 'Bile sur VOUS',
       },
     },
@@ -71,6 +77,7 @@
       infoText: function(data, matches) {
         return {
           en: 'Blight on ' + data.ShortName(matches.target),
+          de: 'Pestschwinge auf ' + data.ShortName(matches.target),
           fr: 'Bile sur ' + data.ShortName(matches.target),
         };
       },
@@ -98,11 +105,13 @@
         if (data.me == matches.target) {
           return {
             en: 'Thermo on YOU',
+            de: 'Thermo auf DIR',
             fr: 'Thermo sur VOUS',
           };
         }
         return {
           en: 'Stack on ' + data.ShortName(matches.target),
+          de: 'Sammeln auf ' + data.ShortName(matches.target),
           fr: 'Package sur ' + data.ShortName(matches.target),
         };
       },
@@ -130,6 +139,7 @@
       },
       alertText: {
         en: 'Silence Blue Golem',
+        de: 'Blauen Golem verstummen',
         fr: 'Silence le Golem bleu',
       },
     },
@@ -143,6 +153,7 @@
       regexKo: Regexes.startsUsing({ id: '83B', source: '넬 데우스 다르누스', capture: false }),
       alertText: {
         en: 'Heavensfall',
+        de: 'Himmelssturz',
         fr: 'Chutes du ciel',
       },
     },
@@ -159,6 +170,7 @@
       },
       infoText: {
         en: 'Garotte on YOU',
+        de: 'Leicht fixierbar auf DIR',
         fr: 'Sangle sur VOUS',
       },
       run: function(data) {
@@ -178,6 +190,7 @@
       },
       alarmText: {
         en: 'Cleanse Garotte',
+        de: 'reinige Leicht fixierbar',
         fr: 'Guerrisez Sangle',
       },
     },
@@ -216,12 +229,20 @@
       id: 'T9 Dragon Locations',
       regex: Regexes.addedCombatantFull({ name: ['Firehorn', 'Iceclaw', 'Thunderwing'] }),
       regexDe: Regexes.addedCombatantFull({ name: ['Feuerhorn', 'Eisklaue', 'Donnerschwinge'] }),
-      regexFr: Regexes.addedCombatantFull({ name: ['corne-de-feu', 'griffe-de-glace ', 'aile-de-foudre'] }),
+      regexFr: Regexes.addedCombatantFull({ name: ['Corne-De-Feu', 'Griffe-De-Glace', 'Aile-De-Foudre'] }),
       regexJa: Regexes.addedCombatantFull({ name: ['ファイアホーン', 'アイスクロウ', 'サンダーウィング'] }),
       regexCn: Regexes.addedCombatantFull({ name: ['火角', '冰爪', '雷翼'] }),
       regexKo: Regexes.addedCombatantFull({ name: ['화염뿔', '얼음발톱', '번개날개'] }),
       run: function(data, matches) {
-        let names = ['Firehorn', 'Iceclaw', 'Thunderwing'];
+        let all_names = {
+          en: ['Firehorn', 'Iceclaw', 'Thunderwing'],
+          de: ['Feuerhorn', 'Eisklaue', 'Donnerschwinge'],
+          fr: ['corne-de-feu', 'griffe-de-glace ', 'aile-de-foudre'],
+          ja: ['ファイアホーン', 'アイスクロウ', 'サンダーウィング'],
+          cn: ['火角', '冰爪', '雷翼'],
+          ko: ['화염뿔', '얼음발톱', '번개날개'],
+        };
+        let names = all_names[data.lang];
         let idx = names.indexOf(matches.name);
         if (idx == -1)
           return;
@@ -285,8 +306,8 @@
       infoText: function(data) {
         return {
           en: 'Marks: ' + data.naelMarks.join(', '),
-          fr: 'Marque : ' + data.naelMarks.join(', '),
           de: 'Markierungen : ' + data.naelMarks.join(', '),
+          fr: 'Marque : ' + data.naelMarks.join(', '),
           ja: 'マーカー: ' + data.naelMarks.join(', '),
         };
       },
@@ -335,8 +356,8 @@
       },
       alarmText: {
         en: 'Thunder on YOU',
-        fr: 'Foudre sur VOUS',
         de: 'Blitz auf DIR',
+        fr: 'Foudre sur VOUS',
         ja: '自分にサンダー',
       },
     },
@@ -364,8 +385,8 @@
         let dir = data.naelMarks[data.naelDiveMarkerCount];
         return {
           en: 'Go To ' + marker + ' (in ' + dir + ')',
-          fr: 'Aller en ' + marker + ' (au ' + dir + ')',
           de: 'Gehe zu ' + marker + ' (im ' + dir + ')',
+          fr: 'Aller en ' + marker + ' (au ' + dir + ')',
           ja: marker + 'に行く' + ' (あと ' + dir + '秒)',
         };
       },
@@ -375,8 +396,8 @@
           return;
         return {
           en: 'Go To ' + ['A', 'B', 'C'][data.naelDiveMarkerCount],
-          fr: 'Aller en ' + ['A', 'B', 'C'][data.naelDiveMarkerCount],
           de: 'Gehe zu ' + ['A', 'B', 'C'][data.naelDiveMarkerCount],
+          fr: 'Aller en ' + ['A', 'B', 'C'][data.naelDiveMarkerCount],
           ja: ['A', 'B', 'C'][data.naelDiveMarkerCount] + '行くよ',
         };
       },

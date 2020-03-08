@@ -1,7 +1,10 @@
 'use strict';
 
 [{
-  zoneRegex: /^The Navel \(Extreme\)$/,
+  zoneRegex: {
+    en: /^The Navel \(Extreme\)$/,
+    cn: /^泰坦歼殛战$/,
+  },
   timelineFile: 'titan_ex.txt',
   timelineTriggers: [
     {
@@ -41,6 +44,7 @@
       beforeSeconds: 1,
       infoText: {
         en: 'Gaoler Adds',
+        de: 'graniten Kerkermeister Adds',
         fr: 'Adds geôlier',
       },
     },
@@ -50,6 +54,7 @@
       beforeSeconds: 4,
       infoText: {
         en: 'Double Weight',
+        de: 'Doppeltes Gaias Gewicht',
         fr: 'Double poids',
       },
     },

@@ -1,7 +1,10 @@
 'use strict';
 
 [{
-  zoneRegex: /^The Second Coil Of Bahamut - Turn \(1\)$/,
+  zoneRegex: {
+    en: /^The Second Coil Of Bahamut - Turn \(1\)$/,
+    cn: /^巴哈姆特大迷宫 入侵之章1$/,
+  },
   timelineFile: 't6.txt',
   triggers: [
     {
@@ -36,23 +39,27 @@
         if (!partners) {
           return {
             en: 'Thorns on YOU',
+            de: 'Dornenpeitsche auf DIR',
             fr: 'Ronces sur VOUS',
           };
         }
         if (partners.length == 1) {
           return {
             en: 'Thorns w/ (' + data.ShortName(partners[0]) + ')',
+            de: 'Dornenpeitsche mit (' + data.ShortName(partners[0]) + ')',
             fr: 'Ronces avec (' + data.ShortName(partners[0]) + ')',
           };
         }
         if (partners.length == 2) {
           return {
             en: 'Thorns w/ (' + data.ShortName(partners[0]) + ', ' + data.ShortName(partners[1]) + ')',
+            de: 'Dornenpeitsche mit (' + data.ShortName(partners[0]) + ', ' + data.ShortName(partners[1]) + ')',
             fr: 'Ronces avec (' + data.ShortName(partners[0]) + ', ' + data.ShortName(partners[1]) + ')',
           };
         }
         return {
           en: 'Thorns (' + partners.length + ' people)',
+          de: 'Dornenpeitsche mit (' + partners.length + ' Personen)',
           fr: 'Ronces (' + partners.length + ' personne)',
         };
       },
@@ -97,6 +104,7 @@
         if (data.honey) {
           return {
             en: 'Devour: Get Eaten',
+            de: 'Verschlingen: Gefressen werden',
             fr: 'Dévoration : Faites vous manger',
           };
         }
@@ -108,6 +116,7 @@
         if (data.me == matches.target) {
           return {
             en: 'Devour: Jump In New Thorns',
+            de: 'Verschlingen: Spring in die neuen Dornen',
             fr: 'Dévoration : Sautez dans les ronces',
           };
         }
@@ -118,6 +127,7 @@
 
         return {
           en: 'Avoid Devour',
+          de: 'Weiche Verschlingen aus',
           fr: 'Evitez dévoration',
         };
       },
@@ -168,6 +178,7 @@
       regexKo: Regexes.startsUsing({ id: '86C', source: '라플레시아', capture: false }),
       infoText: {
         en: 'Stack for Acid',
+        de: 'Sammeln für Säure-Blubberblase',
         fr: 'Packez vous pour Acide',
       },
     },
@@ -186,6 +197,7 @@
         if (matches.target == data.me) {
           return {
             en: 'Swarm on YOU',
+            de: 'Fähenfurz auf DIR',
             fr: 'Nuée sur VOUS',
           };
         }
@@ -194,6 +206,7 @@
         if (matches.target != data.me) {
           return {
             en: 'Swarm on ' + data.ShortName(matches.target),
+            de: 'Fähenfurz auf ' + data.ShortName(matches.target),
             fr: 'Nuée sur ' + data.ShortName(matches.target),
           };
         }
@@ -206,11 +219,13 @@
         if (data.me == matches.target) {
           return {
             en: 'Share Laser (on YOU)',
+            de: 'Geteilter Laser (auf DIR)',
             fr: 'Partage de laser (sur VOUS)',
           };
         }
         return {
           en: 'Share Laser (on ' + data.ShortName(matches.target) + ')',
+          de: 'Geteilter Laser (auf ' + data.ShortName(matches.target) + ')',
           fr: 'Partage de laser (sur ' + data.ShortName(matches.target) + ')',
         };
       },

@@ -2,7 +2,10 @@
 
 // O9N - Alphascape 1.0
 [{
-  zoneRegex: /^Alphascape \(V1\.0\)$/,
+  zoneRegex: {
+    en: /^Alphascape \(V1\.0\)$/,
+    cn: /^欧米茄时空狭缝 阿尔法幻境1$/,
+  },
   timelineFile: 'o9n.txt',
   triggers: [
     {
@@ -13,31 +16,7 @@
       regexJa: Regexes.startsUsing({ id: '314F', source: 'カオス' }),
       regexCn: Regexes.startsUsing({ id: '314F', source: '卡奥斯' }),
       regexKo: Regexes.startsUsing({ id: '314F', source: '카오스' }),
-      alertText: function(data, matches) {
-        if (matches.target == data.me) {
-          return {
-            en: 'Tank Buster on YOU',
-            de: 'Tankbuster auf DIR',
-            fr: 'Tankbuster sur VOUS',
-          };
-        }
-        if (data.role == 'healer') {
-          return {
-            en: 'Buster on ' + data.ShortName(matches.target),
-            de: 'Tankbuster auf ' + data.ShortName(matches.target),
-            fr: 'Tankbuster sur ' + data.ShortName(matches.target),
-          };
-        }
-      },
-      tts: function(data, matches) {
-        if (matches.target == data.me) {
-          return {
-            en: 'buster',
-            de: 'basta',
-            fr: 'tankbuster',
-          };
-        }
-      },
+      response: Responses.tankBuster(),
     },
     {
       id: 'O9N Orbs Fiend',

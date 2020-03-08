@@ -2,7 +2,10 @@
 
 // The Vault
 [{
-  zoneRegex: /^The Vault$/,
+  zoneRegex: {
+    en: /^The Vault$/,
+    cn: /^圣教中枢伊修加德教皇厅$/,
+  },
   timelineFile: 'the_vault.txt',
   timelineTriggers: [
     {
@@ -18,6 +21,7 @@
       suppressSeconds: 10,
       infoText: {
         en: 'Avoid dashes',
+        de: 'Sprint ausweichen',
         fr: 'Evitez les dash',
       },
     },
@@ -63,6 +67,7 @@
         if (data.role == 'healer') {
           return {
             en: 'Heal + shield ' + data.ShortName(matches.target),
+            de: 'Heilung + Schild ' + data.ShortName(matches.target),
             fr: 'Heal + boucliers ' + data.ShortName(matches.target),
           };
         }
@@ -104,12 +109,13 @@
       regexJa: Regexes.tether({ id: '0001', source: '次元の裂け目' }),
       regexCn: Regexes.tether({ id: '0001', source: '次元裂缝' }),
       regexKo: Regexes.tether({ id: '0001', source: '차원의 틈새' }),
-      suppressSeconds: 5,
       condition: function(data, matches) {
         return data.me == matches.target;
       },
+      suppressSeconds: 5,
       alarmText: {
         en: 'Away from rifts',
+        de: 'Weg von de Ätherspalten',
         fr: 'Eloignez-vous des déchirures',
       },
     },
@@ -135,6 +141,17 @@
       response: Responses.breakChains(),
     },
     {
+      // This prevents out-of-combat activation for the March trigger during Charibert's spawn-in.
+      id: 'The Vault Knights Activation',
+      regex: Regexes.headMarker({ id: '0061', capture: false }),
+      condition: function(data) {
+        return !data.knightsActive;
+      },
+      run: function(data) {
+        data.knightsActive = true;
+      },
+    },
+    {
       id: 'The Vault Knights March',
       regex: Regexes.addedCombatant({ name: ['Dawn Knight', 'Dusk Knight'], capture: false }),
       regexDe: Regexes.addedCombatant({ name: ['Dämmerross', 'Morgenross'], capture: false }),
@@ -142,9 +159,13 @@
       regexJa: Regexes.addedCombatant({ name: ['ドーン・オートナイト', 'ダスク・オートナイト'], capture: false }),
       regexCn: Regexes.addedCombatant({ name: ['拂晓骑士', '黄昏骑士'], capture: false }),
       regexKo: Regexes.addedCombatant({ name: ['여명의 자동기사', '황혼의 자동기사'], capture: false }),
+      condition: function(data) {
+        return data.knightsActive;
+      },
       suppressSeconds: 4,
       infoText: {
         en: 'Evade marching knights',
+        de: 'Marschierenden Rittern ausweichen',
         fr: 'Esquivez les chevaliers',
       },
     },

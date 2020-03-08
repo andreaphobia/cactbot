@@ -3,6 +3,7 @@
 [{
   zoneRegex: {
     en: /^The Ridorana Lighthouse$/,
+    cn: /^封闭圣塔黎铎拉纳大灯塔$/,
     ko: /^대등대 리도르아나$/,
   },
   timelineFile: 'ridorana_lighthouse.txt',
@@ -11,12 +12,7 @@
       id: 'Ridorana Stone Breath',
       regex: /Stone Breath/,
       beforeSeconds: 7,
-      alertText: {
-        en: 'Get Behind',
-        de: 'Hinter ihn laufen',
-        fr: 'Allez derrière',
-        ko: '뒤에 숨기 (Get Behind)',
-      },
+      response: Responses.getBehind(),
     },
   ],
   triggers: [
@@ -28,37 +24,7 @@
       regexJa: Regexes.startsUsing({ id: '2C3E', source: '暗黒の雲ファムフリート' }),
       regexCn: Regexes.startsUsing({ id: '2C3E', source: '暗黑之云法姆弗里特' }),
       regexKo: Regexes.startsUsing({ id: '2C3E', source: '암흑의 구름 팜프리트' }),
-      alertText: function(data, matches) {
-        if (matches.target == data.me) {
-          return {
-            en: 'Tank Buster on YOU',
-            de: 'Tankbuster auf DIR',
-            fr: 'Tank Buster sur VOUS',
-            ko: '탱버 대상자',
-          };
-        }
-      },
-      infoText: function(data, matches) {
-        if (matches.target == data.me || data.role != 'healer')
-          return;
-
-        return {
-          en: 'Buster on ' + data.ShortName(matches.target),
-          de: 'Tankbuster auf ' + data.ShortName(matches.target),
-          fr: 'Tankbuster sur ' + data.ShortName(matches.target),
-          ko: '"' + data.ShortName(matches.target) + '" 탱버',
-        };
-      },
-      tts: function(data, matches) {
-        if (matches.target == data.me) {
-          return {
-            en: 'buster',
-            de: 'basta',
-            fr: 'tankbuster',
-            ko: '탱버',
-          };
-        }
-      },
+      response: Responses.tankBuster(),
     },
     {
       id: 'Ridorana Famfrit Tsunami 1',
@@ -132,12 +98,7 @@
       condition: function(data, matches) {
         return (matches.target == data.me);
       },
-      alertText: {
-        en: 'Dorito Stack',
-        de: 'Stacken',
-        fr: 'Stack',
-        ko: '모이기',
-      },
+      response: Responses.doritoStack(),
     },
     {
       id: 'Ridorana Famfrit Briny Cannonade',
@@ -145,12 +106,7 @@
       condition: function(data, matches) {
         return (matches.target == data.me);
       },
-      alertText: {
-        en: 'Spread',
-        de: 'Verteilen',
-        fr: 'Ecartez-vous',
-        ko: '산개',
-      },
+      response: Responses.spread(),
     },
     {
       id: 'Ridorana Famfrit Dark Rain',
@@ -161,18 +117,7 @@
       regexCn: Regexes.addedCombatant({ name: '暗黑雨水', capture: false }),
       regexKo: Regexes.addedCombatant({ name: '암흑의 빗물', capture: false }),
       suppressSeconds: 10,
-      infoText: {
-        en: 'Kill Adds',
-        de: 'Adds',
-        fr: 'Adds',
-        ko: '쫄 죽이기',
-      },
-      tts: {
-        en: 'Adds',
-        de: 'etz',
-        fr: 'Adds',
-        ko: '쫄 추가',
-      },
+      response: Responses.killAdds(),
     },
     {
       id: 'Ridorana Belias Fire',
@@ -182,37 +127,7 @@
       regexJa: Regexes.startsUsing({ id: '2CDB', source: '魔人ベリアス' }),
       regexCn: Regexes.startsUsing({ id: '2CDB', source: '魔人贝利亚斯' }),
       regexKo: Regexes.startsUsing({ id: '2CDB', source: '마인 벨리아스' }),
-      alertText: function(data, matches) {
-        if (matches.target == data.me) {
-          return {
-            en: 'Tank Buster on YOU',
-            de: 'Tankbuster auf DIR',
-            fr: 'Tankbuster sur VOUS',
-            ko: '탱버 대상자',
-          };
-        }
-      },
-      infoText: function(data, matches) {
-        if (matches.target == data.me || data.role != 'healer')
-          return;
-
-        return {
-          en: 'Buster on ' + data.ShortName(matches.target),
-          de: 'Tankbuster auf ' + data.ShortName(matches.target),
-          fr: 'Tankbuster sur ' + data.ShortName(matches.target),
-          ko: '"' + data.ShortName(matches.target) + '" 탱버',
-        };
-      },
-      tts: function(data, matches) {
-        if (matches.target == data.me) {
-          return {
-            en: 'buster',
-            de: 'basta',
-            fr: 'tankbuster',
-            ko: '탱버',
-          };
-        }
-      },
+      response: Responses.tankBuster(),
     },
     {
       id: 'Ridorana Belias Time Eruption',
@@ -271,12 +186,7 @@
       regexCn: Regexes.addedCombatant({ name: '魔人兵', capture: false }),
       regexKo: Regexes.addedCombatant({ name: '마인병', capture: false }),
       suppressSeconds: 10,
-      infoText: {
-        en: 'Kill Adds',
-        de: 'Adds',
-        fr: 'Adds',
-        ko: '쫄 죽이기',
-      },
+      response: Responses.killAdds(),
     },
     {
       id: 'Ridorana Construct Destroy',
@@ -286,37 +196,7 @@
       regexJa: Regexes.startsUsing({ id: ['2C5A', '2C71'], source: '労働七号' }),
       regexCn: Regexes.startsUsing({ id: ['2C5A', '2C71'], source: '劳动七号' }),
       regexKo: Regexes.startsUsing({ id: ['2C5A', '2C71'], source: '노동 7호' }),
-      alertText: function(data, matches) {
-        if (matches.target == data.me) {
-          return {
-            en: 'Tank Buster on YOU',
-            de: 'Tankbuster auf DIR',
-            fr: 'Tankbuster sur VOUS',
-            ko: '탱버 대상자',
-          };
-        }
-      },
-      infoText: function(data, matches) {
-        if (matches.target == data.me || data.role != 'healer')
-          return;
-
-        return {
-          en: 'Buster on ' + data.ShortName(matches.target),
-          de: 'Tankbuster auf ' + data.ShortName(matches.target),
-          fr: 'Tankbuster sur ' + data.ShortName(matches.target),
-          ko: '"' + data.ShortName(matches.target) + '" 탱버',
-        };
-      },
-      tts: function(data, matches) {
-        if (matches.target == data.me) {
-          return {
-            en: 'buster',
-            de: 'basta',
-            fr: 'tankbuster',
-            ko: '탱버',
-          };
-        }
-      },
+      response: Responses.tankBuster(),
     },
     {
       id: 'Ridorana Construct Accelerate Spread',
@@ -327,12 +207,7 @@
       preRun: function(data) {
         data.accelerateSpreadOnMe = true;
       },
-      alertText: {
-        en: 'Spread',
-        de: 'Verteilen',
-        fr: 'Ecartez-vous',
-        ko: '산개',
-      },
+      response: Responses.spread(),
     },
     {
       id: 'Ridorana Construct Accelerate Stack',
@@ -340,20 +215,7 @@
       condition: function(data) {
         return !data.accelerateSpreadOnMe;
       },
-      infoText: function(data, matches) {
-        return {
-          en: 'Stack on ' + data.ShortName(matches.target),
-          de: 'Stack auf ' + data.ShortName(matches.target),
-          fr: 'Stack sur ' + data.ShortName(matches.target),
-          ko: '"' + data.ShortName(matches.target) + '"에게 모이기',
-        };
-      },
-      tts: {
-        en: 'Stack',
-        de: 'Stek en',
-        fr: 'Stack',
-        ko: '모이기',
-      },
+      response: Responses.stackOn(),
     },
     {
       id: 'Ridorana Construct Accelerate Cleanup',
@@ -450,11 +312,11 @@
       condition: function(data, matches) {
         return (matches.target == data.me);
       },
-      delaySeconds: 0.5,
       preRun: function(data) {
         if (!data.mathBaseValue && data.currentHP > 0 && data.currentHP < 10)
           data.mathBaseValue = data.currentHP;
       },
+      delaySeconds: 0.5,
     },
     {
       id: 'Ridorana Construct Divide By Five',
@@ -525,12 +387,7 @@
       regexCn: Regexes.startsUsing({ id: '2C61', source: '劳动七号', capture: false }),
       regexKo: Regexes.startsUsing({ id: '2C61', source: '노동 7호', capture: false }),
       // 16 yalms
-      alertText: {
-        en: 'Get Out',
-        de: 'Raus da',
-        fr: 'Eloignez-vous',
-        ko: '바깥으로',
-      },
+      response: Responses.getOut(),
     },
     {
       id: 'Ridorana Construct Dispose',
@@ -540,12 +397,7 @@
       regexJa: Regexes.startsUsing({ id: ['2C5F', '2CE9'], source: '労働七号', capture: false }),
       regexCn: Regexes.startsUsing({ id: ['2C5F', '2CE9'], source: '劳动七号', capture: false }),
       regexKo: Regexes.startsUsing({ id: ['2C5F', '2CE9'], source: '노동 7호', capture: false }),
-      alertText: {
-        en: 'Get Behind',
-        de: 'Boss von hinten umkreisen',
-        fr: 'Allez derrière le boss',
-        ko: 'Get Behind', // FiX ME
-      },
+      response: Responses.getBehind(),
     },
     {
       id: 'Ridorana Construct Acceleration Bomb',
@@ -559,12 +411,7 @@
         return matches.target == data.me;
       },
       delaySeconds: 2,
-      alarmText: {
-        en: 'Stop',
-        de: 'Stopp',
-        fr: 'Stop',
-        ko: '가만히',
-      },
+      response: Responses.stopEverything(),
     },
     {
       id: 'Ridorana Yiazmat Rake Buster',
@@ -574,37 +421,7 @@
       regexJa: Regexes.startsUsing({ id: '2D4E', source: '鬼龍ヤズマット' }),
       regexCn: Regexes.startsUsing({ id: '2D4E', source: '鬼龙雅兹玛特' }),
       regexKo: Regexes.startsUsing({ id: '2D4E', source: '귀룡 야즈마트' }),
-      alertText: function(data, matches) {
-        if (matches.target == data.me) {
-          return {
-            en: 'Tank Buster on YOU',
-            de: 'Tankbuster auf DIR',
-            fr: 'Tankbuster sur VOUS',
-            ko: '탱버 대상자',
-          };
-        }
-      },
-      infoText: function(data, matches) {
-        if (matches.target == data.me || data.role != 'healer')
-          return;
-
-        return {
-          en: 'Buster on ' + data.ShortName(matches.target),
-          de: 'Tankbuster auf ' + data.ShortName(matches.target),
-          fr: 'Tankbuster sur ' + data.ShortName(matches.target),
-          ko: '"' + data.ShortName(matches.target) + '" 탱버',
-        };
-      },
-      tts: function(data, matches) {
-        if (matches.target == data.me) {
-          return {
-            en: 'buster',
-            de: 'basta',
-            fr: 'tankbuster',
-            ko: '탱버',
-          };
-        }
-      },
+      response: Responses.tankBuster(),
     },
     {
       id: 'Ridorana Yiazmat Rake Charge',
@@ -617,12 +434,7 @@
       condition: function(data) {
         return data.role == 'tank';
       },
-      infoText: {
-        en: 'Out of Front',
-        de: 'Vorm Boss weg',
-        fr: 'Ne restez pas devant',
-        ko: '보스 정면 피하기',
-      },
+      response: Responses.awayFromFront(),
     },
     {
       id: 'Ridorana Yiazmat White Breath',
@@ -632,12 +444,7 @@
       regexJa: Regexes.startsUsing({ id: '2C31', source: '鬼龍ヤズマット', capture: false }),
       regexCn: Regexes.startsUsing({ id: '2C31', source: '鬼龙雅兹玛特', capture: false }),
       regexKo: Regexes.startsUsing({ id: '2C31', source: '귀룡 야즈마트', capture: false }),
-      alertText: {
-        en: 'Get Under',
-        de: 'Reingehen',
-        fr: 'Allez sous le boss',
-        ko: '보스 아래로',
-      },
+      response: Responses.getUnder(),
     },
     {
       id: 'Ridorana Yiazmat Magnetic Negative',
@@ -684,17 +491,7 @@
       regexCn: Regexes.addedCombatant({ name: '古恶魔', capture: false }),
       regexKo: Regexes.addedCombatant({ name: '원시 악마', capture: false }),
       suppressSeconds: 10,
-      infoText: {
-        en: 'Kill Adds',
-        de: 'Adds',
-        fr: 'Adds',
-        ko: '쫄 처리',
-      },
-      tts: {
-        en: 'Adds',
-        de: 'Etz',
-        fr: 'Adds',
-      },
+      response: Responses.killAdds(),
     },
     {
       id: 'Ridorana Yiazmat Heart',

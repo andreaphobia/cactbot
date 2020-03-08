@@ -1,7 +1,10 @@
 'use strict';
 
 [{
-  zoneRegex: /^The Binding Coil Of Bahamut - Turn \(2\)$/,
+  zoneRegex: {
+    en: /^The Binding Coil Of Bahamut - Turn \(2\)$/,
+    cn: /^巴哈姆特大迷宫 邂逅之章2$/,
+  },
   triggers: [
     {
       id: 'T2 High Voltage',
@@ -9,7 +12,7 @@
       condition: function(data) {
         return data.CanSilence();
       },
-      response: Responses.interupt(),
+      response: Responses.interrupt(),
     },
     {
       id: 'T2 Ballast',
@@ -29,6 +32,7 @@
         if (data.me == matches.target) {
           return {
             en: 'Rot on YOU',
+            de: 'Fäulnis auf DIR',
             fr: 'Pourriture sur VOUS',
           };
         }
@@ -37,6 +41,7 @@
         if (data.me != matches.target) {
           return {
             en: 'Rot on ' + data.ShortName(matches.target),
+            de: 'Fäulnis auf ' + data.ShortName(matches.target),
             fr: 'Pourriture sur ' + data.ShortName(matches.target),
           };
         }
@@ -62,6 +67,7 @@
           return;
         return {
           en: 'Pass Rot',
+          de: 'Fäulnis abgeben',
           fr: 'Passez la pourriture',
         };
       },

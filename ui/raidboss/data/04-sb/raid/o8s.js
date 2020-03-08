@@ -9,6 +9,7 @@
   zoneRegex: {
     en: /^Sigmascape V4\.0 \(Savage\)$/,
     ko: /^차원의 틈 오메가: 시그마편\(영웅\) \(4\)$/,
+    cn: /^欧米茄零式时空狭缝 西格玛幻境4$/,
   },
   timelineFile: 'o8s.txt',
   triggers: [
@@ -21,20 +22,7 @@
       regexCn: Regexes.startsUsing({ id: '28DB', source: '众神之像', capture: false }),
       regexKo: Regexes.startsUsing({ id: '28DB', source: '신들의 상', capture: false }),
       delaySeconds: 5,
-      alertText: {
-        en: 'Look for Knockback',
-        fr: 'Préparez-vous à la projection',
-        de: 'Auf Rückstoß achten',
-        ko: '넉백 대비',
-        ja: 'ノックバックくるよ',
-      },
-      tts: {
-        en: 'knockback',
-        fr: 'Projection',
-        de: 'Rückstoß',
-        ko: '넉백',
-        ja: 'ノックバック',
-      },
+      response: Responses.knockback(),
     },
     {
       id: 'O8S Indolent Will',
@@ -67,20 +55,7 @@
       regexJa: Regexes.startsUsing({ id: '28DF', source: '神々の像', capture: false }),
       regexCn: Regexes.startsUsing({ id: '28DF', source: '众神之像', capture: false }),
       regexKo: Regexes.startsUsing({ id: '28DF', source: '신들의 상', capture: false }),
-      alertText: {
-        en: '<= Get Left/West',
-        fr: '<= Allez à Gauche/Ouest',
-        de: '<= Nach Links/Westen',
-        ko: '<= 왼쪽이 안전',
-        ja: '<= 左/西へ',
-      },
-      tts: {
-        en: 'left',
-        fr: 'gauche',
-        de: 'links',
-        ko: '왼쪽',
-        ja: '左',
-      },
+      response: Responses.goWest(),
     },
     {
       id: 'O8S Gravitational Wave',
@@ -90,20 +65,7 @@
       regexJa: Regexes.startsUsing({ id: '28DE', source: '神々の像', capture: false }),
       regexCn: Regexes.startsUsing({ id: '28DE', source: '众神之像', capture: false }),
       regexKo: Regexes.startsUsing({ id: '28DE', source: '신들의 상', capture: false }),
-      alertText: {
-        en: 'Get Right/East =>',
-        fr: 'Allez à Droite/Est =>',
-        de: 'Nach Rechts/Westen =>',
-        ko: '오른쪽이 안전 =>',
-        ja: '右/東へ =>',
-      },
-      tts: {
-        en: 'right',
-        fr: 'Projection depuis le côté droit',
-        de: 'rechts',
-        ko: '오른쪽',
-        ja: '右',
-      },
+      response: Responses.goEast(),
     },
     {
       id: 'O8S Ave Maria',
@@ -239,20 +201,7 @@
       condition: function(data, matches) {
         return data.me == matches.target;
       },
-      alertText: {
-        en: 'Knockback on YOU',
-        fr: 'Projection sur VOUS',
-        de: 'Rückstoß auf DIR',
-        ko: '넉백 → 나',
-        ja: 'ノックバック on YOU',
-      },
-      tts: {
-        en: 'knockback',
-        fr: 'Projection',
-        de: 'Rückstoß',
-        ko: '넉백',
-        ja: 'ノックバック',
-      },
+      response: Responses.knockbackOn(),
     },
     {
       id: 'O8S Wings of Destruction',
@@ -564,7 +513,6 @@
       regexJa: Regexes.startsUsing({ id: ['28CD', '2B31'], source: 'ケフカ', capture: false }),
       regexCn: Regexes.startsUsing({ id: ['28CD', '2B31'], source: '凯夫卡', capture: false }),
       regexKo: Regexes.startsUsing({ id: ['28CD', '2B31'], source: '케프카', capture: false }),
-      suppressSeconds: 40,
       preRun: function(data) {
         data.lastThunder = {
           en: 'True Thunder',
@@ -574,6 +522,7 @@
           ja: '真サンダガ',
         }[data.lang];
       },
+      suppressSeconds: 40,
       infoText: function(data) {
         return data.lastThunder;
       },
@@ -592,7 +541,6 @@
       regexJa: Regexes.startsUsing({ id: ['28CC', '2B30'], source: 'ケフカ', capture: false }),
       regexCn: Regexes.startsUsing({ id: ['28CC', '2B30'], source: '凯夫卡', capture: false }),
       regexKo: Regexes.startsUsing({ id: ['28CC', '2B30'], source: '케프카', capture: false }),
-      suppressSeconds: 40,
       preRun: function(data) {
         data.lastThunder = {
           en: 'Fake Thunder',
@@ -602,6 +550,7 @@
           ja: 'にせサンダガ',
         }[data.lang];
       },
+      suppressSeconds: 40,
       infoText: function(data) {
         return data.lastThunder;
       },
@@ -620,7 +569,6 @@
       regexJa: Regexes.startsUsing({ id: ['28C5', '2B2B'], source: 'ケフカ', capture: false }),
       regexCn: Regexes.startsUsing({ id: ['28C5', '2B2B'], source: '凯夫卡', capture: false }),
       regexKo: Regexes.startsUsing({ id: ['28C5', '2B2B'], source: '케프카', capture: false }),
-      suppressSeconds: 40,
       preRun: function(data) {
         data.lastIce = {
           en: 'Fake Ice',
@@ -637,6 +585,7 @@
           ja: '外へ',
         }[data.lang];
       },
+      suppressSeconds: 40,
       infoText: function(data) {
         return data.lastIce + ': ' + data.lastIceDir;
       },
@@ -655,7 +604,6 @@
       regexJa: Regexes.startsUsing({ id: ['28C9', '2B2E'], source: 'ケフカ', capture: false }),
       regexCn: Regexes.startsUsing({ id: ['28C9', '2B2E'], source: '凯夫卡', capture: false }),
       regexKo: Regexes.startsUsing({ id: ['28C9', '2B2E'], source: '케프카', capture: false }),
-      suppressSeconds: 40,
       preRun: function(data) {
         data.lastIce = {
           en: 'True Ice',
@@ -672,6 +620,7 @@
           ja: '中へ',
         }[data.lang];
       },
+      suppressSeconds: 40,
       infoText: function(data) {
         return data.lastIce + ': ' + data.lastIceDir;
       },
@@ -690,7 +639,6 @@
       regexJa: Regexes.startsUsing({ id: ['28C4', '2B2A'], source: 'ケフカ', capture: false }),
       regexCn: Regexes.startsUsing({ id: ['28C4', '2B2A'], source: '凯夫卡', capture: false }),
       regexKo: Regexes.startsUsing({ id: ['28C4', '2B2A'], source: '케프카', capture: false }),
-      suppressSeconds: 40,
       preRun: function(data) {
         data.lastIce = {
           en: 'Fake Ice',
@@ -707,6 +655,7 @@
           ja: '中へ',
         }[data.lang];
       },
+      suppressSeconds: 40,
       infoText: function(data) {
         return data.lastIce + ': ' + data.lastIceDir;
       },
@@ -725,7 +674,6 @@
       regexJa: Regexes.startsUsing({ id: ['28C8', '2B2D'], source: 'ケフカ', capture: false }),
       regexCn: Regexes.startsUsing({ id: ['28C8', '2B2D'], source: '凯夫卡', capture: false }),
       regexKo: Regexes.startsUsing({ id: ['28C8', '2B2D'], source: '케프카', capture: false }),
-      suppressSeconds: 40,
       preRun: function(data) {
         data.lastIce = {
           en: 'True Ice',
@@ -742,6 +690,7 @@
           ja: '外へ',
         }[data.lang];
       },
+      suppressSeconds: 40,
       infoText: function(data) {
         return data.lastIce + ': ' + data.lastIceDir;
       },

@@ -3,6 +3,7 @@
 [{
   zoneRegex: {
     en: /^The Royal City Of Rabanastre$/,
+    cn: /^失落之都拉巴纳斯塔$/,
     ko: /^왕도 라바나스터$/,
   },
   timelineFile: 'royal_city_of_rabanastre.txt',
@@ -40,16 +41,6 @@
       condition: function(data, matches) {
         return data.me == matches.target;
       },
-      infoText: function(data) {
-        if (data.breathless >= 7) {
-          return {
-            en: 'Breathless: ' + (data.breathless + 1),
-            de: 'Atemnot: ' + (data.breathless + 1),
-            fr: 'Suffocation :' + (data.breathless + 1),
-            ko: '호흡곤란: ' + (data.breathless + 1),
-          };
-        }
-      },
       alarmText: function(data) {
         if (data.breathless == 6) {
           return {
@@ -57,6 +48,16 @@
             de: 'Geh in die Blase',
             fr: 'Allez dans une bulle',
             ko: '물방울 안으로',
+          };
+        }
+      },
+      infoText: function(data) {
+        if (data.breathless >= 7) {
+          return {
+            en: 'Breathless: ' + (data.breathless + 1),
+            de: 'Atemnot: ' + (data.breathless + 1),
+            fr: 'Suffocation :' + (data.breathless + 1),
+            ko: '호흡곤란: ' + (data.breathless + 1),
           };
         }
       },
@@ -113,23 +114,14 @@
     },
     {
       id: 'Rab Hashmal Rock Cutter',
-      regex: Regexes.startsUsing({ id: '25D7', source: 'Hashmal, Bringer Of Order', capture: false }),
-      regexDe: Regexes.startsUsing({ id: '25D7', source: 'Hashmallim (?:der|die|das) Einiger', capture: false }),
-      regexFr: Regexes.startsUsing({ id: '25D7', source: 'Hashmal Le Grand Ordonnateur', capture: false }),
-      regexJa: Regexes.startsUsing({ id: '25D7', source: '統制者ハシュマリム', capture: false }),
-      regexCn: Regexes.startsUsing({ id: '25D7', source: '统治者哈修马利姆', capture: false }),
-      regexKo: Regexes.startsUsing({ id: '25D7', source: '통제자 하쉬말림', capture: false }),
-      infoText: {
-        en: 'Tank Cleave',
-        de: 'Tank Cleave',
-        fr: 'Tank Cleave',
-        ko: '탱버',
-      },
-      tts: {
-        en: 'tank cleave',
-        de: 'tenk klief',
-        fr: 'tank clive',
-      },
+      regex: Regexes.startsUsing({ id: '25D7', source: 'Hashmal, Bringer Of Order' }),
+      regexDe: Regexes.startsUsing({ id: '25D7', source: 'Hashmallim (?:der|die|das) Einiger' }),
+      regexFr: Regexes.startsUsing({ id: '25D7', source: 'Hashmal Le Grand Ordonnateur' }),
+      regexJa: Regexes.startsUsing({ id: '25D7', source: '統制者ハシュマリム' }),
+      regexCn: Regexes.startsUsing({ id: '25D7', source: '统治者哈修马利姆' }),
+      regexKo: Regexes.startsUsing({ id: '25D7', source: '통제자 하쉬말림' }),
+      response: Responses.tankCleave(),
+
     },
     {
       id: 'Rab Hashmal Earth Hammer',
@@ -221,18 +213,7 @@
       condition: function(data, matches) {
         return data.me == matches.target;
       },
-      alertText: {
-        en: 'Move In (Chariot)',
-        de: 'Raus da (Streitwagen)',
-        fr: 'Allez dedans (Chariot)',
-        ko: '안으로 (전차)',
-      },
-      tts: {
-        en: 'chariot',
-        de: 'Streitwagen',
-        fr: 'chariot',
-        ko: '전차',
-      },
+      response: Responses.getIn(),
     },
     {
       id: 'Rab Rofocale Trample',

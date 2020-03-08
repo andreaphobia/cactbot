@@ -2,7 +2,10 @@
 
 // O3S - Deltascape 3.0 Savage
 [{
-  zoneRegex: /^Deltascape V3\.0 \(Savage\)$/,
+  zoneRegex: {
+    en: /^Deltascape V3\.0 \(Savage\)$/,
+    cn: /^欧米茄零式时空狭缝 德尔塔幻境3$/,
+  },
   timelineFile: 'o3s.txt',
   triggers: [
     {
@@ -46,6 +49,15 @@
       // So, #2 is the person everybody should stack on.
       id: 'O3S Spellblade Holy',
       regex: Regexes.headMarker({ id: ['0064', '0065'] }),
+      condition: function(data, matches) {
+        // Library phase stack markers behave differently.
+        if (data.phase == 3)
+          return false;
+
+        data.holyTargets = data.holyTargets || [];
+        data.holyTargets.push(matches.target);
+        return data.holyTargets.length == 4;
+      },
       alarmText: function(data) {
         if (data.holyTargets[1] != data.me)
           return '';
@@ -81,15 +93,6 @@
           }
         }
       },
-      condition: function(data, matches) {
-        // Library phase stack markers behave differently.
-        if (data.phase == 3)
-          return false;
-
-        data.holyTargets = data.holyTargets || [];
-        data.holyTargets.push(matches.target);
-        return data.holyTargets.length == 4;
-      },
       tts: function(data) {
         if (data.holyTargets[1] == data.me) {
           return {
@@ -118,6 +121,23 @@
       // Library phase spellblade holy with 2 stacks / 4 preys / 2 unmarked.
       id: 'O3S Library Spellblade',
       regex: Regexes.headMarker({ id: ['0064', '0065'] }),
+      condition: function(data, matches) {
+        // This is only for library phase.
+        if (data.phase != 3)
+          return false;
+
+        if (matches.target == data.me)
+          data.librarySpellbladeMe = matches.id;
+
+        return true;
+      },
+      // Because people can be dead and there are eight marks, delay to
+      // accumulate logs instead of counting marks.  Instantly print if
+      // anything is on you.  The 6 triggers will all have condition=true
+      // and run, but only the first one will print.
+      delaySeconds: function(data, matches) {
+        return matches.target == data.me ? 0 : 0.5;
+      },
       alertText: function(data) {
         if (data.librarySpellbladePrinted)
           return;
@@ -139,23 +159,6 @@
           en: 'go south: stack on friend',
           de: 'nach süden: stack auf freund',
         };
-      },
-      // Because people can be dead and there are eight marks, delay to
-      // accumulate logs instead of counting marks.  Instantly print if
-      // anything is on you.  The 6 triggers will all have condition=true
-      // and run, but only the first one will print.
-      delaySeconds: function(data, matches) {
-        return matches.target == data.me ? 0 : 0.5;
-      },
-      condition: function(data, matches) {
-        // This is only for library phase.
-        if (data.phase != 3)
-          return false;
-
-        if (matches.target == data.me)
-          data.librarySpellbladeMe = matches.id;
-
-        return true;
       },
       tts: function(data) {
         if (data.librarySpellbladePrinted)
@@ -256,14 +259,7 @@
       regexJa: Regexes.startsUsing({ id: '22F7', source: 'ハリカルナッソス', capture: false }),
       regexCn: Regexes.startsUsing({ id: '22F7', source: '哈利卡纳苏斯', capture: false }),
       regexKo: Regexes.startsUsing({ id: '22F7', source: '할리카르나소스', capture: false }),
-      alertText: {
-        en: 'Ribbit: Get behind',
-        de: 'Quaaak: Hinter sie',
-      },
-      tts: {
-        en: 'ribbit',
-        de: 'quak',
-      },
+      response: Responses.getBehind(),
     },
     {
       id: 'O3S Oink',
@@ -273,14 +269,7 @@
       regexJa: Regexes.startsUsing({ id: '22F9', source: 'ハリカルナッソス', capture: false }),
       regexCn: Regexes.startsUsing({ id: '22F9', source: '哈利卡纳苏斯', capture: false }),
       regexKo: Regexes.startsUsing({ id: '22F9', source: '할리카르나소스', capture: false }),
-      infoText: {
-        en: 'Oink: Stack',
-        de: 'Quiiiek: Stack',
-      },
-      tts: {
-        en: 'oink',
-        de: 'quiek',
-      },
+      response: Responses.stack(),
     },
     {
       id: 'O3S Squelch',
@@ -290,14 +279,7 @@
       regexJa: Regexes.startsUsing({ id: '22F8', source: 'ハリカルナッソス', capture: false }),
       regexCn: Regexes.startsUsing({ id: '22F8', source: '哈利卡纳苏斯', capture: false }),
       regexKo: Regexes.startsUsing({ id: '22F8', source: '할리카르나소스', capture: false }),
-      alarmText: {
-        en: 'Squelch: Look away',
-        de: 'Gurrr: Wegschauen',
-      },
-      tts: {
-        en: 'look away',
-        de: 'weckschauen',
-      },
+      response: Responses.lookAway(),
     },
     {
       id: 'O3S The Queen\'s Waltz: Books',

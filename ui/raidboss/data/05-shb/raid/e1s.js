@@ -3,7 +3,7 @@
 [{
   zoneRegex: {
     en: /^Eden's Gate: Resurrection \(Savage\)$/,
-    cn: /^伊甸零式希望乐园 \(觉醒之章1\)$/,
+    cn: /^伊甸零式希望乐园 觉醒之章1$/,
     ko: /^희망의 낙원 에덴: 각성편\(영웅\) \(1\)$/,
   },
   timelineFile: 'e1s.txt',
@@ -24,6 +24,15 @@
           'brb making coffee',
           'Eden\'s Snoozefest',
           'rip enochian',
+        ],
+        de: [
+          'brb',
+          ':zzz:',
+          'LA HEE',
+          'Kurzer Powernap',
+          'brb Kafee machen',
+          'Eden\'s Schlaffest',
+          'tschüss Henochisch',
         ],
         cn: [
           '马上回来',
@@ -93,11 +102,7 @@
       condition: function(data) {
         return data.role == 'healer';
       },
-      infoText: {
-        en: 'Raid damage',
-        de: 'AoE',
-        fr: 'Dégâts de zone',
-      },
+      response: Responses.aoe(),
     },
     {
       id: 'E1S Fragor Maximus',
@@ -110,11 +115,7 @@
       condition: function(data) {
         return data.role == 'healer';
       },
-      infoText: {
-        en: 'Raid damage',
-        de: 'AoE',
-        fr: 'Dégâts de zone',
-      },
+      response: Responses.aoe(),
     },
     {
       id: 'E1S Dimensional Shift',
@@ -127,11 +128,7 @@
       condition: function(data) {
         return data.role == 'healer';
       },
-      infoText: {
-        en: 'Raid damage',
-        de: 'AoE',
-        fr: 'Dégâts de zone',
-      },
+      response: Responses.aoe(),
     },
     {
       id: 'E1S Spear Of Paradise',
@@ -176,11 +173,7 @@
       regexJa: Regexes.startsUsing({ id: '3D73', source: 'エデン・プライム', capture: false }),
       regexCn: Regexes.startsUsing({ id: '3D73', source: '至尊伊甸', capture: false }),
       regexKo: Regexes.startsUsing({ id: '3D73', source: '에덴 프라임', capture: false }),
-      alertText: {
-        en: 'Get inside the boss',
-        de: 'Unter den Boss',
-        fr: 'Sous le boss',
-      },
+      response: Responses.getUnder('alert'),
     },
     {
       id: 'E1S Delta Attack 1',
@@ -440,23 +433,17 @@
     },
     {
       id: 'E1S Mana Boost',
-      regex: Regexes.startsUsing({ id: '3D8D', source: 'Guardian Of Paradise', capture: false }),
-      regexDe: Regexes.startsUsing({ id: '3D8D', source: 'Hüter Von Eden', capture: false }),
-      regexFr: Regexes.startsUsing({ id: '3D8D', source: 'Gardien Du Jardin', capture: false }),
-      regexJa: Regexes.startsUsing({ id: '3D8D', source: 'エデン・ガーデナー', capture: false }),
-      regexCn: Regexes.startsUsing({ id: '3D8D', source: '伊甸守护者', capture: false }),
-      regexKo: Regexes.startsUsing({ id: '3D8D', source: '에덴의 수호자', capture: false }),
+      regex: Regexes.startsUsing({ id: '3D8D', source: 'Guardian Of Paradise' }),
+      regexDe: Regexes.startsUsing({ id: '3D8D', source: 'Hüter Von Eden' }),
+      regexFr: Regexes.startsUsing({ id: '3D8D', source: 'Gardien Du Jardin' }),
+      regexJa: Regexes.startsUsing({ id: '3D8D', source: 'エデン・ガーデナー' }),
+      regexCn: Regexes.startsUsing({ id: '3D8D', source: '伊甸守护者' }),
+      regexKo: Regexes.startsUsing({ id: '3D8D', source: '에덴의 수호자' }),
       condition: function(data) {
         return data.CanSilence();
       },
       suppressSeconds: 1,
-      alertText: {
-        en: 'Interrupt',
-        de: 'Stumm auf Hüter ',
-        fr: 'Interrompez le gardien',
-        cn: '沉默小怪',
-        ko: '쫄 침묵',
-      },
+      response: Responses.interrupt(),
     },
     {
       id: 'E1S Pure Light',
@@ -466,11 +453,7 @@
       regexJa: Regexes.startsUsing({ id: '3D8A', source: 'エデン・プライム', capture: false }),
       regexCn: Regexes.startsUsing({ id: '3D8A', source: '至尊伊甸', capture: false }),
       regexKo: Regexes.startsUsing({ id: '3D8A', source: '에덴 프라임', capture: false }),
-      alertText: {
-        en: 'Get behind the boss',
-        de: 'Hinter den Boss',
-        fr: 'Derrière le boss',
-      },
+      response: Responses.getBehind(),
     },
     {
       id: 'E1S Pure Beam 1',

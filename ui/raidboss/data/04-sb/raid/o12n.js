@@ -2,7 +2,10 @@
 
 // O12N - Alphascape 4.0
 [{
-  zoneRegex: /^Alphascape \(V4\.0\)$/,
+  zoneRegex: {
+    en: /^Alphascape \(V4\.0\)$/,
+    cn: /^欧米茄时空狭缝 阿尔法幻境4$/,
+  },
   timelineFile: 'o12n.txt',
   timelineTriggers: [
     {
@@ -29,31 +32,7 @@
         return data.me == matches.target || data.role == 'healer';
       },
       suppressSeconds: 1,
-      alertText: function(data, matches) {
-        if (matches.target == data.me) {
-          return {
-            en: 'Tank Buster on YOU',
-            de: 'Tankbuster auf DIR',
-            fr: 'Tankbuster sur VOUS',
-          };
-        }
-        if (data.role == 'healer') {
-          return {
-            en: 'Tank Busters',
-            de: 'Tankbuster',
-            fr: 'Tankbuster',
-          };
-        }
-      },
-      tts: function(data, matches) {
-        if (matches.target == data.me) {
-          return {
-            en: 'buster',
-            de: 'basta',
-            fr: 'tankbuster',
-          };
-        }
-      },
+      response: Responses.tankBuster(),
     },
     {
       id: 'O12N Optimized Blade Dance',
@@ -67,31 +46,7 @@
         return data.me == matches.target || data.role == 'healer';
       },
       suppressSeconds: 1,
-      alertText: function(data, matches) {
-        if (matches.target == data.me) {
-          return {
-            en: 'Tank Buster on YOU',
-            de: 'Tankbuster auf DIR',
-            fr: 'Tankbuster sur VOUS',
-          };
-        }
-        if (data.role == 'healer') {
-          return {
-            en: 'Tank Busters',
-            de: 'Tankbuster',
-            fr: 'Tankbuster',
-          };
-        }
-      },
-      tts: function(data, matches) {
-        if (matches.target == data.me) {
-          return {
-            en: 'buster',
-            de: 'basta',
-            fr: 'tankbuster',
-          };
-        }
-      },
+      response: Responses.tankBuster(),
     },
     {
       id: 'O12N Local Resonance',
@@ -116,11 +71,7 @@
       condition: function(data, matches) {
         return data.me == matches.target;
       },
-      infoText: {
-        en: 'Meteor on YOU',
-        de: 'Meteor auf DIR',
-        fr: 'Météore sur VOUS',
-      },
+      response: Responses.meteorOnYou(),
     },
     {
       id: 'O12N Stack Spread Markers',

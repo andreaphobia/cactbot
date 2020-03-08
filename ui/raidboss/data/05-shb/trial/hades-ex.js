@@ -22,6 +22,7 @@
       },
       infoText: {
         en: 'Comet Towers',
+        de: 'Türme',
         fr: 'Tours',
         ja: 'コメットを処理',
         cn: '踩塔',
@@ -56,13 +57,7 @@
       regexJa: Regexes.startsUsing({ id: '47A8', source: 'ハーデス', capture: false }),
       regexKo: Regexes.startsUsing({ id: '47A8', source: '하데스', capture: false }),
       delaySeconds: 5.5,
-      alertText: {
-        en: 'Move',
-        fr: 'Esquivez',
-        ja: '移動',
-        cn: '移动',
-        ko: '이동',
-      },
+      response: Responses.move('alert'),
     },
     {
       id: 'HadesEx Ravenous Assault',
@@ -72,41 +67,10 @@
       regexFr: Regexes.startsUsing({ id: '47A6', source: 'Hadès' }),
       regexJa: Regexes.startsUsing({ id: '47A6', source: 'ハーデス' }),
       regexKo: Regexes.startsUsing({ id: '47A6', source: '하데스' }),
-      alertText: function(data, matches) {
-        if (matches.target == data.me) {
-          return {
-            en: 'Tank Buster on YOU',
-            de: 'Tankbuster auf DIR',
-            fr: 'Tankbuster sur VOUS',
-            ja: '自分にTB',
-            cn: '死刑点名',
-            ko: '탱버 대상자',
-          };
-        }
-        if (data.role == 'healer') {
-          return {
-            en: 'Buster on ' + data.ShortName(matches.target),
-            de: 'Tankbuster auf ' + data.ShortName(matches.target),
-            fr: 'Tankbuster sur ' + data.ShortName(matches.target),
-            ja: data.ShortName(matches.target) + 'にTB',
-            cn: '死刑点 ' + data.ShortName(matches.target),
-            ko: '"' + data.ShortName(matches.target) + '" 탱버',
-          };
-        }
+      condition: function(data, matches) {
+        return matches.target == data.me || data.role == 'tank' || data.role == 'healer';
       },
-      infoText: function(data, matches) {
-        if (matches.target == data.me || data.role != 'tank')
-          return;
-
-        return {
-          en: 'Buster on ' + data.ShortName(matches.target),
-          de: 'Tankbuster auf ' + data.ShortName(matches.target),
-          fr: 'Tankbuster sur ' + data.ShortName(matches.target),
-          ja: data.ShortName(matches.target) + 'にTB',
-          cn: '死刑点 ' + data.ShortName(matches.target),
-          ko: '"' + data.ShortName(matches.target) + '" 탱버',
-        };
-      },
+      response: Responses.tankBuster(),
     },
     {
       id: 'HadesEx Bad Faith Left 1',
@@ -116,14 +80,7 @@
       regexFr: Regexes.startsUsing({ id: '47AB', source: 'Hadès', capture: false }),
       regexJa: Regexes.startsUsing({ id: '47AB', source: 'ハーデス', capture: false }),
       regexKo: Regexes.startsUsing({ id: '47AB', source: '하데스', capture: false }),
-      infoText: {
-        en: 'Left',
-        de: 'Links',
-        fr: 'Gauche',
-        ja: '左へ',
-        cn: '左',
-        ko: '왼쪽',
-      },
+      response: Responses.goLeft('info'),
     },
     {
       id: 'HadesEx Bad Faith Left 2',
@@ -151,14 +108,7 @@
       regexFr: Regexes.startsUsing({ id: '47AC', source: 'Hadès', capture: false }),
       regexJa: Regexes.startsUsing({ id: '47AC', source: 'ハーデス', capture: false }),
       regexKo: Regexes.startsUsing({ id: '47AC', source: '하데스', capture: false }),
-      infoText: {
-        en: 'Right',
-        de: 'Rechts',
-        fr: 'Droite',
-        ja: '右へ',
-        cn: '右',
-        ko: '오른쪽',
-      },
+      response: Responses.goRight('info'),
     },
     {
       id: 'HadesEx Bad Faith Right 2',
@@ -220,18 +170,12 @@
       regexDe: Regexes.startsUsing({ id: '47B8', source: 'Nabriales\' Schatten', capture: false }),
       regexFr: Regexes.startsUsing({ id: '47B8', source: 'Spectre De Nabriales', capture: false }),
       regexJa: Regexes.startsUsing({ id: '47B8', source: 'ナプリアレスの影', capture: false }),
-      delaySeconds: 25,
+      regexCn: Regexes.startsUsing({ id: '47B8', source: '那布里亚勒斯之影', capture: false }),
       condition: function(data) {
         return data.role == 'tank' || data.role == 'healer';
       },
-      infoText: {
-        en: 'aoe',
-        de: 'AoE',
-        fr: 'Dégâts de zone',
-        ja: 'AoE',
-        cn: 'AOE',
-        ko: '전체 공격',
-      },
+      delaySeconds: 25,
+      response: Responses.aoe(),
     },
     {
       id: 'HadesEx Dark II Tether',
@@ -314,10 +258,10 @@
       regexDe: Regexes.tether({ id: '000E', source: ['Igeyorhms Schatten', 'Lahabreas Schatten'], target: ['Igeyorhms Schatten', 'Lahabreas Schatten'], capture: false }),
       regexFr: Regexes.tether({ id: '000E', source: ['Spectre d\'Igeyorhm', 'Spectre De Lahabrea'], target: ['Spectre d\'Igeyorhm', 'Spectre De Lahabrea'], capture: false }),
       regexJa: Regexes.tether({ id: '000E', source: ['イゲオルムの影', 'ラハブレアの影'], target: ['イゲオルムの影', 'ラハブレアの影'], capture: false }),
-      suppressSeconds: 10,
       condition: function(data) {
         return data.role == 'tank';
       },
+      suppressSeconds: 10,
       alarmText: {
         en: 'Move Shades Apart',
         de: 'Schatten auseinander ziehen',
@@ -363,14 +307,7 @@
       condition: function(data) {
         return data.role == 'healer';
       },
-      infoText: {
-        en: 'aoe',
-        de: 'AoE',
-        fr: 'Dégâts de zone',
-        ja: 'アシエンを引き離す',
-        cn: 'AOE',
-        ko: '전체 공격',
-      },
+      response: Responses.aoe(),
     },
     {
       id: 'HadesEx Burning Brand',
@@ -426,14 +363,7 @@
       condition: function(data, matches) {
         return data.me == matches.target;
       },
-      alertText: {
-        en: 'Tank Buster on YOU',
-        de: 'Tankbuster auf DIR',
-        fr: 'Tankbuster sur VOUS',
-        ja: '自分にTB',
-        cn: '死刑点名',
-        ko: '탱버 대상자',
-      },
+      response: Responses.tankBuster(),
     },
     {
       id: 'HadesEx Fire IV',
@@ -445,14 +375,7 @@
       condition: function(data, matches) {
         return data.me == matches.target;
       },
-      alertText: {
-        en: 'Tank Buster on YOU',
-        de: 'Tankbuster auf DIR',
-        fr: 'Tankbuster sur VOUS',
-        ja: '自分にTB',
-        cn: '死刑点名',
-        ko: '탱버 대상자',
-      },
+      response: Responses.tankBuster(),
     },
     {
       id: 'HadesEx Healers Blizzard/Fire IV',
@@ -482,10 +405,10 @@
       regexFr: Regexes.gainsEffect({ effect: 'Glas', capture: false }),
       regexJa: Regexes.gainsEffect({ effect: '死の宣告', capture: false }),
       regexKo: Regexes.gainsEffect({ effect: '죽음의 선고', capture: false }),
-      suppressSeconds: 5,
       condition: function(data) {
         return data.role == 'healer';
       },
+      suppressSeconds: 5,
       alertText: {
         en: 'Heal T/H to Full',
         de: 'Heile T/H voll',
@@ -503,18 +426,11 @@
       regexFr: Regexes.gainsEffect({ effect: 'Cri Du Maléfice' }),
       regexJa: Regexes.gainsEffect({ effect: '呪詛の叫声' }),
       regexKo: Regexes.gainsEffect({ effect: '저주의 외침' }),
-      suppressSeconds: 2,
       delaySeconds: function(data, matches) {
         return parseFloat(matches.duration) - 2;
       },
-      alarmText: {
-        en: 'Look Away',
-        de: 'Weg schauen',
-        fr: 'Regardez vers l\'extérieur',
-        ja: '背中を向け',
-        cn: '背对',
-        ko: '바라보지 말기',
-      },
+      suppressSeconds: 2,
+      response: Responses.lookAway('alarm'),
     },
     {
       id: 'HadesEx Beyond Death',
@@ -524,10 +440,10 @@
       regexFr: Regexes.gainsEffect({ effect: 'Outre-Mort' }),
       regexJa: Regexes.gainsEffect({ effect: '死の超越' }),
       regexKo: Regexes.gainsEffect({ effect: '죽음 초월' }),
-      durationSeconds: 8,
       condition: function(data, matches) {
         return data.me == matches.target;
       },
+      durationSeconds: 8,
       alertText: {
         en: 'Get Killed',
         de: 'Stirb',
@@ -589,10 +505,10 @@
       regexDe: Regexes.startsUsing({ id: '47CC', source: 'Schatten Des Prim-Ascian', capture: false }),
       regexFr: Regexes.startsUsing({ id: '47CC', source: 'Spectre De Primo-Ascien', capture: false }),
       regexJa: Regexes.startsUsing({ id: '47CC', source: 'アシエン・プライムの影', capture: false }),
-      delaySeconds: 12,
       condition: function(data) {
         return data.role == 'tank' || data.role == 'healer';
       },
+      delaySeconds: 12,
       infoText: {
         en: 'aoe + bleed',
         de: 'AoE + Blutung',
@@ -666,14 +582,7 @@
       condition: function(data) {
         return data.role == 'tank' || data.role == 'healer';
       },
-      infoText: {
-        en: 'aoe',
-        de: 'AoE',
-        fr: 'Dégâts de zone',
-        ja: 'AoE',
-        cn: 'AOE',
-        ko: '전체 공격',
-      },
+      response: Responses.aoe(),
     },
     {
       id: 'HadesEx Captivity',
@@ -681,14 +590,7 @@
       condition: function(data, matches) {
         return data.me == matches.target;
       },
-      alarmText: {
-        en: 'Get Out',
-        de: 'Raus gehen',
-        fr: 'Sortez',
-        ja: '外へ',
-        cn: '远离',
-        ko: '바깥에 있기',
-      },
+      response: Responses.getOut('alarm'),
     },
     {
       id: 'HadesEx Aetherial Gaol',
@@ -713,9 +615,6 @@
       condition: function(data, matches) {
         return matches.target == data.me;
       },
-      run: function(data) {
-        data.flame = true;
-      },
       infoText: {
         en: 'Knockback + Stack on YOU',
         de: 'Rückstoß + sammeln beim DIR',
@@ -724,15 +623,15 @@
         cn: '击退 + 集合 点名',
         ko: '넉백 + 쉐어징 대상자',
       },
+      run: function(data) {
+        data.flame = true;
+      },
     },
     {
       id: 'HadesEx Dark Freeze',
       regex: Regexes.headMarker({ id: '00C1' }),
       condition: function(data, matches) {
         return matches.target == data.me;
-      },
-      run: function(data) {
-        data.freeze = true;
       },
       infoText: {
         en: 'Knockback + Ice on YOU',
@@ -741,6 +640,9 @@
         ja: 'ノックバック + 氷',
         cn: '击退 + 冰 点名',
         ko: '넉백 + 얼음징 대상자',
+      },
+      run: function(data) {
+        data.freeze = true;
       },
     },
     {
@@ -770,9 +672,6 @@
       condition: function(data, matches) {
         return data.me == matches.target;
       },
-      run: function(data) {
-        data.netherBlast = true;
-      },
       alertText: {
         en: 'Puddles on YOU',
         de: 'Fläsche auf YOU',
@@ -780,6 +679,9 @@
         ja: 'AoEを外に捨て',
         cn: '水圈点名',
         ko: '징 대상자',
+      },
+      run: function(data) {
+        data.netherBlast = true;
       },
     },
     {
@@ -810,14 +712,7 @@
       regexFr: Regexes.startsUsing({ id: '47EA', source: 'Hadès', capture: false }),
       regexJa: Regexes.startsUsing({ id: '47EA', source: 'ハーデス', capture: false }),
       regexKo: Regexes.startsUsing({ id: '47EA', source: '하데스', capture: false }),
-      alertText: {
-        en: 'Go Sides',
-        de: 'Zu den Seiten gehen',
-        fr: 'Allez sur les côtés',
-        ja: '側へ',
-        cn: '去两侧',
-        ko: '양옆으로 이동',
-      },
+      response: Responses.goSides(),
     },
     {
       id: 'HadesEx Polydegmon\'s Purgation',
@@ -866,14 +761,7 @@
       condition: function(data) {
         return data.role == 'tank' || data.role == 'healer';
       },
-      infoText: {
-        en: 'aoe',
-        de: 'AoE',
-        fr: 'Dégâts de zone',
-        ja: 'AoE',
-        cn: 'AOE',
-        ko: '전체 공격',
-      },
+      response: Responses.aoe(),
     },
     {
       id: 'HadesEx Quadrastrike 1',
@@ -886,14 +774,7 @@
       condition: function(data) {
         return data.role == 'tank' || data.role == 'healer';
       },
-      infoText: {
-        en: 'aoe',
-        de: 'AoE',
-        fr: 'Dégâts de zone',
-        ja: 'AoE',
-        cn: 'AOE',
-        ko: '전체 공격',
-      },
+      response: Responses.aoe(),
     },
     {
       id: 'HadesEx Quadrastrike 2',
@@ -903,10 +784,10 @@
       regexFr: Regexes.startsUsing({ id: '47F6', source: 'Hadès', capture: false }),
       regexJa: Regexes.startsUsing({ id: '47F6', source: 'ハーデス', capture: false }),
       regexKo: Regexes.startsUsing({ id: '47F6', source: '하데스', capture: false }),
-      suppressSeconds: 2,
       condition: function(data) {
         return data.role == 'tank' || data.role == 'healer';
       },
+      suppressSeconds: 2,
       alarmText: function(data) {
         if (data.role == 'tank') {
           return {
@@ -940,11 +821,11 @@
       regexFr: Regexes.ability({ id: '47F6', source: 'Hadès', capture: false }),
       regexJa: Regexes.ability({ id: '47F6', source: 'ハーデス', capture: false }),
       regexKo: Regexes.ability({ id: '47F6', source: '하데스', capture: false }),
-      suppressSeconds: 2,
-      delaySeconds: 2,
       condition: function(data) {
         return data.role == 'tank' || data.role == 'healer';
       },
+      delaySeconds: 2,
+      suppressSeconds: 2,
       infoText: {
         en: 'aoe + bleed',
         de: 'AoE + Blutung',

@@ -2,7 +2,10 @@
 
 // Aetherochemical Research Facility
 [{
-  zoneRegex: /Aetherochemical Research Facility/,
+  zoneRegex: {
+    en: /Aetherochemical Research Facility/,
+    cn: /^血战苍穹魔科学研究所$/,
+  },
   timelineFile: 'aetherochemical_research_facility.txt',
   timelineTriggers: [
     {
@@ -110,6 +113,7 @@
       delaySeconds: 4,
       alertText: {
         en: 'Stand in dark portal',
+        de: 'Im dunklen Portal stehen',
         fr: 'Allez dans le portail noir',
       },
     },
@@ -124,6 +128,7 @@
       suppressSeconds: 5,
       infoText: {
         en: 'Avoid your orb--pop others\'',
+        de: 'Weiche deinem Orb aus - löse die Orbs der anderen aus',
         fr: 'Evitez votre orbe, détruisez les autres',
       },
     },

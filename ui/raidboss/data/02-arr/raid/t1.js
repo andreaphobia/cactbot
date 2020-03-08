@@ -1,7 +1,10 @@
 'use strict';
 
 [{
-  zoneRegex: /^The Binding Coil Of Bahamut - Turn \(1\)$/,
+  zoneRegex: {
+    en: /^The Binding Coil Of Bahamut - Turn \(1\)$/,
+    cn: /^巴哈姆特大迷宫 邂逅之章1$/,
+  },
   triggers: [
     {
       id: 'T1 High Voltage',
@@ -14,7 +17,7 @@
       condition: function(data) {
         return data.CanSilence();
       },
-      response: Responses.interupt(),
+      response: Responses.interrupt(),
     },
     {
       // Indiscriminate Hood Swing
@@ -42,6 +45,7 @@
       },
       alertText: {
         en: 'Spit on YOU',
+        de: 'Spucke auf DIR',
         fr: 'Crachat sur VOUS',
       },
     },
@@ -53,12 +57,13 @@
       regexJa: Regexes.addedCombatant({ name: 'カドゥケウス', capture: false }),
       regexCn: Regexes.addedCombatant({ name: '神杖巨蛇', capture: false }),
       regexKo: Regexes.addedCombatant({ name: '카두케우스', capture: false }),
-      suppressSeconds: 5,
       condition: function(data) {
         return data.started;
       },
+      suppressSeconds: 5,
       alertText: {
         en: 'Split',
+        de: 'Zerteilung',
         fr: 'Séparation',
       },
     },
@@ -77,6 +82,7 @@
       suppressSeconds: 5,
       infoText: {
         en: 'Hood Swing in 10',
+        de: 'Kapuzenschwung in 10',
       },
     },
     {
@@ -86,6 +92,7 @@
       suppressSeconds: 5,
       infoText: {
         en: 'Slime Soon',
+        de: 'Schleim bald',
         fr: 'Slime bientôt',
       },
     },
@@ -101,6 +108,7 @@
       suppressSeconds: 5,
       infoText: {
         en: 'Slime Soon',
+        de: 'Schleim bald',
         fr: 'Slime bientôt',
       },
     },

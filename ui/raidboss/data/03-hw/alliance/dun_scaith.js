@@ -1,7 +1,10 @@
 'use strict';
 
 [{
-  zoneRegex: /^Dun Scaith$/,
+  zoneRegex: {
+    en: /^Dun Scaith$/,
+    cn: /^影之国$/,
+  },
   timelineFile: 'dun_scaith.txt',
   triggers: [
     // Basic stack occurs across all encounters except Deathgaze.
@@ -22,6 +25,7 @@
       suppressSeconds: 5,
       alertText: {
         en: 'Out of death circle',
+        de: 'Raus aus den Todeskreisen',
         fr: 'Sortez du cercle de mort',
       },
     },
@@ -41,6 +45,7 @@
       },
       alertText: {
         en: 'Cleanse Doom soon!',
+        de: 'Verhängnis bald reinigen!',
         fr: 'Guerrissez Glas bientot',
       },
     },
@@ -68,6 +73,7 @@
       suppressSeconds: 10,
       infoText: {
         en: 'Kill sprites',
+        de: 'Exergone töten',
         fr: 'Tuez les adds',
       },
     },
@@ -79,6 +85,7 @@
       },
       infoText: {
         en: 'Drop Tornado outside',
+        de: 'Wirbel draußen ablegen',
         fr: 'Déposez les tornades à l\'extérieur',
       },
     },
@@ -107,6 +114,7 @@
       suppressSeconds: 5,
       alertText: {
         en: 'Avoid death squares',
+        de: 'Weiche den Todes-Feldern aus',
         fr: 'Evitez les carrés mortels',
       },
     },
@@ -119,6 +127,7 @@
         if (data.me == matches.target) {
           return {
             en: 'Drop scythe outside',
+            de: 'Sense draußen ablegen',
             fr: 'Posez à l\'extérieur',
           };
         }
@@ -148,12 +157,14 @@
         if (matches.id == '1C9F') {
           return {
             en: 'Avoid Untethered Blue',
+            de: 'Weiche dem nicht verbundenen blauem Atomos aus',
             fr: 'Evitez Gueule bleue non-liée',
           };
         }
         if (matches.id == '1CA0') {
           return {
             en: 'Go to Untethered Blue',
+            de: 'Gehe zu dem nicht verbundenen blauem Atomos',
             fr: 'Allez vers la Gueule bleue non-liée',
           };
         }
@@ -171,12 +182,14 @@
         if (matches.id == '1C9F') {
           return {
             en: 'Avoid Untethered Yellow',
+            de: 'Weiche dem nicht verbundenen gelben Atomos aus',
             fr: 'Evitez Gueule jaune non-liée',
           };
         }
         if (matches.id == '1CA0') {
           return {
             en: 'Go to Untethered Yellow',
+            de: 'Gehe zu dem nicht verbundenen gelben Atomos',
             fr: 'Allez vers la Gueule jaune non-liée',
           };
         }
@@ -192,6 +205,7 @@
       regexKo: Regexes.startsUsing({ id: '1CAA', source: '공허의 페르디아', capture: false }),
       infoText: {
         en: 'Avoid puddles',
+        de: 'Flächen ausweichen',
         fr: 'Evitez les zones au sol',
       },
     },
@@ -207,6 +221,7 @@
       suppressSeconds: 10,
       alertText: {
         en: 'Change puddles to water',
+        de: 'Ändere Flächen zu Wasser',
         fr: 'Changez en eau',
       },
     },
@@ -222,6 +237,7 @@
       suppressSeconds: 10,
       alertText: {
         en: 'Change puddles to fire',
+        de: 'Ändere Flächen zu Feuer',
         fr: 'Changez en feu',
       },
     },
@@ -238,6 +254,7 @@
       regexKo: Regexes.startsUsing({ id: '1D96', source: '프로토 알테마', capture: false }),
       infoText: {
         en: 'Dodge trident laser',
+        de: 'Weiche dem Laser aus',
         fr: 'Evitez le laser',
       },
     },
@@ -267,6 +284,7 @@
         if (data.me == matches.target) {
           return {
             en: 'Prey--Avoid party and keep moving',
+            de: 'Markiert - Weg von der Gruppe und bleib in Bewegung',
             fr: 'Marquage - Evitez les autres et bougez',
           };
         }
@@ -280,19 +298,21 @@
       regexJa: Regexes.startsUsing({ id: '1DA4', source: 'プロトアルテマ', capture: false }),
       regexCn: Regexes.startsUsing({ id: '1DA4', source: '究极神兵原型', capture: false }),
       regexKo: Regexes.startsUsing({ id: '1DA4', source: '프로토 알테마', capture: false }),
-      suppressSeconds: 1,
       preRun: function(data) {
         data.flareStarCount = (data.flareStarCount || 0) + 1;
       },
+      suppressSeconds: 1,
       alertText: function(data) {
         if (data.flareStarCount == 1) {
           return {
             en: 'Out of center--Wait for outer ring then keep going',
+            de: 'Raus aus der Mitte - Warte auf den äuseren Ring',
             fr: 'Loin du centre - Attendez l\'anneau extérieur et continuez',
           };
         }
         return {
           en: 'Avoid flares--Wait for outer ring then keep going',
+          de: 'Flares ausweichen - Warte auf den äuseren Ring',
           fr: 'Evitez les explosions - Attendez l\'anneau extérieur et continuez',
         };
       },
@@ -307,6 +327,7 @@
       regexKo: Regexes.startsUsing({ id: '1DAB', source: '프로토 알테마', capture: false }),
       alertText: {
         en: 'Avoid line AoE',
+        de: 'Weiche der Linien AoE aus',
         fr: 'Evitez l\'AoE en ligne',
       },
     },
@@ -323,6 +344,7 @@
       suppressSeconds: 5,
       infoText: {
         en: 'Avoid Bit AoEs',
+        de: 'Weiche den Bit AoEs aus',
         fr: 'Evitez les AoE des forets',
       },
     },
@@ -337,6 +359,7 @@
       suppressSeconds: 5,
       alertText: {
         en: 'Kill collectors',
+        de: 'Ätherakkumulator besiegen',
         fr: 'Détruisez les accumulateurs',
       },
     },
@@ -353,6 +376,7 @@
       suppressSeconds: 5,
       infoText: {
         en: 'Avoid arm slaps',
+        de: 'Weiche den Armschlägen aus',
         fr: 'Evitez les bras',
       },
     },
@@ -377,6 +401,7 @@
       regexKo: Regexes.startsUsing({ id: '1D2F', source: '스카하크', capture: false }),
       infoText: {
         en: 'Avoid line AoEs',
+        de: 'Weiche den Linien AoEs aus',
         fr: 'Evitez les AoE en ligne',
       },
     },
@@ -401,6 +426,8 @@
       regexDe: Regexes.message({ line: 'Schatten sammeln sich auf dem Boden', capture: false }),
       regexFr: Regexes.message({ line: 'Le pouvoir des ombres se concentre sur le sol', capture: false }),
       regexJa: Regexes.message({ line: '床に影の力が集束していく', capture: false }),
+      regexCn: Regexes.message({ line: '影之力正在向地面聚集', capture: false }),
+      regexKo: Regexes.message({ line: '바닥에 그림자의 힘이 모여듭니다', capture: false }),
       suppressSeconds: 5,
       response: Responses.stopMoving(),
     },
@@ -415,6 +442,7 @@
       suppressSeconds: 5,
       alertText: {
         en: 'Kill the hands',
+        de: 'Besiege die Hand',
         fr: 'Tuez les mains',
       },
     },
@@ -428,6 +456,7 @@
       regexKo: Regexes.startsUsing({ id: '1CD1', source: '콘라', capture: false }),
       alertText: {
         en: 'Avoid AoE, Kill Connla',
+        de: 'Weiche AoE aus, besiege Connla',
         fr: 'Evitez les AoE, tuez Connla',
       },
     },
@@ -440,6 +469,7 @@
         if (matches.target == data.me) {
           return {
             en: 'Take orb outside',
+            de: 'Orb nach außen bringen',
             fr: 'Prenez l\'orb à l\'extérieur',
           };
         }
@@ -484,12 +514,13 @@
       regexJa: Regexes.gainsEffect({ target: 'ディアボロス', effect: 'ノクトシールド', capture: false }),
       regexCn: Regexes.gainsEffect({ target: '迪亚波罗斯', effect: '夜障', capture: false }),
       regexKo: Regexes.gainsEffect({ target: '디아볼로스', effect: '밤의 방패', capture: false }),
-      suppressSeconds: 5,
       condition: function(data) {
         return data.role == 'tank' || data.role == 'healer';
       },
+      suppressSeconds: 5,
       alertText: {
         en: 'Boss hitting hard--Shield/Mitigate',
+        de: 'Harter Hit vom Boss - Schild/Milderung',
         fr: 'Le boss frappe fort - Bouclier/Mitigation',
       },
     },
@@ -501,10 +532,10 @@
       regexJa: Regexes.startsUsing({ id: '1C1[01]', source: 'ディアボロス', capture: false }),
       regexCn: Regexes.startsUsing({ id: '1C1[01]', source: '迪亚波罗斯', capture: false }),
       regexKo: Regexes.startsUsing({ id: '1C1[01]', source: '디아볼로스', capture: false }),
-      suppressSeconds: 5,
       condition: function(data) {
         return data.role == 'healer';
       },
+      suppressSeconds: 5,
       response: Responses.aoe(),
     },
     {
@@ -518,6 +549,7 @@
       suppressSeconds: 5,
       infoText: {
         en: 'Kill the deathgates',
+        de: 'Besiege die Tore des Todes',
         fr: 'Détruisez les portes de mort',
       },
     },
@@ -538,11 +570,13 @@
         if (matches.target == data.me) {
           return {
             en: 'Gaze stack on YOU',
+            de: 'Blick-Sammeln auf DIR',
             fr: 'Package sur VOUS',
           };
         }
         return {
           en: 'Stack on ' + data.ShortName(matches.target) + ' and look away',
+          de: 'Sammeln bei ' + data.ShortName(matches.target) + ' und wewg schauen',
           fr: 'Package sur ' + data.ShortName(matches.target) + ' et regardez ailleurs',
         };
       },
@@ -555,10 +589,10 @@
       regexJa: Regexes.startsUsing({ id: '1C2[23]', source: 'ディアボロス・ホロー', capture: false }),
       regexCn: Regexes.startsUsing({ id: '1C2[23]', source: '虚空迪亚波罗斯', capture: false }),
       regexKo: Regexes.startsUsing({ id: '1C2[23]', source: '공허의 디아볼로스', capture: false }),
-      suppressSeconds: 5,
       condition: function(data) {
         return data.role == 'healer';
       },
+      suppressSeconds: 5,
       response: Responses.bigAoe(),
     },
     {
