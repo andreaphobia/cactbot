@@ -206,17 +206,17 @@ class TimerBar extends HTMLElement {
         .timerbar-lefttext {
           position: relative;
           text-align: left;
-          padding: 0.4em 0;
+          padding-left: 0.1em;
         }
         .timerbar-centertext {
           position: relative;
           text-align: center;
-          padding: 0.4em 0;
+          padding: 0;
         }
         .timerbar-righttext {
           position: relative;
           text-align: right;
-          padding: 0.4em 0;
+          padding-right: 0.1em;
         }
 
         :host-context(.skin-lippe) .timerbar-root {

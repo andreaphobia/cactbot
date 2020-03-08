@@ -58,7 +58,7 @@
 
 .info-text {
   color: #2b2;
-  font-size: 140%;
+  font-size: 160%;
   text-shadow: -2px 0 4px black, 0 2px 4px black, 2px 0 4px black, 0 -2px 4px black;
   will-change: transform;
 }
@@ -134,11 +134,11 @@
 }
 
 .timeline-bar-color {
-  background-color: transparent;
+  background-color: #000;
 }
 
 .timeline-bar-color.soon {
-  background-color: transparent;
+  background-color: #B00020;
 }
 
 #timeline-debug {
