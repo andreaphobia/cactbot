@@ -9,7 +9,7 @@ hideall "--sync--"
 
 0.0 "--sync--" sync /:Engage!/ window 0,1
 1.5 "--sync--" sync /:Shiva:4D59:/ window 2,0
-16.0 "Absolute Zero" sync /:Shiva:4DCC:/ window 17,5
+16.0 "Raidwide" sync /:Shiva:4DCC:/ window 17,5
 27.2 "Mirror, Mirror" sync /:Shiva:4D5A:/
 39.3 "Biting/Driving Frost" sync /:Shiva:4D6[67]:/
 44.4 "Reflected Frost (G)" sync /:Frozen Mirror:4DB[78]:/
@@ -29,18 +29,18 @@ hideall "--sync--"
 85.9 "Frigid Eruption 2" #sync /:Shiva:4D9F:/
 87.9 "Frigid Eruption 3" #sync /:Shiva:4D9F:/
 92.9 "Driving/Biting Frost" sync /:Shiva:4D6[67]:/
-101.7 "Double Slap" sync /:Shiva:4D65:/
+101.7 "Tankbuster" sync /:Shiva:4D65:/
 115.0 "Shining Armor" sync /:Shiva:4DD1:/
 123.0 "Axe/Scythe Kick" sync /:Shiva:4D6[DE]:/
 
 ### Light Rampant
 131.2 "--middle--" sync /:Shiva:4D58:/
 137.4 "Light Rampant" sync /:Shiva:4D73:/ window 150,10
-148.6 "Bright Hunger" sync /:Shiva:4DA2:/
+148.6 "Bright Hunger 1" sync /:Shiva:4DA2:/
 148.6 "The Path Of Light" sync /:Shiva:4D63:/
-156.6 "Bright Hunger" sync /:Shiva:4DA2:/
+156.6 "Bright Hunger 2" sync /:Shiva:4DA2:/
 159.8 "The Path Of Light" sync /:Shiva:4D63:/
-164.7 "Bright Hunger" sync /:Shiva:4DA2:/
+164.7 "Bright Hunger 3" sync /:Shiva:4DA2:/
 173.0 "Mirror, Mirror" sync /:Shiva:4D5A:/
 185.2 "Scythe/Axe Kick" sync /:Shiva:4D6[DE]:/
 190.2 "Reflected Kick (G)" sync /:Frozen Mirror:4DB[9A]:/
@@ -66,9 +66,9 @@ hideall "--sync--"
 ### Wing Mirrors
 350.5 "--targetable--"
 364.2 "--sync--" sync /:4D79:Shiva/ window 370,10
-368.6 "Akh Morn x3" sync /:Shiva:4D79:/ duration 3.1
-378.0 "Morn Afah" sync /:Shiva:4D7B:/
-389.4 "Mirror, Mirror" sync /:Shiva:4D5A:/
+368.6 "Stack on either side" sync /:Shiva:4D79:/ duration 3.1
+378.0 "Stack in the middle" sync /:Shiva:4D7B:/
+389.4 "Square dance" sync /:Shiva:4D5A:/
 396.9 "--sync--" sync /:Shiva:4D58:/
 403.2 "Hallowed Wings" sync /:Shiva:4D7[56]:/
 403.2 "Reflected Wings (B)" sync /:Frozen Mirror:4D9[01]:/
@@ -78,17 +78,17 @@ hideall "--sync--"
 
 ### Wyrm's Lament
 421.7 "--middle--" sync /:Shiva:4D58:/
-427.9 "Wyrm's Lament" sync /:Shiva:4D7C:/
+427.9 "Dragon head" sync /:Shiva:4D7C:/
 441.0 "Hallowed Wings" sync /:Shiva:4D7[56]:/
 449.1 "Hallowed Wings" sync /:Shiva:4D7[56]:/
 457.2 "Hallowed Wings" sync /:Shiva:4D7[56]:/
 465.3 "Hallowed Wings" sync /:Shiva:4D7[56]:/
-473.5 "Frost Armor" sync /:Shiva:4DD0:/
-481.4 "Twin Silence/Stillness" sync /:Shiva:4D6[89]:/
-483.5 "Twin Stillness/Silence" sync /:Shiva:4D6[AB]:/
-491.6 "Double Slap" sync /:Shiva:4D65:/
-504.8 "Drachen Armor" sync /:Shiva:4DD2:/
-507.3 "Akh Rhai" sync /:Shiva:4D99:/
+473.5 "DON'T MOVE" sync /:Shiva:4DD0:/
+481.4 "Back/Front" sync /:Shiva:4D6[89]:/
+483.5 "Front/Back" sync /:Shiva:4D6[AB]:/
+491.6 "Tankbuster" sync /:Shiva:4D65:/
+504.8 "Stack E/W" sync /:Shiva:4DD2:/
+507.3 "Rotate clockwise" sync /:Shiva:4D99:/
 
 ### Stack Mirrors
 516.1 "Mirror, Mirror" sync /:Shiva:4D5A:/

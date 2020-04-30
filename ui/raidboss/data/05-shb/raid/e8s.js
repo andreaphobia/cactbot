@@ -149,6 +149,7 @@
         data.firstFrost = data.firstFrost || 'biting';
       },
     },
+    
     {
       id: 'E8S Driving Frost',
       regex: Regexes.startsUsing({ source: 'Shiva', id: '4D67', capture: false }),
@@ -162,6 +163,7 @@
         data.firstFrost = data.firstFrost || 'driving';
       },
     },
+
     {
       id: 'E8S Forgetful Tank Second Frost',
       regex: Regexes.startsUsing({ source: 'Shiva', id: '4D6[67]', capture: false }),
@@ -176,7 +178,7 @@
       infoText: function(data) {
         if (data.firstFrost == 'driving') {
           return {
-            en: 'Biting Frost Next',
+            en: 'No turn boss, stance on',
             de: 'Frosthieb als nächstes',
             fr: 'Taillade de givre bientôt',
             ko: '다음: Biting/スラッシュ',
@@ -184,7 +186,7 @@
           };
         }
         return {
-          en: 'Driving Frost Next',
+          en: 'Turn the boss, stance on',
           de: 'Froststoß als nächstes',
           fr: 'Percée de givre bientôt',
           ko: '다음: Driving/スラスト',
@@ -312,6 +314,9 @@
       condition: Conditions.caresAboutMagical(),
       response: Responses.aoe(),
     },
+
+
+
     {
       id: 'E8S Refulgent Chain',
       regex: Regexes.gainsEffect({ effect: 'Refulgent Chain' }),
@@ -319,8 +324,7 @@
       regexFr: Regexes.gainsEffect({ effect: 'Chaînes de Lumière' }),
       regexJa: Regexes.gainsEffect({ effect: '光の鎖' }),
       condition: Conditions.targetIsYou(),
-      suppressSeconds: 1,
-      infoText: {
+      alertText: {
         en: 'Chain on YOU',
         de: 'Kette auf DIR',
         fr: 'Chaîne sur VOUS',
@@ -328,11 +332,82 @@
         cn: '连线',
       },
     },
+
+
+    {
+      id: 'E8S Refulgent Chain',
+      regex: Regexes.gainsEffect({ effect: 'Refulgent Chain' }),
+      regexDe: Regexes.gainsEffect({ effect: 'Lichtfessel' }),
+      regexFr: Regexes.gainsEffect({ effect: 'Chaînes de Lumière' }),
+      regexJa: Regexes.gainsEffect({ effect: '光の鎖' }),
+      condition: Conditions.targetIsYou(),
+      delaySeconds: 2,
+      infoText: {
+        en: 'Take first tower',
+        de: 'Kette auf DIR',
+        fr: 'Chaine sur VOUS',
+        ko: '사슬 대상자',
+        cn: '连线',
+      },
+    },
+
+    {
+      id: 'E8S Refulgent Chain',
+      regex: Regexes.gainsEffect({ effect: 'Refulgent Chain' }),
+      regexDe: Regexes.gainsEffect({ effect: 'Lichtfessel' }),
+      regexFr: Regexes.gainsEffect({ effect: 'Chaînes de Lumière' }),
+      regexJa: Regexes.gainsEffect({ effect: '光の鎖' }),
+      condition: Conditions.targetIsYou(),
+      delaySeconds: 10,
+      infoText: {
+        en: 'Take N/S tower',
+        de: 'Kette auf DIR',
+        fr: 'Chaine sur VOUS',
+        ko: '사슬 대상자',
+        cn: '连线',
+      },
+    },
+
+    {
+      id: 'E8S Refulgent Chain',
+      regex: Regexes.gainsEffect({ effect: 'Refulgent Chain' }),
+      regexDe: Regexes.gainsEffect({ effect: 'Lichtfessel' }),
+      regexFr: Regexes.gainsEffect({ effect: 'Chaînes de Lumière' }),
+      regexJa: Regexes.gainsEffect({ effect: '光の鎖' }),
+      condition: Conditions.targetIsYou(),
+      delaySeconds: 18,
+      infoText: {
+        en: 'Move in to take cones',
+        de: 'Kette auf DIR',
+        fr: 'Chaine sur VOUS',
+        ko: '사슬 대상자',
+        cn: '连线',
+      },
+    },
+
+    {
+      id: 'E8S Refulgent Chain',
+      regex: Regexes.gainsEffect({ effect: 'Refulgent Chain' }),
+      regexDe: Regexes.gainsEffect({ effect: 'Lichtfessel' }),
+      regexFr: Regexes.gainsEffect({ effect: 'Chaînes de Lumière' }),
+      regexJa: Regexes.gainsEffect({ effect: '光の鎖' }),
+      condition: Conditions.targetIsYou(),
+      delaySeconds: 22,
+      infoText: {
+        en: 'Take last tower if 3 stacks',
+        de: 'Kette auf DIR',
+        fr: 'Chaine sur VOUS',
+        ko: '사슬 대상자',
+        cn: '连线',
+      },
+    },
+
+
     {
       id: 'E8S Holy Light',
       regex: Regexes.tether({ id: '0002' }),
       condition: Conditions.targetIsYou(),
-      infoText: {
+      alertText: {
         en: 'Orb on YOU',
         de: 'Orb auf DIR',
         fr: 'Orbe sur VOUS',
@@ -340,6 +415,65 @@
         cn: '拉球',
       },
     },
+
+    {
+      id: 'E8S Holy Light',
+      regex: Regexes.tether({ id: '0002' }),
+      condition: Conditions.targetIsYou(),
+      delaySeconds: 1,
+      infoText: {
+        en: 'Take first cone opposite your orb',
+        de: 'Orb auf DIR',
+        fr: 'Orbe sur VOUS',
+        ko: '구슬 대상자',
+        cn: '拉球',
+      },
+    },
+
+    {
+      id: 'E8S Holy Light',
+      regex: Regexes.tether({ id: '0002' }),
+      condition: Conditions.targetIsYou(),
+      delaySeconds: 5,
+      infoText: {
+        en: 'Juke orb to intercard',
+        de: 'Orb auf DIR',
+        fr: 'Orbe sur VOUS',
+        ko: '구슬 대상자',
+        cn: '拉球',
+      },
+    },
+
+    {
+      id: 'E8S Holy Light',
+      regex: Regexes.tether({ id: '0002' }),
+      condition: Conditions.targetIsYou(),
+      delaySeconds: 12,
+      infoText: {
+        en: 'Pop orb then go max melee E/W',
+        de: 'Orb auf DIR',
+        fr: 'Orbe sur VOUS',
+        ko: '구슬 대상자',
+        cn: '拉球',
+      },
+    },
+
+    {
+      id: 'E8S Holy Light',
+      regex: Regexes.tether({ id: '0002' }),
+      condition: Conditions.targetIsYou(),
+      delaySeconds: 17,
+      infoText: {
+        en: 'Take last tower if 3 stacks',
+        de: 'Orb auf DIR',
+        fr: 'Orbe sur VOUS',
+        ko: '구슬 대상자',
+        cn: '拉球',
+      },
+    },
+
+
+
     {
       id: 'E8S Banish III',
       regex: Regexes.startsUsing({ source: 'Shiva', id: '4D80', capture: false }),

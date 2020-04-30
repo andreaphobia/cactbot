@@ -15,8 +15,39 @@
         data.steppedLeaderNext = true;
       },
     },
+
+    {
+      id: 'E5S Babadook Warning',
+      regex: /^Babadook$/,
+      beforeSeconds: 10,
+      alertText: function(data) {
+        return {
+          en: 'Get 3 stacks',
+          de: 'Einen Orb nehmen',
+          fr: 'Prenez un orbe',
+          ko: '구슬 줍기',
+          cn: '吃球',
+        };
+      },
+    },
+
+    {
+      id: 'E5S Charge Warning',
+      regex: /^Centaur's Charge$/,
+      beforeSeconds: 15,
+      alertText: function(data) {
+        return {
+          en: 'Get 3 stacks',
+          de: 'Einen Orb nehmen',
+          fr: 'Prenez un orbe',
+          ko: '구슬 줍기',
+          cn: '吃球',
+        };
+      },
+    },
   ],
   triggers: [
+
     {
       id: 'E5S Surge Protection Gain',
       regex: Regexes.gainsEffect({ effect: 'Surge Protection' }),
@@ -82,7 +113,7 @@
         }
         if (data.furysBoltActive) {
           return {
-            en: 'Big Knockback',
+            en: 'Solid line',
             cn: '长击退',
             de: 'Weiter Rückstoß',
             fr: 'Forte poussée',
@@ -90,7 +121,7 @@
           };
         }
         return {
-          en: 'Short Knockback',
+          en: 'Dotted line',
           cn: '短击退',
           de: 'Kurzer Rückstoß',
           fr: 'Faible poussée',
