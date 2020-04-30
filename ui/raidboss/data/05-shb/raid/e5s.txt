@@ -10,8 +10,8 @@ hideall "--sync--"
 0 "Start"
 0.0 "--sync--" sync /:Engage!/ window 0,1
 12.0 "Raidwide" sync /:Ramuh:4BB5:/ window 12,5
-22.2 "Here they come" sync /:Ramuh:4BA5:/
-27.1 "Kaboom" sync /:Ramuh:4E3B:/
+22.2 "Spears coming" sync /:Ramuh:4BA5:/
+27.1 "Spears land" sync /:Ramuh:4E3B:/
 35.6 "Spears explode" sync /:Ramuh:4BA6:/
 42.7 "Babadook" sync /:Ramuh:4BBC:/
 52.2 "Get a stack" sync /:Ramuh:4BAA:/
@@ -40,8 +40,8 @@ hideall "--sync--"
 221.2 "Raidwide" sync /:Ramuh:4BB5:/
 
 230.5 "Many spears" sync /:Ramuh:4BAB:/
-244.6 "Here they come" sync /:Ramuh:4BA5:/
-249.5 "Kaboom" sync /:Ramuh:4E3B:/
+244.6 "Spears coming" sync /:Ramuh:4BA5:/
+249.5 "Spears land" sync /:Ramuh:4E3B:/
 253.0 "He's gettin a horse" sync /:Ramuh:4BAC:/
 255.4 "--sync--" sync /:Ramuh:4BCB:/
 262.3 "Centaur's Charge" sync /:Ramuh:4BAD:/
@@ -73,8 +73,8 @@ hideall "--sync--"
 388.3 "Raidwide" sync /:Ramuh:4BB5:/
 
 395.6 "Many spears" sync /:Ramuh:4BAB:/
-411.7 "Here they come" sync /:Ramuh:4BA5:/
-416.6 "Kaboom" sync /:Ramuh:4E3B:/
+411.7 "Spears coming" sync /:Ramuh:4BA5:/
+416.6 "Spears land" sync /:Ramuh:4E3B:/
 420.1 "He's gettin a horse" sync /:Ramuh:4BAC:/
 422.5 "--sync--" sync /:Ramuh:4BCB:/
 429.4 "Centaur's Charge" sync /:Ramuh:4BAD:/
@@ -111,6 +111,6 @@ hideall "--sync--"
 605.4 "Raidwide" sync /:Ramuh:4BB5:/
 
 612.3 "Many spears" sync /:Ramuh:4BAB:/
-628.4 "Here they come" sync /:Ramuh:4BA5:/
+628.4 "Spears coming" sync /:Ramuh:4BA5:/
 
 #??? "Raidwide Enrage"

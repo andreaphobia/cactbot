@@ -6,6 +6,38 @@
     ko: /^희망의 낙원 에덴: 공명편\(영웅\) \(2\)$/,
   },
   timelineFile: 'e6s.txt',
+  timelineTriggers: [
+    {
+      id: 'E6S Stance On Warning',
+      regex: /^Tankswap$/,
+      beforeSeconds: 8,
+      alertText: function(data) {
+        if (data.phase == 'ifrit') {
+          return {
+            en: 'Stance on',
+            de: 'Einen Orb nehmen',
+            fr: 'Prenez un orbe',
+            ko: '구슬 줍기',
+            cn: '吃球',
+          };
+        }
+      },
+    },
+    {
+      id: 'E6S Firestorm mitigate',
+      regex: /^Firestorm$/,
+      beforeSeconds: 8,
+      infoText: function() {
+        return {
+          en: 'Use mitigation',
+          de: 'Einen Orb nehmen',
+          fr: 'Prenez un orbe',
+          ko: '구슬 줍기',
+          cn: '吃球',
+        };
+      },
+    },
+  ],
   triggers: [
     {
       id: 'E6S Superstorm',
@@ -25,7 +57,7 @@
       id: 'E6S Ferostorm',
       regex: Regexes.startsUsing({ source: 'Garuda', id: '4BF[EF]', capture: false }),
       infoText: {
-        en: 'Avoid green nails',
+        en: 'Shark fins',
         fr: 'Evitez les clous',
       },
     },
@@ -36,16 +68,16 @@
       infoText: function(data, matches) {
         if (data.me == matches.target) {
           return {
-            en: 'Enumeration on YOU',
-            de: 'Enumeration aud DIR',
+            en: 'Partner stack on YOU',
+            de: 'Partner stack aud DIR',
             fr: 'Enumération sur VOUS',
             ko: '2인 장판 대상자',
             cn: '蓝圈分摊点名',
           };
         }
         return {
-          en: 'Enumeration',
-          de: 'Enumeration',
+          en: 'Partner stack',
+          de: 'Partner stack',
           fr: 'Enumération',
           ko: '2인 장판',
           cn: '蓝圈分摊',

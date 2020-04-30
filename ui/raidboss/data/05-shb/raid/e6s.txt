@@ -12,123 +12,123 @@ hideall "--sync--"
 0 "Start"
 0.0 "--sync--" sync /:Engage!/ window 0,1
 2.3 "--sync--" sync /:Garuda:366:/ window 5,0
-18.0 "Superstorm" sync /:Garuda:4BF7:/
-27.1 "Occluded Front" sync /:Garuda:4BD2:/
-36.2 "Wind Cutter" sync /:Tumultuous Nexus:4C02:/
-39.2 "Storm Of Fury" sync /:Garuda:4C01:/
-46.8 "Air Bump" sync /:Garuda:4BF9:/
-64.0 "Ferostorm" sync /:Garuda:4BFD:/
-73.6 "Downburst" sync /:Garuda:4BFB:/
-76.1 "Air Bump" sync /:Garuda:4BF9:/
-88.0 "Vacuum Slice" sync /:Garuda:4BF5:/
-95.2 "Occluded Front" sync /:Garuda:4BD2:/
-103.3 "Storm Of Fury" sync /:Garuda:4C01:/
+18.0 "Raidwide" sync /:Garuda:4BF7:/
+27.1 "Wind orbs spawn" sync /:Garuda:4BD2:/
+36.2 "No cut tether" sync /:Tumultuous Nexus:4C02:/
+39.2 "Cone tether + ground AOE" sync /:Garuda:4C01:/
+46.8 "Partner stack" sync /:Garuda:4BF9:/
+64.0 "Shark fins" sync /:Garuda:4BFD:/
+73.6 "Knockback" sync /:Garuda:4BFB:/
+76.1 "Partner stack" sync /:Garuda:4BF9:/
+88.0 "Bacon Slice" sync /:Garuda:4BF5:/
+95.2 "Wind orbs spawn" sync /:Garuda:4BD2:/
+103.3 "Cone tether + ground AOE" sync /:Garuda:4C01:/
 104.7 "Irresistible Pull" sync /:Garuda:4BF6:/
 105.5 "Explosions" #sync /:Tumultuous Nexus:4C03:/
-110.8 "Ferostorm" sync /:Garuda:4BFD:/
+110.8 "Shark fins" sync /:Garuda:4BFD:/
 
 ### Phase 2: Ifrit
 122.0 "Touchdown" sync /:Ifrit:4C09:/
-135.3 "Hands Of Flame" sync /:Ifrit:4C0A:/
-139.6 "Eruption" sync /:Ifrit:4C17:/
-143.5 "Instant Incineration" sync /:Ifrit:4C0E:/
-147.1 "Meteor Strike" sync /:Ifrit:4C0F:/
-159.2 "Inferno Howl" sync /:Ifrit:4C14:/
-172.3 "Hands Of Hell" sync /:Ifrit:4D01:/
-176.9 "Eruption" sync /:Ifrit:4C17:/
-184.7 "Strike Spark" sync /:Ifrit:4BD3:/
+135.3 "Tankswap" sync /:Ifrit:4C0A:/
+139.6 "AOEs go off" sync /:Ifrit:4C17:/
+143.5 "Tankbuster #1" sync /:Ifrit:4C0E:/
+147.1 "Tankbuster #2" sync /:Ifrit:4C0F:/
+159.2 "Raidwide" sync /:Ifrit:4C14:/
+172.3 "Tank + Healer Tethers" sync /:Ifrit:4D01:/
+176.9 "AOEs go off" sync /:Ifrit:4C17:/
+184.7 "Soccer" sync /:Ifrit:4BD3:/
 187.9 "Call Of The Inferno" sync /:Ifrit:4C12:/
 197.1 "Hot Foot" sync /:Ifrit:4C11:/
-198.5 "Eruption" sync /:Ifrit:4C17:/
-215.1 "Hands Of Hell" sync /:Ifrit:4D01:/
-219.8 "Eruption" sync /:Ifrit:4C17:/
-223.9 "Hands Of Flame" sync /:Ifrit:4C0A:/
-228.2 "Eruption" sync /:Ifrit:4C17:/
-232.1 "Instant Incineration" sync /:Ifrit:4C0E:/
-235.7 "Meteor Strike" sync /:Ifrit:4C0F:/
+198.5 "AOEs go off" sync /:Ifrit:4C17:/
+215.1 "DPS Tethers" sync /:Ifrit:4D01:/
+219.8 "AOEs go off" sync /:Ifrit:4C17:/
+223.9 "Tankswap" sync /:Ifrit:4C0A:/
+228.2 "AOEs go off" sync /:Ifrit:4C17:/
+232.1 "Tankbuster #1" sync /:Ifrit:4C0E:/
+235.7 "Tankbuster #2" sync /:Ifrit:4C0F:/
 
 ### Phase 3: Garuda and Ifrit
 246.1 "--targetable--"
-248.4 "Hated Of Embers/Vortex" sync /:Ifrit:4FA0:/
-253.6 "Occluded Front" sync /:Garuda:4BD2:/
-262.7 "Wind Cutter" sync /:Tumultuous Nexus:4C02:/
-265.1 "Hands Of Flame" sync /:Ifrit:4C0A:/
-269.4 "Eruption" sync /:Ifrit:4C17:/
-273.3 "Instant Incineration" sync /:Ifrit:4C0E:/
-276.9 "Meteor Strike" sync /:Ifrit:4C0F:/
-277.0 "Vacuum Slice" sync /:Garuda:4BF5:/
+248.4 "Boss buffs applied" sync /:Ifrit:4FA0:/
+253.6 "Wind orbs spawn" sync /:Garuda:4BD2:/
+262.7 "No cut tether" sync /:Tumultuous Nexus:4C02:/
+265.1 "Tankswap" sync /:Ifrit:4C0A:/
+269.4 "AOEs go off" sync /:Ifrit:4C17:/
+273.3 "Tankbuster #1" sync /:Ifrit:4C0E:/
+276.9 "Tankbuster #2" sync /:Ifrit:4C0F:/
+277.0 "Bacon Slice" sync /:Garuda:4BF5:/
 280.1 "Call Of The Inferno" sync /:Ifrit:4C12:/
-284.2 "Occluded Front" sync /:Garuda:4BD2:/
+284.2 "Wind orbs spawn" sync /:Garuda:4BD2:/
 291.8 "Hot Foot" sync /:Ifrit:4C11:/
 293.7 "Irresistible Pull" sync /:Garuda:4BF6:/
-293.7 "Eruption" sync /:Ifrit:4C17:/
+293.7 "AOEs go off" sync /:Ifrit:4C17:/
 294.5 "Explosion" sync /:Tumultuous Nexus:4C03:/
 294.5 "Explosion" sync /:Tumultuous Nexus:4C03:/
 294.5 "Explosion" sync /:Tumultuous Nexus:4C03:/
 294.5 "Explosion" sync /:Tumultuous Nexus:4C03:/
-298.6 "Ferostorm" sync /:Garuda:4BFD:/
+298.6 "Shark fins" sync /:Garuda:4BFD:/
 309.6 "--sync--" sync /:Raktapaksa:4D55:/
 
 ### Phase 4: Raktapaksa
 320.4 "Firestorm" sync /:Raktapaksa:4BF8:/ window 350,5
-343.8 "Hands Of Hell" sync /:Raktapaksa:4D01:/
-348.1 "Heat Burst" sync /:Raktapaksa:4C0D:/
-348.3 "Eruption" sync /:Raktapaksa:4C17:/
-361.1 "Hands Of Hell" sync /:Raktapaksa:4D01:/
-365.5 "Heat Burst" sync /:Raktapaksa:4C0D:/
-365.7 "Eruption" sync /:Raktapaksa:4C17:/
-376.5 "Inferno Howl" sync /:Raktapaksa:4C14:/
-384.1 "Air Bump" sync /:Raktapaksa:4BF9:/
-387.1 "Ferostorm" sync /:Raktapaksa:4C06:/
+343.8 "Tank + Healer Tethers" sync /:Raktapaksa:4D01:/
+348.1 "Tethers go off" sync /:Raktapaksa:4C0D:/
+348.3 "AOEs go off" sync /:Raktapaksa:4C17:/
+361.1 "DPS Tethers" sync /:Raktapaksa:4D01:/
+365.5 "Tethers go off" sync /:Raktapaksa:4C0D:/
+365.7 "AOEs go off" sync /:Raktapaksa:4C17:/
+376.5 "Raidwide" sync /:Raktapaksa:4C14:/
+384.1 "Partner stack w/ shark fins" sync /:Raktapaksa:4BF9:/
+387.1 "Shark fins" sync /:Raktapaksa:4C06:/
 
-394.8 "Strike Spark" sync /:Raktapaksa:4BD3:/
+394.8 "Soccer" sync /:Raktapaksa:4BD3:/
 398.0 "Call Of The Inferno" sync /:Raktapaksa:4C12:/
 407.2 "Hot Foot" sync /:Raktapaksa:4C11:/
-408.6 "Eruption" sync /:Raktapaksa:4C17:/
-411.0 "Hands Of Flame" sync /:Raktapaksa:4C0A:/
-415.0 "Heat Burst" sync /:Raktapaksa:4C0D:/
-415.3 "Eruption" sync /:Raktapaksa:4C17:/
-419.2 "Instant Incineration" sync /:Raktapaksa:4C0E:/
-423.0 "Meteor Strike" sync /:Raktapaksa:4C0F:/
+408.6 "AOEs go off" sync /:Raktapaksa:4C17:/
+411.0 "Tankswap" sync /:Raktapaksa:4C0A:/
+415.0 "Tethers go off" sync /:Raktapaksa:4C0D:/
+415.3 "AOEs go off" sync /:Raktapaksa:4C17:/
+419.2 "Tankbuster #1" sync /:Raktapaksa:4C0E:/
+423.0 "Tankbuster #2" sync /:Raktapaksa:4C0F:/
 
-436.7 "Downburst" sync /:Raktapaksa:4BFC:/
+436.7 "Knockback" sync /:Raktapaksa:4BFC:/
 445.2 "--sync--" sync /:Raktapaksa:4C19:/
-449.2 "Radiant Plume" sync /:Raktapaksa:4C15:/
+449.2 "AD / BC" sync /:Raktapaksa:4C15:/
 457.3 "Blaze 1" #sync /:Twisting Blaze:4C1B:/
 459.4 "Blaze 2" #sync /:Twisting Blaze:4C1B:/
-459.8 "Wind Cutter" #sync /:Tumultuous Nexus:4C02:/
+459.8 "No cut tether" #sync /:Tumultuous Nexus:4C02:/
 461.5 "Blaze 3" #sync /:Twisting Blaze:4C1B:/
-462.8 "Wind Cutter" #sync /:Tumultuous Nexus:4C02:/
+462.8 "No cut tether" #sync /:Tumultuous Nexus:4C02:/
 463.6 "Blaze 4" #sync /:Twisting Blaze:4C1B:/
 465.7 "Blaze 5" #sync /:Twisting Blaze:4C1B:/
-465.8 "Wind Cutter" #sync /:Tumultuous Nexus:4C02:/
+465.8 "No cut tether" #sync /:Tumultuous Nexus:4C02:/
 472.3 "Spread Of Fire" sync /:Raktapaksa:4C18:/
-472.8 "Air Bump" sync /:Raktapaksa:4BF9:/
-476.0 "Conflag Strike" sync /:Raktapaksa:4C10:/
+472.8 "Partner stack" sync /:Raktapaksa:4BF9:/
+476.0 "Get behind the boss" sync /:Raktapaksa:4C10:/
 
-490.2 "Occluded Front" sync /:Raktapaksa:4E4C:/
-494.7 "Air Bump" sync /:Raktapaksa:4BF9:/
-499.2 "Wind Cutter" sync /:Tumultuous Nexus:4C02:/
-502.2 "Storm Of Fury" sync /:Raktapaksa:4C08:/
-509.4 "Inferno Howl" sync /:Raktapaksa:4C14:/
-520.5 "Occluded Front" sync /:Raktapaksa:4E4C:/
-529.6 "Wind Cutter" sync /:Tumultuous Nexus:4C02:/
+490.2 "Wind orbs spawn" sync /:Raktapaksa:4E4C:/
+494.7 "Partner stack with big ground AOE" sync /:Raktapaksa:4BF9:/
+499.2 "No cut tether" sync /:Tumultuous Nexus:4C02:/
+502.2 "Cone tether + ground AOE" sync /:Raktapaksa:4C08:/
+509.4 "Raidwide" sync /:Raktapaksa:4C14:/
+520.5 "Tank + Healer Tethers" sync /:Raktapaksa:4E4C:/
+529.6 "No cut tether" sync /:Tumultuous Nexus:4C02:/
 
-530.6 "Hands Of Hell" sync /:Raktapaksa:4D01:/
-535.0 "Heat Burst" sync /:Raktapaksa:4C0D:/
-535.2 "Eruption" sync /:Raktapaksa:4C17:/
-546.6 "Air Bump" sync /:Raktapaksa:4BF9:/
+530.6 "Tethers attach" sync /:Raktapaksa:4D01:/
+535.0 "Tethers go off" sync /:Raktapaksa:4C0D:/
+535.2 "AOEs go off" sync /:Raktapaksa:4C17:/
+546.6 "DPS tethers w/ partner stack" sync /:Raktapaksa:4BF9:/
 
-548.1 "Hands Of Hell" sync /:Raktapaksa:4D01:/
-552.4 "Heat Burst" sync /:Raktapaksa:4C0D:/
-552.6 "Eruption" sync /:Raktapaksa:4C17:/
-556.7 "Hands Of Flame" sync /:Raktapaksa:4C0A:/
-560.7 "Heat Burst" sync /:Raktapaksa:4C0D:/
-561.0 "Eruption" sync /:Raktapaksa:4C17:/
-565.0 "Instant Incineration" sync /:Raktapaksa:4C0E:/
-568.7 "Meteor Strike" sync /:Raktapaksa:4C0F:/
-586.4 "Ferostorm" sync /:Raktapaksa:4C06:/
-594.5 "Ferostorm" sync /:Raktapaksa:4C06:/
+548.1 "DPS Tethers" sync /:Raktapaksa:4D01:/
+552.4 "Tethers go off" sync /:Raktapaksa:4C0D:/
+552.6 "AOEs go off" sync /:Raktapaksa:4C17:/
+556.7 "Tankswap" sync /:Raktapaksa:4C0A:/
+560.7 "Tethers go off" sync /:Raktapaksa:4C0D:/
+561.0 "AOEs go off" sync /:Raktapaksa:4C17:/
+565.0 "Tankbuster #1" sync /:Raktapaksa:4C0E:/
+568.7 "Tankbuster #2" sync /:Raktapaksa:4C0F:/
+586.4 "Shark fins" sync /:Raktapaksa:4C06:/
+594.5 "Shark fins" sync /:Raktapaksa:4C06:/
 
-603.3 "Downburst" sync /:Raktapaksa:4BFC:/
-619.6 "Conflag Strike Enrage" sync /:Raktapaksa:4C1C:/
+603.3 "Knockback" sync /:Raktapaksa:4BFC:/
+619.6 "Hard Enrage" sync /:Raktapaksa:4C1C:/
