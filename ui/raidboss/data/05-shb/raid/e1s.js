@@ -153,12 +153,14 @@
     },
     {
       id: 'E1S Spear Of Paradise',
-      regex: / 14:3D88:Eden Prime starts using Spear Of Paradise on (\y{Name})/,
-      regexDe: / 14:3D88:Prim-Eden starts using Paradiesspeer on (\y{Name})/,
-      regexFr: / 14:3D88:Primo-Éden starts using Lance [Dd]u [Pp]aradis on (\y{Name})/,
-      regexJa: / 14:3D88:エデン・プライム starts using スピア・オブ・パラダイス on (\y{Name})/,
+      regex: Regexes.startsUsing({ id: '3D88', source: 'Eden Prime' }),
+      regexDe: Regexes.startsUsing({ id: '3D88', source: 'Prim-Eden' }),
+      regexFr: Regexes.startsUsing({ id: '3D88', source: 'Primo-Éden' }),
+      regexJa: Regexes.startsUsing({ id: '3D88', source: 'エデン・プライム' }),
+      regexCn: Regexes.startsUsing({ id: '3D88', source: '至尊伊甸' }),
+      regexKo: Regexes.startsUsing({ id: '3D88', source: '에덴 프라임' }),
       alarmText: function(data, matches) {
-        if (matches[1] == data.me || data.role != 'tank')
+        if (matches.target == data.me || data.role != 'tank')
           return;
 
         return {
@@ -168,7 +170,7 @@
         };
       },
       alertText: function(data, matches) {
-        if (matches[1] == data.me) {
+        if (matches.target == data.me) {
           return {
             en: 'Tank Buster on YOU',
             de: 'Tankbuster auf DIR',
@@ -183,7 +185,6 @@
           };
         }
       },
-      response: Responses.tankBusterSwap(),
     },
     {
       id: 'E1S Eden\'s Flare',

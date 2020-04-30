@@ -385,6 +385,58 @@
       },
     },
 
+
+    {
+      id: 'E8S Refulgent Chain',
+      regex: Regexes.gainsEffect({ effect: 'Refulgent Chain' }),
+      regexDe: Regexes.gainsEffect({ effect: 'Lichtfessel' }),
+      regexFr: Regexes.gainsEffect({ effect: 'Chaînes de Lumière' }),
+      regexJa: Regexes.gainsEffect({ effect: '光の鎖' }),
+      condition: Conditions.targetIsYou(),
+      delaySeconds: 2,
+      infoText: {
+        en: 'Take first tower',
+        de: 'Kette auf DIR',
+        fr: 'Chaine sur VOUS',
+        ko: '사슬 대상자',
+        cn: '连线',
+      },
+    },
+
+    {
+      id: 'E8S Refulgent Chain',
+      regex: Regexes.gainsEffect({ effect: 'Refulgent Chain' }),
+      regexDe: Regexes.gainsEffect({ effect: 'Lichtfessel' }),
+      regexFr: Regexes.gainsEffect({ effect: 'Chaînes de Lumière' }),
+      regexJa: Regexes.gainsEffect({ effect: '光の鎖' }),
+      condition: Conditions.targetIsYou(),
+      delaySeconds: 10,
+      infoText: {
+        en: 'Take N/S tower',
+        de: 'Kette auf DIR',
+        fr: 'Chaine sur VOUS',
+        ko: '사슬 대상자',
+        cn: '连线',
+      },
+    },
+
+    {
+      id: 'E8S Refulgent Chain',
+      regex: Regexes.gainsEffect({ effect: 'Refulgent Chain' }),
+      regexDe: Regexes.gainsEffect({ effect: 'Lichtfessel' }),
+      regexFr: Regexes.gainsEffect({ effect: 'Chaînes de Lumière' }),
+      regexJa: Regexes.gainsEffect({ effect: '光の鎖' }),
+      condition: Conditions.targetIsYou(),
+      delaySeconds: 18,
+      infoText: {
+        en: 'Move in to take cones',
+        de: 'Kette auf DIR',
+        fr: 'Chaine sur VOUS',
+        ko: '사슬 대상자',
+        cn: '连线',
+      },
+    },
+
     {
       id: 'E8S Refulgent Chain',
       regex: Regexes.gainsEffect({ effect: 'Refulgent Chain' }),

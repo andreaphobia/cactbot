@@ -11,6 +11,7 @@ let Options = {
   SpokenAlertsEnabled: false,
   GroupSpokenAlertsEnabled: false,
 
+  // These options are ones that are not auto-defined by raidboss_config.js.
   PlayerNicks: {},
 
   InfoSound: '../../resources/sounds/freesound/percussion_hit.ogg',

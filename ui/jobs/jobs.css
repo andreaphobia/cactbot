@@ -179,7 +179,13 @@
   top: 0;
 }
 
-#rdm-boxes>div, #war-boxes>div, #mnk-boxes>div, #pld-boxes>div, #drk-boxes>div, #blm-boxes>div, #gnb-boxes>div  {
+#rdm-boxes > div,
+#war-boxes > div,
+#mnk-boxes > div,
+#pld-boxes > div,
+#drk-boxes > div,
+#blm-boxes > div,
+#gnb-boxes > div {
   display: inline-block;
   margin-left: 4;
   border: 1px solid rgba(0, 0, 0, 0.7);
@@ -298,7 +304,10 @@
   left: 0;
 }
 
-#mnk-procs-dragonkick, #ast-procs-combust, #blu-procs-offguard, #blm-procs-fire{
+#mnk-procs-dragonkick,
+#ast-procs-combust,
+#blu-procs-offguard,
+#blm-procs-fire {
   position: relative;
   display: inline-block;
   left: 0;
